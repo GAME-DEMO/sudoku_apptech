@@ -1,12 +1,48 @@
-# Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+################ !!!! Git Ignore Config File !!! ################
+# NOTE: This file must be put under root dir of git project!
+#################################################################
 
-## Build generated
+# common ignore files
+*.swp
+*.tmp
+*.bak
+.svn/
+
+# Mac files
+.DS_Store
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# general output files
+bin/
+gen/
+out/
+
+# C/C++ specific files
+*.o
+
+# Java/Android specific files
+*.class
+*.apk
+*.ap_
+*.dex
+
+# Python specific files
+.pyc
+
+# Eclipse specific files
+.settings/
+
+# Intellij specific files
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Xcode specific files
 build/
 DerivedData
-
-## Various settings
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -15,39 +51,41 @@ DerivedData
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+*.xcworkspace
+!default.xcworkspace
 xcuserdata
-
-## Other
-*.xccheckout
 *.moved-aside
-*.xcuserstate
-*.xcscmblueprint
 
-## Obj-C/Swift specific
-*.hmap
-*.ipa
+# IDEA specific files
+.idea/
 
-# CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-# Pods/
+# Other files
 
-# Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
 
-Carthage/Build
+# Precompiled Headers
+*.gch
+# *.pch
 
-# fastlane
-#
-# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the 
-# screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://github.com/fastlane/fastlane/blob/master/docs/Gitignore.md
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
 
-fastlane/report.xml
-fastlane/screenshots
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
