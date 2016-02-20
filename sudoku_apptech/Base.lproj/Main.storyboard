@@ -29,10 +29,6 @@
                                     <constraint firstAttribute="height" constant="64" id="8tw-Vl-Yce"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8GS-id-afu" userLabel="Head View">
-                                <rect key="frame" x="180" y="236" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gT-5B-b4H" userLabel="Body Placeholder View">
                                 <rect key="frame" x="0.0" y="64" width="600" height="416"/>
                                 <subviews>
@@ -77,36 +73,45 @@
                                     <constraint firstAttribute="height" constant="120" id="c4K-Fb-17n"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8GS-id-afu" userLabel="Head View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmM-CP-feA" userLabel="Foot View">
+                                <rect key="frame" x="0.0" y="480" width="600" height="120"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qye-bb-rIA" secondAttribute="bottom" id="2vA-eu-eMh"/>
                             <constraint firstItem="3CO-4M-xWi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7Ak-95-sD1"/>
                             <constraint firstItem="3CO-4M-xWi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CAw-TG-sBw"/>
+                            <constraint firstItem="8GS-id-afu" firstAttribute="bottom" secondItem="2xk-C9-OdG" secondAttribute="top" id="CUx-kQ-S99"/>
+                            <constraint firstItem="8GS-id-afu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CY5-p3-AKs"/>
                             <constraint firstAttribute="trailing" secondItem="3CO-4M-xWi" secondAttribute="trailing" id="Iqp-Do-K8C"/>
+                            <constraint firstItem="fmM-CP-feA" firstAttribute="top" secondItem="2xk-C9-OdG" secondAttribute="bottom" id="JZU-Q3-ZZU"/>
                             <constraint firstAttribute="bottomMargin" secondItem="ceO-38-IZt" secondAttribute="bottom" id="K2f-2C-1u2"/>
                             <constraint firstItem="qye-bb-rIA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LUH-8I-Qy8"/>
+                            <constraint firstItem="8GS-id-afu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="Na4-7U-5Gq"/>
                             <constraint firstItem="7gT-5B-b4H" firstAttribute="top" secondItem="3CO-4M-xWi" secondAttribute="bottom" id="QQK-bj-QUb"/>
-                            <constraint firstItem="qye-bb-rIA" firstAttribute="top" secondItem="ceO-38-IZt" secondAttribute="bottom" id="QoP-zQ-2JZ"/>
-                            <constraint firstItem="ceO-38-IZt" firstAttribute="top" secondItem="3CO-4M-xWi" secondAttribute="bottom" id="aAs-dh-Egt"/>
+                            <constraint firstAttribute="trailing" secondItem="fmM-CP-feA" secondAttribute="trailing" id="WZ9-jb-4yX"/>
                             <constraint firstAttribute="trailing" secondItem="qye-bb-rIA" secondAttribute="trailing" id="bMg-ca-Wht"/>
+                            <constraint firstAttribute="trailing" secondItem="8GS-id-afu" secondAttribute="trailing" id="bum-18-kiF"/>
                             <constraint firstItem="ceO-38-IZt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="c08-qu-nte"/>
+                            <constraint firstAttribute="bottom" secondItem="fmM-CP-feA" secondAttribute="bottom" id="eRI-An-0Ks"/>
                             <constraint firstItem="qye-bb-rIA" firstAttribute="top" secondItem="7gT-5B-b4H" secondAttribute="bottom" id="j8W-97-1hN"/>
                             <constraint firstItem="7gT-5B-b4H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lhS-qc-HlE"/>
                             <constraint firstAttribute="trailing" secondItem="7gT-5B-b4H" secondAttribute="trailing" id="rBj-P7-ICu"/>
                             <constraint firstAttribute="trailing" secondItem="ceO-38-IZt" secondAttribute="trailing" id="sJs-zp-fDg"/>
                             <constraint firstItem="ceO-38-IZt" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="tW2-WB-hZh"/>
+                            <constraint firstItem="fmM-CP-feA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xLt-kk-B3O"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="aAs-dh-Egt"/>
-                                <exclude reference="QoP-zQ-2JZ"/>
-                            </mask>
-                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="343" y="498"/>
         </scene>
     </scenes>
     <resources>
