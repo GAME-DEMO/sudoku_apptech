@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,25 +19,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3CO-4M-xWi" userLabel="Head View">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game_background" translatesAutoresizingMaskIntoConstraints="NO" id="ceO-38-IZt" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3CO-4M-xWi" userLabel="Head Placeholder View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="8tw-Vl-Yce"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gT-5B-b4H" userLabel="Body View">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8GS-id-afu" userLabel="Head View">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gT-5B-b4H" userLabel="Body Placeholder View">
                                 <rect key="frame" x="0.0" y="64" width="600" height="416"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2xk-C9-OdG" userLabel="Content View">
                                         <rect key="frame" x="92" y="0.0" width="416" height="416"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_body" translatesAutoresizingMaskIntoConstraints="NO" id="wLH-kG-Auf">
+                                                <rect key="frame" x="0.0" y="0.0" width="416" height="416"/>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_frame" translatesAutoresizingMaskIntoConstraints="NO" id="2eU-Ad-DDI">
+                                                <rect key="frame" x="0.0" y="0.0" width="416" height="416"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="2eU-Ad-DDI" firstAttribute="leading" secondItem="2xk-C9-OdG" secondAttribute="leading" id="A7K-3t-zBJ"/>
                                             <constraint firstAttribute="width" secondItem="2xk-C9-OdG" secondAttribute="height" multiplier="1:1" id="Hhx-Yk-iOM"/>
+                                            <constraint firstAttribute="trailing" secondItem="wLH-kG-Auf" secondAttribute="trailing" id="JtB-TI-zs3"/>
+                                            <constraint firstItem="wLH-kG-Auf" firstAttribute="top" secondItem="2xk-C9-OdG" secondAttribute="top" id="Qf6-QA-R0n"/>
+                                            <constraint firstAttribute="trailing" secondItem="2eU-Ad-DDI" secondAttribute="trailing" id="SHA-gF-SDD"/>
+                                            <constraint firstItem="2eU-Ad-DDI" firstAttribute="top" secondItem="2xk-C9-OdG" secondAttribute="top" id="d1C-66-b2g"/>
+                                            <constraint firstAttribute="bottom" secondItem="2eU-Ad-DDI" secondAttribute="bottom" id="kEE-QL-fug"/>
+                                            <constraint firstAttribute="bottom" secondItem="wLH-kG-Auf" secondAttribute="bottom" id="uek-5G-T6I"/>
+                                            <constraint firstItem="wLH-kG-Auf" firstAttribute="leading" secondItem="2xk-C9-OdG" secondAttribute="leading" id="vbu-Qd-niT"/>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="2xk-C9-OdG" firstAttribute="height" secondItem="7gT-5B-b4H" secondAttribute="height" priority="750" id="H2i-Qv-KQK"/>
                                     <constraint firstItem="2xk-C9-OdG" firstAttribute="width" relation="lessThanOrEqual" secondItem="7gT-5B-b4H" secondAttribute="width" id="OWt-0d-DMO"/>
@@ -46,9 +70,9 @@
                                     <constraint firstItem="2xk-C9-OdG" firstAttribute="centerY" secondItem="7gT-5B-b4H" secondAttribute="centerY" id="q7R-f8-HrW"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qye-bb-rIA" userLabel="Foot View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qye-bb-rIA" userLabel="Foot Placeholder View">
                                 <rect key="frame" x="0.0" y="480" width="600" height="120"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="c4K-Fb-17n"/>
                                 </constraints>
@@ -60,17 +84,34 @@
                             <constraint firstItem="3CO-4M-xWi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7Ak-95-sD1"/>
                             <constraint firstItem="3CO-4M-xWi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CAw-TG-sBw"/>
                             <constraint firstAttribute="trailing" secondItem="3CO-4M-xWi" secondAttribute="trailing" id="Iqp-Do-K8C"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="ceO-38-IZt" secondAttribute="bottom" id="K2f-2C-1u2"/>
                             <constraint firstItem="qye-bb-rIA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LUH-8I-Qy8"/>
                             <constraint firstItem="7gT-5B-b4H" firstAttribute="top" secondItem="3CO-4M-xWi" secondAttribute="bottom" id="QQK-bj-QUb"/>
+                            <constraint firstItem="qye-bb-rIA" firstAttribute="top" secondItem="ceO-38-IZt" secondAttribute="bottom" id="QoP-zQ-2JZ"/>
+                            <constraint firstItem="ceO-38-IZt" firstAttribute="top" secondItem="3CO-4M-xWi" secondAttribute="bottom" id="aAs-dh-Egt"/>
                             <constraint firstAttribute="trailing" secondItem="qye-bb-rIA" secondAttribute="trailing" id="bMg-ca-Wht"/>
+                            <constraint firstItem="ceO-38-IZt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="c08-qu-nte"/>
                             <constraint firstItem="qye-bb-rIA" firstAttribute="top" secondItem="7gT-5B-b4H" secondAttribute="bottom" id="j8W-97-1hN"/>
                             <constraint firstItem="7gT-5B-b4H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lhS-qc-HlE"/>
                             <constraint firstAttribute="trailing" secondItem="7gT-5B-b4H" secondAttribute="trailing" id="rBj-P7-ICu"/>
+                            <constraint firstAttribute="trailing" secondItem="ceO-38-IZt" secondAttribute="trailing" id="sJs-zp-fDg"/>
+                            <constraint firstItem="ceO-38-IZt" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="tW2-WB-hZh"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="aAs-dh-Egt"/>
+                                <exclude reference="QoP-zQ-2JZ"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="background_body" width="320" height="311"/>
+        <image name="background_frame" width="193" height="159"/>
+        <image name="game_background" width="320" height="569"/>
+    </resources>
 </document>
