@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -70,12 +71,36 @@
                                 <rect key="frame" x="0.0" y="480" width="600" height="120"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="c4K-Fb-17n"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="c4K-Fb-17n"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8GS-id-afu" userLabel="Head View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZgD-V6-Mgm" userLabel="Settings Button">
+                                        <rect key="frame" x="562" y="24" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ZgD-V6-Mgm" secondAttribute="height" multiplier="1:1" id="8Qj-Dj-zwW"/>
+                                        </constraints>
+                                        <state key="normal" image="button_set"/>
+                                        <state key="highlighted" image="button_set_highlight"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nzE-yJ-Mut" userLabel="Back Button">
+                                        <rect key="frame" x="524" y="24" width="30" height="30"/>
+                                        <state key="normal" image="button_back"/>
+                                        <state key="highlighted" image="button_back_highlight"/>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ZgD-V6-Mgm" secondAttribute="bottom" multiplier="1.2" id="92d-Ln-XkR"/>
+                                    <constraint firstItem="ZgD-V6-Mgm" firstAttribute="width" secondItem="nzE-yJ-Mut" secondAttribute="width" id="ADS-0F-6xQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZgD-V6-Mgm" secondAttribute="trailing" constant="8" id="EM1-rS-pHO"/>
+                                    <constraint firstItem="ZgD-V6-Mgm" firstAttribute="height" secondItem="nzE-yJ-Mut" secondAttribute="height" id="LKK-2h-oPN"/>
+                                    <constraint firstItem="ZgD-V6-Mgm" firstAttribute="leading" secondItem="nzE-yJ-Mut" secondAttribute="trailing" constant="8" id="jJ3-Ci-QZR"/>
+                                    <constraint firstItem="ZgD-V6-Mgm" firstAttribute="height" relation="lessThanOrEqual" secondItem="8GS-id-afu" secondAttribute="height" multiplier="0.8" id="kzb-wJ-0cQ"/>
+                                    <constraint firstItem="ZgD-V6-Mgm" firstAttribute="centerY" secondItem="nzE-yJ-Mut" secondAttribute="centerY" id="uWr-mn-K9b"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmM-CP-feA" userLabel="Foot View">
                                 <rect key="frame" x="0.0" y="480" width="600" height="120"/>
@@ -86,6 +111,7 @@
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qye-bb-rIA" secondAttribute="bottom" id="2vA-eu-eMh"/>
                             <constraint firstItem="3CO-4M-xWi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="7Ak-95-sD1"/>
+                            <constraint firstItem="qye-bb-rIA" firstAttribute="height" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1:4" priority="750" id="9ph-32-kQZ"/>
                             <constraint firstItem="3CO-4M-xWi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CAw-TG-sBw"/>
                             <constraint firstItem="8GS-id-afu" firstAttribute="bottom" secondItem="2xk-C9-OdG" secondAttribute="top" id="CUx-kQ-S99"/>
                             <constraint firstItem="8GS-id-afu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CY5-p3-AKs"/>
@@ -117,6 +143,10 @@
     <resources>
         <image name="background_body" width="320" height="311"/>
         <image name="background_frame" width="193" height="159"/>
+        <image name="button_back" width="30" height="30"/>
+        <image name="button_back_highlight" width="30" height="30"/>
+        <image name="button_set" width="30" height="30"/>
+        <image name="button_set_highlight" width="30" height="30"/>
         <image name="game_background" width="320" height="569"/>
     </resources>
 </document>
