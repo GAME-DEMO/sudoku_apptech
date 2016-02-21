@@ -16,6 +16,8 @@
 		AADC00DE1C79569900319522 /* Algorithm.mm in Sources */ = {isa = PBXBuildFile; fileRef = AADC00DB1C79569900319522 /* Algorithm.mm */; };
 		AADC00DF1C79569900319522 /* Presenter.mm in Sources */ = {isa = PBXBuildFile; fileRef = AADC00DD1C79569900319522 /* Presenter.mm */; };
 		AADC00E31C795BA100319522 /* CenterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AADC00E21C795BA100319522 /* CenterFlowLayout.m */; };
+		AADC00E61C795F6800319522 /* NumberCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AADC00E51C795F6800319522 /* NumberCollectionViewCell.m */; };
+		AADC00E91C795F8D00319522 /* ColorCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AADC00E81C795F8D00319522 /* ColorCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,10 @@
 		AADC00E01C7957B100319522 /* sudoku_apptech.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sudoku_apptech.pch; sourceTree = "<group>"; };
 		AADC00E11C795BA100319522 /* CenterFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterFlowLayout.h; sourceTree = "<group>"; };
 		AADC00E21C795BA100319522 /* CenterFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterFlowLayout.m; sourceTree = "<group>"; };
+		AADC00E41C795F6800319522 /* NumberCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberCollectionViewCell.h; sourceTree = "<group>"; };
+		AADC00E51C795F6800319522 /* NumberCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberCollectionViewCell.m; sourceTree = "<group>"; };
+		AADC00E71C795F8D00319522 /* ColorCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorCollectionViewCell.h; sourceTree = "<group>"; };
+		AADC00E81C795F8D00319522 /* ColorCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,10 @@
 				AA1B5B0F1C769CA000EDEE4A /* AppDelegate.m */,
 				AA1B5B111C769CA000EDEE4A /* ViewController.h */,
 				AA1B5B121C769CA000EDEE4A /* ViewController.m */,
+				AADC00E41C795F6800319522 /* NumberCollectionViewCell.h */,
+				AADC00E51C795F6800319522 /* NumberCollectionViewCell.m */,
+				AADC00E71C795F8D00319522 /* ColorCollectionViewCell.h */,
+				AADC00E81C795F8D00319522 /* ColorCollectionViewCell.m */,
 				AADC00E11C795BA100319522 /* CenterFlowLayout.h */,
 				AADC00E21C795BA100319522 /* CenterFlowLayout.m */,
 				AA1B5B141C769CA000EDEE4A /* Main.storyboard */,
@@ -168,8 +178,10 @@
 			files = (
 				AA1B5B131C769CA000EDEE4A /* ViewController.m in Sources */,
 				AA1B5B101C769CA000EDEE4A /* AppDelegate.m in Sources */,
+				AADC00E91C795F8D00319522 /* ColorCollectionViewCell.m in Sources */,
 				AADC00E31C795BA100319522 /* CenterFlowLayout.m in Sources */,
 				AA1B5B0D1C769CA000EDEE4A /* main.m in Sources */,
+				AADC00E61C795F6800319522 /* NumberCollectionViewCell.m in Sources */,
 				AADC00DE1C79569900319522 /* Algorithm.mm in Sources */,
 				AADC00DF1C79569900319522 /* Presenter.mm in Sources */,
 			);
