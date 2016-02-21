@@ -42,16 +42,24 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_frame" translatesAutoresizingMaskIntoConstraints="NO" id="2eU-Ad-DDI">
                                                 <rect key="frame" x="0.0" y="0.0" width="416" height="416"/>
                                             </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEH-Zo-0Kn" userLabel="Cubes View">
+                                                <rect key="frame" x="0.0" y="0.0" width="416" height="416"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="2eU-Ad-DDI" firstAttribute="leading" secondItem="2xk-C9-OdG" secondAttribute="leading" id="A7K-3t-zBJ"/>
                                             <constraint firstAttribute="width" secondItem="2xk-C9-OdG" secondAttribute="height" multiplier="1:1" id="Hhx-Yk-iOM"/>
                                             <constraint firstAttribute="trailing" secondItem="wLH-kG-Auf" secondAttribute="trailing" id="JtB-TI-zs3"/>
+                                            <constraint firstItem="iEH-Zo-0Kn" firstAttribute="top" secondItem="2xk-C9-OdG" secondAttribute="top" id="Qds-mK-TII"/>
                                             <constraint firstItem="wLH-kG-Auf" firstAttribute="top" secondItem="2xk-C9-OdG" secondAttribute="top" id="Qf6-QA-R0n"/>
                                             <constraint firstAttribute="trailing" secondItem="2eU-Ad-DDI" secondAttribute="trailing" id="SHA-gF-SDD"/>
                                             <constraint firstItem="2eU-Ad-DDI" firstAttribute="top" secondItem="2xk-C9-OdG" secondAttribute="top" id="d1C-66-b2g"/>
+                                            <constraint firstAttribute="trailing" secondItem="iEH-Zo-0Kn" secondAttribute="trailing" id="dvV-aa-Pph"/>
+                                            <constraint firstAttribute="bottom" secondItem="iEH-Zo-0Kn" secondAttribute="bottom" id="et9-tr-BMh"/>
                                             <constraint firstAttribute="bottom" secondItem="2eU-Ad-DDI" secondAttribute="bottom" id="kEE-QL-fug"/>
+                                            <constraint firstItem="iEH-Zo-0Kn" firstAttribute="leading" secondItem="2xk-C9-OdG" secondAttribute="leading" id="svJ-qe-WHg"/>
                                             <constraint firstAttribute="bottom" secondItem="wLH-kG-Auf" secondAttribute="bottom" id="uek-5G-T6I"/>
                                             <constraint firstItem="wLH-kG-Auf" firstAttribute="leading" secondItem="2xk-C9-OdG" secondAttribute="leading" id="vbu-Qd-niT"/>
                                         </constraints>
