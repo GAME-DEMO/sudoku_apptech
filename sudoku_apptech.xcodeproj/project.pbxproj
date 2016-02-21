@@ -13,6 +13,7 @@
 		AA1B5B161C769CA000EDEE4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1B5B141C769CA000EDEE4A /* Main.storyboard */; };
 		AA1B5B181C769CA000EDEE4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1B5B171C769CA000EDEE4A /* Assets.xcassets */; };
 		AA1B5B1B1C769CA000EDEE4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1B5B191C769CA000EDEE4A /* LaunchScreen.storyboard */; };
+		AA3E2A771C7991C000FA3006 /* SudokuFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3E2A761C7991C000FA3006 /* SudokuFootView.m */; };
 		AADC00DE1C79569900319522 /* Algorithm.mm in Sources */ = {isa = PBXBuildFile; fileRef = AADC00DB1C79569900319522 /* Algorithm.mm */; };
 		AADC00DF1C79569900319522 /* Presenter.mm in Sources */ = {isa = PBXBuildFile; fileRef = AADC00DD1C79569900319522 /* Presenter.mm */; };
 		AADC00E31C795BA100319522 /* CenterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AADC00E21C795BA100319522 /* CenterFlowLayout.m */; };
@@ -31,6 +32,8 @@
 		AA1B5B171C769CA000EDEE4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA1B5B1A1C769CA000EDEE4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA1B5B1C1C769CA000EDEE4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA3E2A751C7991C000FA3006 /* SudokuFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuFootView.h; sourceTree = "<group>"; };
+		AA3E2A761C7991C000FA3006 /* SudokuFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuFootView.m; sourceTree = "<group>"; };
 		AADC00DA1C79569900319522 /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
 		AADC00DB1C79569900319522 /* Algorithm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Algorithm.mm; sourceTree = "<group>"; };
 		AADC00DC1C79569900319522 /* Presenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Presenter.h; sourceTree = "<group>"; };
@@ -86,6 +89,8 @@
 				AADC00E51C795F6800319522 /* NumberCollectionViewCell.m */,
 				AADC00E71C795F8D00319522 /* ColorCollectionViewCell.h */,
 				AADC00E81C795F8D00319522 /* ColorCollectionViewCell.m */,
+				AA3E2A751C7991C000FA3006 /* SudokuFootView.h */,
+				AA3E2A761C7991C000FA3006 /* SudokuFootView.m */,
 				AADC00E11C795BA100319522 /* CenterFlowLayout.h */,
 				AADC00E21C795BA100319522 /* CenterFlowLayout.m */,
 				AA1B5B141C769CA000EDEE4A /* Main.storyboard */,
@@ -178,6 +183,7 @@
 			files = (
 				AA1B5B131C769CA000EDEE4A /* ViewController.m in Sources */,
 				AA1B5B101C769CA000EDEE4A /* AppDelegate.m in Sources */,
+				AA3E2A771C7991C000FA3006 /* SudokuFootView.m in Sources */,
 				AADC00E91C795F8D00319522 /* ColorCollectionViewCell.m in Sources */,
 				AADC00E31C795BA100319522 /* CenterFlowLayout.m in Sources */,
 				AA1B5B0D1C769CA000EDEE4A /* main.m in Sources */,

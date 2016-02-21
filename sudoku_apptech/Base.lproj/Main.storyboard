@@ -110,7 +110,7 @@
                                     <constraint firstItem="ZgD-V6-Mgm" firstAttribute="centerY" secondItem="nzE-yJ-Mut" secondAttribute="centerY" id="uWr-mn-K9b"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmM-CP-feA" userLabel="Foot View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmM-CP-feA" userLabel="Foot View" customClass="SudokuFootView">
                                 <rect key="frame" x="0.0" y="480" width="600" height="120"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NoZ-AG-AQ0" userLabel="Numbers Collection View">
@@ -128,6 +128,10 @@
                                                 </view>
                                             </collectionViewCell>
                                         </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="fmM-CP-feA" id="PEp-Ug-YfQ"/>
+                                            <outlet property="delegate" destination="fmM-CP-feA" id="vDl-wP-xQy"/>
+                                        </connections>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6fL-LP-J7d" userLabel="Colors Collection View">
                                         <rect key="frame" x="0.0" y="80" width="600" height="40"/>
@@ -144,6 +148,10 @@
                                                 </view>
                                             </collectionViewCell>
                                         </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="fmM-CP-feA" id="veo-vI-mI8"/>
+                                            <outlet property="delegate" destination="fmM-CP-feA" id="9vc-DC-NIE"/>
+                                        </connections>
                                     </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -157,6 +165,10 @@
                                     <constraint firstItem="NoZ-AG-AQ0" firstAttribute="leading" secondItem="fmM-CP-feA" secondAttribute="leading" id="hYS-gC-T67"/>
                                     <constraint firstItem="NoZ-AG-AQ0" firstAttribute="height" secondItem="fmM-CP-feA" secondAttribute="height" multiplier="2:3" id="mvh-am-Hc8"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="colorCollectionView" destination="6fL-LP-J7d" id="4Qh-BX-XLv"/>
+                                    <outlet property="numberCollectionView" destination="NoZ-AG-AQ0" id="5fX-Nf-MJd"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

@@ -8,6 +8,19 @@
 
 #import "ColorCollectionViewCell.h"
 
+NSString * const ColorCollectionViewCellIdentifier = @"color_collection_view_cell_identifier";
+
+@interface ColorCollectionViewCell ()
+
+@end
+
 @implementation ColorCollectionViewCell
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        self.backgroundColor = [UIColor lightGrayColor];
+    }
+    return self;
+}
 
 @end
