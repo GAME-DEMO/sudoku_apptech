@@ -13,6 +13,8 @@
 		AA1B5B161C769CA000EDEE4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1B5B141C769CA000EDEE4A /* Main.storyboard */; };
 		AA1B5B181C769CA000EDEE4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA1B5B171C769CA000EDEE4A /* Assets.xcassets */; };
 		AA1B5B1B1C769CA000EDEE4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1B5B191C769CA000EDEE4A /* LaunchScreen.storyboard */; };
+		AADC00DE1C79569900319522 /* Algorithm.mm in Sources */ = {isa = PBXBuildFile; fileRef = AADC00DB1C79569900319522 /* Algorithm.mm */; };
+		AADC00DF1C79569900319522 /* Presenter.mm in Sources */ = {isa = PBXBuildFile; fileRef = AADC00DD1C79569900319522 /* Presenter.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,11 @@
 		AA1B5B171C769CA000EDEE4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA1B5B1A1C769CA000EDEE4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA1B5B1C1C769CA000EDEE4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AADC00DA1C79569900319522 /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
+		AADC00DB1C79569900319522 /* Algorithm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Algorithm.mm; sourceTree = "<group>"; };
+		AADC00DC1C79569900319522 /* Presenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Presenter.h; sourceTree = "<group>"; };
+		AADC00DD1C79569900319522 /* Presenter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Presenter.mm; sourceTree = "<group>"; };
+		AADC00E01C7957B100319522 /* sudoku_apptech.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sudoku_apptech.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +65,10 @@
 		AA1B5B0A1C769CA000EDEE4A /* sudoku_apptech */ = {
 			isa = PBXGroup;
 			children = (
+				AADC00DA1C79569900319522 /* Algorithm.h */,
+				AADC00DB1C79569900319522 /* Algorithm.mm */,
+				AADC00DC1C79569900319522 /* Presenter.h */,
+				AADC00DD1C79569900319522 /* Presenter.mm */,
 				AA1B5B0E1C769CA000EDEE4A /* AppDelegate.h */,
 				AA1B5B0F1C769CA000EDEE4A /* AppDelegate.m */,
 				AA1B5B111C769CA000EDEE4A /* ViewController.h */,
@@ -75,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				AA1B5B0C1C769CA000EDEE4A /* main.m */,
+				AADC00E01C7957B100319522 /* sudoku_apptech.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -152,6 +164,8 @@
 				AA1B5B131C769CA000EDEE4A /* ViewController.m in Sources */,
 				AA1B5B101C769CA000EDEE4A /* AppDelegate.m in Sources */,
 				AA1B5B0D1C769CA000EDEE4A /* main.m in Sources */,
+				AADC00DE1C79569900319522 /* Algorithm.mm in Sources */,
+				AADC00DF1C79569900319522 /* Presenter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +278,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				GCC_PREFIX_HEADER = sudoku_apptech/sudoku_apptech.pch;
 				INFOPLIST_FILE = sudoku_apptech/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hspjsoft.sudoku-apptech";
@@ -276,6 +291,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				GCC_PREFIX_HEADER = sudoku_apptech/sudoku_apptech.pch;
 				INFOPLIST_FILE = sudoku_apptech/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.hspjsoft.sudoku-apptech";
