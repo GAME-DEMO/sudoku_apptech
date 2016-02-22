@@ -19,6 +19,6 @@ int GetCubesCountForAll();
 
 std::vector<int> RandomResult();
 int ResultsCount(const std::vector<int> *pCubeValues);
-int ResultsCount(const std::vector<int> *pCubeValues, BOOL uniqueSolution);
+int ResultsCount(const std::vector<int> *pCubeValues, bool uniqueSolution);
 
 #endif /* Algorithm_h */
