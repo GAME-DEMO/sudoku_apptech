@@ -3,7 +3,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -22,25 +24,41 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen_up" translatesAutoresizingMaskIntoConstraints="NO" id="zFQ-Jl-mXo" userLabel="launchscreen_up">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen_logo" translatesAutoresizingMaskIntoConstraints="NO" id="7bk-nt-ixa">
+                                <rect key="frame" x="150" y="72" width="300" height="156"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="zFQ-Jl-mXo" secondAttribute="height" multiplier="4:3" id="HWS-Tw-kfI"/>
+                                    <constraint firstAttribute="width" secondItem="7bk-nt-ixa" secondAttribute="height" multiplier="1407:731" id="RPa-pf-136"/>
                                 </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen_bubbles" translatesAutoresizingMaskIntoConstraints="NO" id="Zj4-Ya-9Ul">
+                                <rect key="frame" x="100" y="-257" width="400" height="814"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen_numbers" translatesAutoresizingMaskIntoConstraints="NO" id="JMY-2l-JcC">
+                                <rect key="frame" x="150" y="150" width="300" height="150"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen_less_bubbles" translatesAutoresizingMaskIntoConstraints="NO" id="rVX-l5-lQc">
+                                <rect key="frame" x="0.0" y="386" width="600" height="129"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zFQ-Jl-mXo" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" priority="750" id="23A-JR-3tz"/>
+                            <constraint firstItem="JMY-2l-JcC" firstAttribute="width" secondItem="7bk-nt-ixa" secondAttribute="width" id="3Iy-G0-yiO"/>
                             <constraint firstAttribute="trailing" secondItem="qI2-ht-fmj" secondAttribute="trailing" id="4xE-g9-wEl"/>
-                            <constraint firstItem="zFQ-Jl-mXo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Chy-j2-8Je"/>
-                            <constraint firstItem="zFQ-Jl-mXo" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" priority="750" id="HvK-cs-tRq"/>
+                            <constraint firstItem="JMY-2l-JcC" firstAttribute="centerX" secondItem="7bk-nt-ixa" secondAttribute="centerX" id="5en-GT-JnK"/>
+                            <constraint firstItem="Zj4-Ya-9Ul" firstAttribute="centerX" secondItem="7bk-nt-ixa" secondAttribute="centerX" id="RrO-S7-q0y"/>
+                            <constraint firstItem="JMY-2l-JcC" firstAttribute="bottom" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="VtG-1a-EcW"/>
                             <constraint firstAttribute="bottom" secondItem="qI2-ht-fmj" secondAttribute="bottom" id="YyM-zn-gy1"/>
-                            <constraint firstItem="zFQ-Jl-mXo" firstAttribute="height" relation="lessThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="height" id="gpM-BW-MDx"/>
+                            <constraint firstItem="rVX-l5-lQc" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="c9L-1s-jFP"/>
+                            <constraint firstItem="7bk-nt-ixa" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="1:2" id="ckg-dX-qLg"/>
+                            <constraint firstItem="Zj4-Ya-9Ul" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="2:3" id="df4-Vh-Ufz"/>
+                            <constraint firstItem="rVX-l5-lQc" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="eQc-VM-Uma"/>
+                            <constraint firstItem="7bk-nt-ixa" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="1:2" id="eoB-Yu-YmV"/>
                             <constraint firstItem="qI2-ht-fmj" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="i6F-h8-BKW"/>
-                            <constraint firstItem="zFQ-Jl-mXo" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="qdb-na-4cp"/>
+                            <constraint firstItem="JMY-2l-JcC" firstAttribute="top" secondItem="7bk-nt-ixa" secondAttribute="centerY" id="kpE-9Q-L0o"/>
+                            <constraint firstItem="rVX-l5-lQc" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="3:2" id="m20-KU-TxM"/>
+                            <constraint firstItem="Zj4-Ya-9Ul" firstAttribute="centerY" secondItem="7bk-nt-ixa" secondAttribute="centerY" id="mFl-BF-rFN"/>
+                            <constraint firstItem="7bk-nt-ixa" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="oaF-AU-dXy"/>
                             <constraint firstItem="qI2-ht-fmj" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="sLN-g7-US1"/>
-                            <constraint firstItem="zFQ-Jl-mXo" firstAttribute="width" relation="lessThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="width" id="yD6-U5-CAb"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -51,6 +69,9 @@
     </scenes>
     <resources>
         <image name="launchscreen_background" width="1024" height="909"/>
-        <image name="launchscreen_up" width="1024" height="768"/>
+        <image name="launchscreen_bubbles" width="814" height="813"/>
+        <image name="launchscreen_less_bubbles" width="540" height="129"/>
+        <image name="launchscreen_logo" width="703" height="365"/>
+        <image name="launchscreen_numbers" width="557" height="672"/>
     </resources>
 </document>
