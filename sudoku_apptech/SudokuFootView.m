@@ -9,6 +9,7 @@
 #import "SudokuFootView.h"
 #import "NumberCollectionViewCell.h"
 #import "ColorCollectionViewCell.h"
+#import "CenterFlowLayout.h"
 
 @interface SudokuFootView ()
 
@@ -20,6 +21,18 @@
 
 @implementation SudokuFootView
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+    }
+    return self;
+}
+
+- (void)viewDidLoad {
+    CenterFlowLayout *centerLayout = (CenterFlowLayout *)self.numberCollectionView.collectionViewLayout;
+    centerLayout.sectionInset = UIEdgeInsetsMake(20, 10, 0, 10);
+//    centerLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+}
+
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -30,6 +43,24 @@
     }
     return CGSizeZero;
 }
+
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+//    if (collectionView == self.numberCollectionView) {
+//        
+//    } else if (collectionView == self.colorCollectionView) {
+//        
+//    }
+//    return 0.0f;
+//}
+
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+//    if (collectionView == self.numberCollectionView) {
+//        
+//    } else if (collectionView == self.colorCollectionView) {
+//        
+//    }
+//    return 0.0f;
+//}
 
 #pragma mark - UICollectionViewDataSource
 

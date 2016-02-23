@@ -198,6 +198,9 @@
                             <constraint firstItem="fmM-CP-feA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="xLt-kk-B3O"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="footView" destination="fmM-CP-feA" id="2cr-nd-KIj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

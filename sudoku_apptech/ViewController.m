@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "SudokuFootView.h"
 
 @interface ViewController ()
+
+@property (nonatomic, weak) IBOutlet SudokuFootView *footView;
 
 @end
 
@@ -17,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self.footView viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning {

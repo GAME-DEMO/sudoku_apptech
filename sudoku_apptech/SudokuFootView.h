@@ -10,4 +10,6 @@
 
 @interface SudokuFootView : UIView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
+- (void)viewDidLoad;
+
 @end
