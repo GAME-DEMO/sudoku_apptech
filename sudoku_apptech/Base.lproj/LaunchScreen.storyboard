@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,7 +17,31 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen_down" translatesAutoresizingMaskIntoConstraints="NO" id="qI2-ht-fmj">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen_up" translatesAutoresizingMaskIntoConstraints="NO" id="zFQ-Jl-mXo" userLabel="launchscreen_up">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zFQ-Jl-mXo" secondAttribute="height" multiplier="4:3" id="HWS-Tw-kfI"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zFQ-Jl-mXo" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" priority="750" id="23A-JR-3tz"/>
+                            <constraint firstAttribute="trailing" secondItem="qI2-ht-fmj" secondAttribute="trailing" id="4xE-g9-wEl"/>
+                            <constraint firstItem="zFQ-Jl-mXo" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Chy-j2-8Je"/>
+                            <constraint firstItem="zFQ-Jl-mXo" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" priority="750" id="HvK-cs-tRq"/>
+                            <constraint firstAttribute="bottom" secondItem="qI2-ht-fmj" secondAttribute="bottom" id="YyM-zn-gy1"/>
+                            <constraint firstItem="zFQ-Jl-mXo" firstAttribute="height" relation="lessThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="height" id="gpM-BW-MDx"/>
+                            <constraint firstItem="qI2-ht-fmj" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="i6F-h8-BKW"/>
+                            <constraint firstItem="zFQ-Jl-mXo" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="qdb-na-4cp"/>
+                            <constraint firstItem="qI2-ht-fmj" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="sLN-g7-US1"/>
+                            <constraint firstItem="zFQ-Jl-mXo" firstAttribute="width" relation="lessThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="width" id="yD6-U5-CAb"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +49,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="launchscreen_down" width="1024" height="768"/>
+        <image name="launchscreen_up" width="1024" height="768"/>
+    </resources>
 </document>
