@@ -31,19 +31,19 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gT-5B-b4H" userLabel="Body Placeholder View">
-                                <rect key="frame" x="0.0" y="64" width="600" height="416"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="376"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2xk-C9-OdG" userLabel="Content View">
-                                        <rect key="frame" x="92" y="0.0" width="416" height="416"/>
+                                        <rect key="frame" x="112" y="0.0" width="376" height="376"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_body" translatesAutoresizingMaskIntoConstraints="NO" id="wLH-kG-Auf">
-                                                <rect key="frame" x="0.0" y="0.0" width="416" height="416"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="376" height="376"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_frame" translatesAutoresizingMaskIntoConstraints="NO" id="2eU-Ad-DDI">
-                                                <rect key="frame" x="0.0" y="0.0" width="416" height="416"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="376" height="376"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEH-Zo-0Kn" userLabel="Cubes View">
-                                                <rect key="frame" x="0.0" y="0.0" width="416" height="416"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="376" height="376"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
@@ -76,10 +76,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qye-bb-rIA" userLabel="Foot Placeholder View">
-                                <rect key="frame" x="0.0" y="480" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="440" width="600" height="160"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="c4K-Fb-17n"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="160" id="c4K-Fb-17n"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8GS-id-afu" userLabel="Head View">
@@ -111,10 +111,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmM-CP-feA" userLabel="Foot View" customClass="SudokuFootView">
-                                <rect key="frame" x="0.0" y="480" width="600" height="120"/>
+                                <rect key="frame" x="0.0" y="440" width="600" height="160"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NoZ-AG-AQ0" userLabel="Numbers Collection View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="106"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewLayout key="collectionViewLayout" id="y1B-TY-xrt" customClass="CenterFlowLayout"/>
                                         <cells>
@@ -134,7 +134,7 @@
                                         </connections>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6fL-LP-J7d" userLabel="Colors Collection View">
-                                        <rect key="frame" x="0.0" y="80" width="600" height="40"/>
+                                        <rect key="frame" x="0.0" y="106" width="600" height="54"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewLayout key="collectionViewLayout" id="Nq4-zg-PaH" customClass="CenterFlowLayout"/>
                                         <cells>

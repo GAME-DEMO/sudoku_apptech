@@ -36,8 +36,9 @@ typedef NS_ENUM(NSUInteger, DIMENSION_LEVEL) {
 - (int)groupIndexFromCubeIndex:(int)index;
 
 - (NSArray *)randomResultForLevel:(DIFFICULT_LEVEL)level;
-
 - (UIColor *)randomColor;
+
+- (BOOL)isDemensionLevelNine;
 
 #pragma mark - UI related
 

@@ -147,6 +147,10 @@
     return RGBA(arc4random() % 255, arc4random() % 255, arc4random() % 255, alpha / alphaBase);
 }
 
+- (BOOL)isDemensionLevelNine {
+    return self.dimension == DIMENSION_LEVEL_NINE;
+}
+
 #pragma mark - UI related
 
 + (UIInterfaceOrientation) appOrientation {

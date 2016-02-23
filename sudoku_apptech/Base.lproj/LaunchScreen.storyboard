@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen_down" translatesAutoresizingMaskIntoConstraints="NO" id="qI2-ht-fmj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen_background" translatesAutoresizingMaskIntoConstraints="NO" id="qI2-ht-fmj">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -50,7 +50,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launchscreen_down" width="1024" height="768"/>
+        <image name="launchscreen_background" width="1024" height="909"/>
         <image name="launchscreen_up" width="1024" height="768"/>
     </resources>
 </document>

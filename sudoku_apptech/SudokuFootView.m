@@ -10,6 +10,7 @@
 #import "NumberCollectionViewCell.h"
 #import "ColorCollectionViewCell.h"
 #import "CenterFlowLayout.h"
+#import "Presenter.h"
 
 @interface SudokuFootView ()
 
@@ -29,38 +30,35 @@
 
 - (void)viewDidLoad {
     CenterFlowLayout *centerLayout = (CenterFlowLayout *)self.numberCollectionView.collectionViewLayout;
-    centerLayout.sectionInset = UIEdgeInsetsMake(20, 10, 0, 10);
-//    centerLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    centerLayout.sectionInset = UIEdgeInsetsMake(10, 10, 0, 10);
+    centerLayout.minimumLineSpacing = 8.0f;
+    centerLayout.minimumInteritemSpacing = 8.0f;
+
+    centerLayout = (CenterFlowLayout *)self.colorCollectionView.collectionViewLayout;
+    centerLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    centerLayout.minimumLineSpacing = 8.0f;
+    centerLayout.minimumInteritemSpacing = 8.0f;
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (collectionView == self.numberCollectionView) {
-        return CGSizeMake(64, 64);
-    } else if (collectionView == self.colorCollectionView) {
-        return CGSizeMake(50, 50);
+    if ([Presenter sharedInstance].isDemensionLevelNine) {
+        if (collectionView == self.numberCollectionView) {
+            CenterFlowLayout *layout = (CenterFlowLayout *)collectionView.collectionViewLayout;
+            CGFloat itemWidth = (collectionView.frame.size.width - layout.sectionInset.left - layout.sectionInset.right - 4 * layout.minimumInteritemSpacing - 1.0f) / 5.0f;
+            CGFloat itemHeight = (collectionView.frame.size.height - layout.sectionInset.top - layout.sectionInset.bottom - 1 * layout.minimumLineSpacing - 1.0f) / 2.0f;
+            return CGSizeMake(itemWidth, itemHeight);
+        } else if (collectionView == self.colorCollectionView) {
+            CenterFlowLayout *layout = (CenterFlowLayout *)collectionView.collectionViewLayout;
+            CGFloat itemWidth = (collectionView.frame.size.width - layout.sectionInset.left - layout.sectionInset.right - 3.0f * layout.minimumInteritemSpacing - 1.0f) / 5.0f;
+            CGFloat itemHeight = (collectionView.frame.size.height - layout.sectionInset.top - layout.sectionInset.bottom - 1.0f);
+            return CGSizeMake(itemWidth, itemHeight);
+        }
     }
+
     return CGSizeZero;
 }
-
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-//    if (collectionView == self.numberCollectionView) {
-//        
-//    } else if (collectionView == self.colorCollectionView) {
-//        
-//    }
-//    return 0.0f;
-//}
-
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
-//    if (collectionView == self.numberCollectionView) {
-//        
-//    } else if (collectionView == self.colorCollectionView) {
-//        
-//    }
-//    return 0.0f;
-//}
 
 #pragma mark - UICollectionViewDataSource
 
