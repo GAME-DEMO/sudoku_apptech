@@ -14,6 +14,7 @@ NSString * const NumberCollectionViewCellIdentifier = @"number_collection_view_c
 @interface NumberCollectionViewCell ()
 
 @property (nonatomic, strong) UIButton *numberButton;
+@property (nonatomic, strong) UIImageView *numberShadowImageView;
 @property (nonatomic, strong) UIImageView *numberImageView;
 
 @end
@@ -59,18 +60,28 @@ NSString * const NumberCollectionViewCellIdentifier = @"number_collection_view_c
 
     [self.numberButton addConstraint:[NSLayoutConstraint constraintWithItem:self.numberButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.numberButton attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
 
+    self.numberShadowImageView = [[UIImageView alloc] init];
+    self.numberShadowImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.numberShadowImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.numberButton addSubview:self.numberShadowImageView];
+    [self.numberButton addConstraint:[NSLayoutConstraint constraintWithItem:self.numberShadowImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.numberButton attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+    [self.numberButton addConstraint:[NSLayoutConstraint constraintWithItem:self.numberShadowImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.numberButton attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
+    [self.numberButton addConstraint:[NSLayoutConstraint constraintWithItem:self.numberShadowImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.numberButton attribute:NSLayoutAttributeWidth multiplier:3.0f / 4.0f constant:0.0]];
+    [self.numberButton addConstraint:[NSLayoutConstraint constraintWithItem:self.numberShadowImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.numberButton attribute:NSLayoutAttributeHeight multiplier:3.0f / 4.0f constant:0.0]];
+
     self.numberImageView = [[UIImageView alloc] init];
     self.numberImageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.numberImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.numberButton addSubview:self.numberImageView];
-    [self.numberButton addConstraint:[NSLayoutConstraint constraintWithItem:self.numberImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.numberButton attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
-    [self.numberButton addConstraint:[NSLayoutConstraint constraintWithItem:self.numberImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.numberButton attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
-    [self.numberButton addConstraint:[NSLayoutConstraint constraintWithItem:self.numberImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.numberButton attribute:NSLayoutAttributeWidth multiplier:3.0f / 4.0f constant:0.0]];
-    [self.numberButton addConstraint:[NSLayoutConstraint constraintWithItem:self.numberImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.numberButton attribute:NSLayoutAttributeHeight multiplier:3.0f / 4.0f constant:0.0]];
+    [self.numberShadowImageView addSubview:self.numberImageView];
+    [self.numberShadowImageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[number]-0-|" options:0 metrics:nil views:@{@"number" : self.numberImageView}]];
+    [self.numberShadowImageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[number]-0-|" options:0 metrics:nil views:@{@"number" : self.numberImageView}]];
 }
 
 - (void)setNumber:(int)number {
     if (number > 0 && number < 10) {
+        NSString *numberShadowImageName = [NSString stringWithFormat:@"b%d_shadow", number];
+        self.numberShadowImageView.image = [UIImage imageNamed:numberShadowImageName];
+
         NSString *numberImageName = [NSString stringWithFormat:@"b%d", number];
         self.numberImageView.image = [[UIImage imageNamed:numberImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         self.numberImageView.tintColor = [UIColor whiteColor];
