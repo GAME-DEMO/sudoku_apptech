@@ -12,4 +12,6 @@ extern NSString * const NumberCollectionViewCellIdentifier;
 
 @interface NumberCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, assign) int number;
+
 @end

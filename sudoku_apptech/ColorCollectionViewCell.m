@@ -33,7 +33,7 @@ NSString * const ColorCollectionViewCellIdentifier = @"color_collection_view_cel
 }
 
 - (void)commonInit {
-    self.colorButton = [[UIButton alloc] init];
+    self.colorButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.colorButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.colorButton];
 
@@ -43,10 +43,12 @@ NSString * const ColorCollectionViewCellIdentifier = @"color_collection_view_cel
     NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:self.colorButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0];
     widthConstraint.priority = UILayoutPriorityDefaultHigh;
     [self addConstraint:widthConstraint];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.colorButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationLessThanOrEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0]];
 
     NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.colorButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0];
     heightConstraint.priority = UILayoutPriorityDefaultHigh;
     [self addConstraint:heightConstraint];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.colorButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationLessThanOrEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
 
     [self.colorButton addConstraint:[NSLayoutConstraint constraintWithItem:self.colorButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.colorButton attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
 

@@ -73,15 +73,16 @@
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *identifier = nil;
+    UICollectionViewCell *cell = nil;
     if (collectionView == self.numberCollectionView) {
-        identifier = NumberCollectionViewCellIdentifier;
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:NumberCollectionViewCellIdentifier forIndexPath:indexPath];
+        NumberCollectionViewCell* numCell = (NumberCollectionViewCell *)cell;
+        numCell.number = (int)indexPath.item + 1;
+        
     } else if (collectionView == self.colorCollectionView) {
-        identifier = ColorCollectionViewCellIdentifier;
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:ColorCollectionViewCellIdentifier forIndexPath:indexPath];
     }
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
 
-    // Configure the cell
 
     return cell;
 }
