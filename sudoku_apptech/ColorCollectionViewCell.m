@@ -12,15 +12,45 @@ NSString * const ColorCollectionViewCellIdentifier = @"color_collection_view_cel
 
 @interface ColorCollectionViewCell ()
 
+@property (nonatomic, strong) UIButton *colorButton;
+
 @end
 
 @implementation ColorCollectionViewCell
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        self.backgroundColor = [UIColor lightGrayColor];
+        [self commonInit];
     }
     return self;
+}
+
+- (instancetype)init {
+    if (self = [super init]) {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (void)commonInit {
+    self.colorButton = [[UIButton alloc] init];
+    self.colorButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.colorButton];
+
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.colorButton attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.colorButton attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+
+    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:self.colorButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0];
+    widthConstraint.priority = UILayoutPriorityDefaultHigh;
+    [self addConstraint:widthConstraint];
+
+    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.colorButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0];
+    heightConstraint.priority = UILayoutPriorityDefaultHigh;
+    [self addConstraint:heightConstraint];
+
+    [self.colorButton addConstraint:[NSLayoutConstraint constraintWithItem:self.colorButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.colorButton attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
+
+    self.colorButton.backgroundColor = [UIColor lightGrayColor];
 }
 
 @end
