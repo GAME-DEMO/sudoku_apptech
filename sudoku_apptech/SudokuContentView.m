@@ -39,7 +39,7 @@
             if (i != [Presenter sharedInstance].dimension - 1) {
                 lineView = [[UIView alloc] init];
                 lineView.translatesAutoresizingMaskIntoConstraints = NO;
-                lineView.backgroundColor = RGBA(16.0, 44.0, 65.0, 1.0);
+                lineView.backgroundColor = RGBA(0, 0, 0, 0.6);
                 [self addSubview:lineView];
                 
                 CGFloat lineWidth = i % 3 == 2 ? 2 * LINE_WIDTH : LINE_WIDTH;
@@ -77,7 +77,7 @@
             if (i != [Presenter sharedInstance].dimension - 1) {
                 lineView = [[UIView alloc] init];
                 lineView.translatesAutoresizingMaskIntoConstraints = NO;
-                lineView.backgroundColor = RGBA(16.0, 44.0, 65.0, 1.0);
+                lineView.backgroundColor = RGBA(0, 0, 0, 0.6);
                 [self addSubview:lineView];
                 
                 CGFloat lineWidth = i % 3 == 2 ? 2 * LINE_WIDTH : LINE_WIDTH;
