@@ -8,8 +8,11 @@
 
 #import "SudokuContentView.h"
 #import "Presenter.h"
+#import "SudokuCubeView.h"
 
 @interface SudokuContentView ()
+
+@property (nonatomic, strong) NSMutableArray<SudokuCubeView *> *cubeArray;
 
 @end
 
@@ -18,11 +21,10 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        
+        _cubeArray = [NSMutableArray arrayWithCapacity:[Presenter sharedInstance].cubesCountForAll];
     }
     return self;
 }
-
 
 - (void)viewDidLoad {
     if ([Presenter sharedInstance].isDemensionLevelNine) {

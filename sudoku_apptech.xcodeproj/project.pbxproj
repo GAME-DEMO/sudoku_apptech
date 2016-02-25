@@ -21,6 +21,7 @@
 		AADC00E61C795F6800319522 /* NumberCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AADC00E51C795F6800319522 /* NumberCollectionViewCell.m */; };
 		AADC00E91C795F8D00319522 /* ColorCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AADC00E81C795F8D00319522 /* ColorCollectionViewCell.m */; };
 		AADC00F31C7E140700319522 /* SudokuContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = AADC00F21C7E140700319522 /* SudokuContentView.m */; };
+		AAFE9EE91C7F3E8B00850001 /* SudokuCubeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AAFE9EE81C7F3E8B00850001 /* SudokuCubeView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,8 @@
 		AADC00E81C795F8D00319522 /* ColorCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorCollectionViewCell.m; sourceTree = "<group>"; };
 		AADC00F11C7E140700319522 /* SudokuContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuContentView.h; sourceTree = "<group>"; };
 		AADC00F21C7E140700319522 /* SudokuContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuContentView.m; sourceTree = "<group>"; };
+		AAFE9EE71C7F3E8B00850001 /* SudokuCubeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuCubeView.h; sourceTree = "<group>"; };
+		AAFE9EE81C7F3E8B00850001 /* SudokuCubeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuCubeView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,8 @@
 				AADC00E51C795F6800319522 /* NumberCollectionViewCell.m */,
 				AADC00E71C795F8D00319522 /* ColorCollectionViewCell.h */,
 				AADC00E81C795F8D00319522 /* ColorCollectionViewCell.m */,
+				AAFE9EE71C7F3E8B00850001 /* SudokuCubeView.h */,
+				AAFE9EE81C7F3E8B00850001 /* SudokuCubeView.m */,
 				AADC00F11C7E140700319522 /* SudokuContentView.h */,
 				AADC00F21C7E140700319522 /* SudokuContentView.m */,
 				AA3E2A751C7991C000FA3006 /* SudokuFootView.h */,
@@ -195,6 +200,7 @@
 				AA1B5B101C769CA000EDEE4A /* AppDelegate.m in Sources */,
 				AA3E2A831C7D7C4C00FA3006 /* GradientView.m in Sources */,
 				AA3E2A771C7991C000FA3006 /* SudokuFootView.m in Sources */,
+				AAFE9EE91C7F3E8B00850001 /* SudokuCubeView.m in Sources */,
 				AADC00F31C7E140700319522 /* SudokuContentView.m in Sources */,
 				AADC00E91C795F8D00319522 /* ColorCollectionViewCell.m in Sources */,
 				AADC00E31C795BA100319522 /* CenterFlowLayout.m in Sources */,
