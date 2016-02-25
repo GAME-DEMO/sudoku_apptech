@@ -10,6 +10,9 @@
 
 @interface SudokuCubeView ()
 
+@property (nonatomic, strong) UIImageView *valueImageView;
+@property (nonatomic, strong) NSMutableArray<UIImageView *> *guessImageViewArray;
+
 @end
 
 
@@ -30,7 +33,12 @@
 }
 
 - (void)commonInit {
-    
+    self.valueImageView = [[UIImageView alloc] init];
+    self.valueImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.valueImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self addSubview:self.valueImageView];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[valueImageView]-0-|" options:0 metrics:nil views:@{@"valueImageView":self.valueImageView}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[valueImageView]-0-|" options:0 metrics:nil views:@{@"valueImageView":self.valueImageView}]];
 }
 
 @end
