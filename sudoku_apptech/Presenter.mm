@@ -52,17 +52,21 @@
     return GetCubesCountForAll();
 }
 
-- (int)rowFromCubeIndx:(int)index {
+- (int)rowFromIndx:(int)index {
     return index / self.dimension;
 }
 
-- (int)colFromCubeIndex:(int)index {
+- (int)colFromIndex:(int)index {
     return index % self.dimension;
 }
 
+- (int)indexFromRow:(int)row withCol:(int)col {
+    return row * self.dimension + col;
+}
+
 - (int)groupIndexFromCubeIndex:(int)index {
-    int row = [self rowFromCubeIndx:index];
-    int col = [self colFromCubeIndex:index];
+    int row = [self rowFromIndx:index];
+    int col = [self colFromIndex:index];
     
     return (row / self.eachCount) * self.eachCount + col / self.eachCount;
 }

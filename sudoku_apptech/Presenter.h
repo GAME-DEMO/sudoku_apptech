@@ -31,8 +31,9 @@ typedef NS_ENUM(NSUInteger, DIMENSION_LEVEL) {
 @property (nonatomic, readonly) int cubesCountForDimension;
 @property (nonatomic, readonly) int cubesCountForAll;
 
-- (int)rowFromCubeIndx:(int)index;
-- (int)colFromCubeIndex:(int)index;
+- (int)rowFromIndx:(int)index;
+- (int)colFromIndex:(int)index;
+- (int)indexFromRow:(int)row withCol:(int)col;
 - (int)groupIndexFromCubeIndex:(int)index;
 
 - (NSArray *)randomResultForLevel:(DIFFICULT_LEVEL)level;
