@@ -37,10 +37,10 @@
                                         <rect key="frame" x="112" y="0.0" width="376" height="376"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_body" translatesAutoresizingMaskIntoConstraints="NO" id="wLH-kG-Auf">
-                                                <rect key="frame" x="0.0" y="0.0" width="376" height="376"/>
+                                                <rect key="frame" x="5" y="5" width="366" height="366"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEH-Zo-0Kn" customClass="SudokuContentView">
-                                                <rect key="frame" x="0.0" y="0.0" width="376" height="376"/>
+                                                <rect key="frame" x="5" y="5" width="366" height="366"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_frame" translatesAutoresizingMaskIntoConstraints="NO" id="2eU-Ad-DDI">
@@ -50,40 +50,20 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="2eU-Ad-DDI" firstAttribute="leading" secondItem="2xk-C9-OdG" secondAttribute="leading" id="A7K-3t-zBJ"/>
-                                            <constraint firstItem="2eU-Ad-DDI" firstAttribute="trailing" secondItem="wLH-kG-Auf" secondAttribute="trailing" id="Evx-1H-uio"/>
+                                            <constraint firstItem="wLH-kG-Auf" firstAttribute="trailing" secondItem="2eU-Ad-DDI" secondAttribute="trailing" constant="-5" id="2ZZ-c4-z7m"/>
                                             <constraint firstAttribute="width" secondItem="2xk-C9-OdG" secondAttribute="height" multiplier="1:1" id="Hhx-Yk-iOM"/>
-                                            <constraint firstAttribute="trailing" secondItem="wLH-kG-Auf" secondAttribute="trailing" id="JtB-TI-zs3"/>
-                                            <constraint firstItem="2eU-Ad-DDI" firstAttribute="bottom" secondItem="wLH-kG-Auf" secondAttribute="bottom" id="Qba-Pe-IEg"/>
-                                            <constraint firstItem="iEH-Zo-0Kn" firstAttribute="top" secondItem="2xk-C9-OdG" secondAttribute="top" id="Qds-mK-TII"/>
-                                            <constraint firstItem="wLH-kG-Auf" firstAttribute="top" secondItem="2xk-C9-OdG" secondAttribute="top" id="Qf6-QA-R0n"/>
-                                            <constraint firstAttribute="trailing" secondItem="2eU-Ad-DDI" secondAttribute="trailing" id="SHA-gF-SDD"/>
+                                            <constraint firstItem="wLH-kG-Auf" firstAttribute="leading" secondItem="2eU-Ad-DDI" secondAttribute="leading" constant="5" id="QCh-q3-tDK"/>
+                                            <constraint firstItem="wLH-kG-Auf" firstAttribute="top" secondItem="2eU-Ad-DDI" secondAttribute="top" constant="5" id="UIi-C4-bO8"/>
                                             <constraint firstItem="iEH-Zo-0Kn" firstAttribute="trailing" secondItem="wLH-kG-Auf" secondAttribute="trailing" id="VeL-S0-dn0"/>
                                             <constraint firstItem="iEH-Zo-0Kn" firstAttribute="top" secondItem="wLH-kG-Auf" secondAttribute="top" id="YyD-2U-yFI"/>
-                                            <constraint firstItem="2eU-Ad-DDI" firstAttribute="leading" secondItem="wLH-kG-Auf" secondAttribute="leading" id="cRj-1n-eOH"/>
-                                            <constraint firstItem="2eU-Ad-DDI" firstAttribute="top" secondItem="2xk-C9-OdG" secondAttribute="top" id="d1C-66-b2g"/>
-                                            <constraint firstAttribute="trailing" secondItem="iEH-Zo-0Kn" secondAttribute="trailing" id="dvV-aa-Pph"/>
-                                            <constraint firstAttribute="bottom" secondItem="iEH-Zo-0Kn" secondAttribute="bottom" id="et9-tr-BMh"/>
+                                            <constraint firstAttribute="bottom" secondItem="2eU-Ad-DDI" secondAttribute="bottom" id="aHW-UX-4h9"/>
                                             <constraint firstItem="iEH-Zo-0Kn" firstAttribute="leading" secondItem="wLH-kG-Auf" secondAttribute="leading" id="fmN-He-mPj"/>
-                                            <constraint firstAttribute="bottom" secondItem="2eU-Ad-DDI" secondAttribute="bottom" id="kEE-QL-fug"/>
-                                            <constraint firstItem="iEH-Zo-0Kn" firstAttribute="leading" secondItem="2xk-C9-OdG" secondAttribute="leading" id="svJ-qe-WHg"/>
-                                            <constraint firstAttribute="bottom" secondItem="wLH-kG-Auf" secondAttribute="bottom" id="uek-5G-T6I"/>
-                                            <constraint firstItem="2eU-Ad-DDI" firstAttribute="top" secondItem="wLH-kG-Auf" secondAttribute="top" id="ui3-3h-ftZ"/>
+                                            <constraint firstItem="2eU-Ad-DDI" firstAttribute="top" secondItem="2xk-C9-OdG" secondAttribute="top" id="ip9-uu-hR7"/>
+                                            <constraint firstAttribute="trailing" secondItem="2eU-Ad-DDI" secondAttribute="trailing" id="sTH-Gb-ttS"/>
                                             <constraint firstItem="iEH-Zo-0Kn" firstAttribute="bottom" secondItem="wLH-kG-Auf" secondAttribute="bottom" id="vPu-Hq-W3g"/>
-                                            <constraint firstItem="wLH-kG-Auf" firstAttribute="leading" secondItem="2xk-C9-OdG" secondAttribute="leading" id="vbu-Qd-niT"/>
+                                            <constraint firstItem="wLH-kG-Auf" firstAttribute="bottom" secondItem="2eU-Ad-DDI" secondAttribute="bottom" constant="-5" id="vhv-ue-9DU"/>
+                                            <constraint firstItem="2eU-Ad-DDI" firstAttribute="leading" secondItem="2xk-C9-OdG" secondAttribute="leading" id="xwX-GN-7dt"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="A7K-3t-zBJ"/>
-                                                <exclude reference="SHA-gF-SDD"/>
-                                                <exclude reference="d1C-66-b2g"/>
-                                                <exclude reference="kEE-QL-fug"/>
-                                                <exclude reference="Qds-mK-TII"/>
-                                                <exclude reference="dvV-aa-Pph"/>
-                                                <exclude reference="et9-tr-BMh"/>
-                                                <exclude reference="svJ-qe-WHg"/>
-                                            </mask>
-                                        </variation>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

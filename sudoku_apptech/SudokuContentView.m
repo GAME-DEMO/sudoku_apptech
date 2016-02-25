@@ -45,7 +45,7 @@
                 CGFloat lineWidth = i % 3 == 2 ? 2 * LINE_WIDTH : LINE_WIDTH;
                 [lineView addConstraint:[NSLayoutConstraint constraintWithItem:lineView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:lineWidth]];
                 
-                [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-5-[lineView]-5-|" options:0 metrics:nil views:@{@"lineView" : lineView}]];
+                [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[lineView]-0-|" options:0 metrics:nil views:@{@"lineView" : lineView}]];
             }
             
             if (lastLineView == nil) {
@@ -83,7 +83,7 @@
                 CGFloat lineWidth = i % 3 == 2 ? 2 * LINE_WIDTH : LINE_WIDTH;
                 [lineView addConstraint:[NSLayoutConstraint constraintWithItem:lineView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:lineWidth]];
                 
-                [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-5-[lineView]-5-|" options:0 metrics:nil views:@{@"lineView" : lineView}]];
+                [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[lineView]-0-|" options:0 metrics:nil views:@{@"lineView" : lineView}]];
             }
             
             if (lastLineView == nil) {
