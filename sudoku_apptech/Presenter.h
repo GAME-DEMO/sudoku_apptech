@@ -31,10 +31,12 @@ typedef NS_ENUM(NSUInteger, DIMENSION_LEVEL) {
 @property (nonatomic, readonly) int cubesCountForDimension;
 @property (nonatomic, readonly) int cubesCountForAll;
 
-- (int)rowFromIndx:(int)index;
-- (int)colFromIndex:(int)index;
-- (int)indexFromRow:(int)row withCol:(int)col;
-- (int)groupIndexFromCubeIndex:(int)index;
+- (int)globalRowFromGlobalIndex:(int)globalIndex;
+- (int)globalColFromGlobalIndex:(int)globalIndex;
+- (int)groupIndexFromCubeGlobalIndex:(int)globalIndex;
+- (int)globalIndexFromGlobalRow:(int)globalRow withGlobalCol:(int)globalCol;
+
+- (int)localIndexFromLocalRow:(int)localRow withLocalCol:(int)localCol;
 
 - (NSArray *)randomResultForLevel:(DIFFICULT_LEVEL)level;
 - (UIColor *)randomColor;

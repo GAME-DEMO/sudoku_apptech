@@ -12,7 +12,7 @@
 
 @interface SudokuContentView ()
 
-@property (nonatomic, strong) NSMutableArray<SudokuCubeView *> *cubeArray;
+@property (nonatomic, strong) NSMutableArray<SudokuCubeView *> *cubeViewArray;
 
 @end
 
@@ -21,7 +21,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        _cubeArray = [NSMutableArray arrayWithCapacity:[Presenter sharedInstance].cubesCountForAll];
+        _cubeViewArray = [NSMutableArray arrayWithCapacity:[Presenter sharedInstance].cubesCountForAll];
     }
     return self;
 }
@@ -103,8 +103,61 @@
             lastLineView = lineView;
             lastPlaceHolderView = placeHolderView;
         }
+        
+        for (int i = 0; i < [Presenter sharedInstance].cubesCountForAll; ++i) {
+            SudokuCubeView *cubeView = [[SudokuCubeView alloc] init];
+            cubeView.translatesAutoresizingMaskIntoConstraints = NO;
+            cubeView.backgroundColor = [UIColor clearColor];
+            [self addSubview:cubeView];
+            [self.cubeViewArray addObject:cubeView];
+        }
+        
+        for (int row = 0; row < [Presenter sharedInstance].dimension; ++row) {
+            for (int col = 0; col < [Presenter sharedInstance].dimension; ++col) {
+                SudokuCubeView *curCubeView = [self.cubeViewArray objectAtIndex:[[Presenter sharedInstance] globalIndexFromGlobalRow:row withGlobalCol:col]];
+                
+                // Leading
+                if (col == 0) {
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:curCubeView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0]];
+                } else {
+                    SudokuCubeView *leadingCubeView = [self.cubeViewArray objectAtIndex:[[Presenter sharedInstance] globalIndexFromGlobalRow:row withGlobalCol:col - 1]];
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:curCubeView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:leadingCubeView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0]];
+                }
+                
+                // Trailing
+                if (col == [Presenter sharedInstance].dimension - 1) {
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:curCubeView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0]];
+                }
+                
+                // Width
+                if (col > 0) {
+                    SudokuCubeView *previousCubeView = [self.cubeViewArray objectAtIndex:[[Presenter sharedInstance] globalIndexFromGlobalRow:row withGlobalCol:col - 1]];
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:curCubeView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:previousCubeView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0]];
+                }
+                
+                // Bottom
+                if (row == 0) {
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:curCubeView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0]];
+                } else {
+                    SudokuCubeView *bottomCubeView = [self.cubeViewArray objectAtIndex:[[Presenter sharedInstance] globalIndexFromGlobalRow:row - 1 withGlobalCol:col]];
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:curCubeView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:bottomCubeView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
+                }
+                
+                // Top
+                if (row == [Presenter sharedInstance].dimension - 1) {
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:curCubeView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
+                }
+                
+                // Height
+                if (row > 0) {
+                    SudokuCubeView *previousCubeView = [self.cubeViewArray objectAtIndex:[[Presenter sharedInstance] globalIndexFromGlobalRow:row - 1 withGlobalCol:col]];
+                    [self addConstraint:[NSLayoutConstraint constraintWithItem:curCubeView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:previousCubeView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
+                }
+            }
+        }
     }
 }
+
 
 
 @end

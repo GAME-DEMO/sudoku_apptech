@@ -52,23 +52,27 @@
     return GetCubesCountForAll();
 }
 
-- (int)rowFromIndx:(int)index {
-    return index / self.dimension;
+- (int)globalRowFromGlobalIndex:(int)globalIndex {
+    return globalIndex / self.dimension;
 }
 
-- (int)colFromIndex:(int)index {
-    return index % self.dimension;
+- (int)globalColFromGlobalIndex:(int)globalIndex {
+    return globalIndex % self.dimension;
 }
 
-- (int)indexFromRow:(int)row withCol:(int)col {
-    return row * self.eachCount + col;
-}
-
-- (int)groupIndexFromCubeIndex:(int)index {
-    int row = [self rowFromIndx:index];
-    int col = [self colFromIndex:index];
+- (int)groupIndexFromCubeGlobalIndex:(int)globalIndex {
+    int row = [self globalRowFromGlobalIndex:globalIndex];
+    int col = [self globalColFromGlobalIndex:globalIndex];
     
     return (row / self.eachCount) * self.eachCount + col / self.eachCount;
+}
+
+- (int)globalIndexFromGlobalRow:(int)globalRow withGlobalCol:(int)globalCol {
+    return globalRow * self.dimension + globalCol;
+}
+
+- (int)localIndexFromLocalRow:(int)localRow withLocalCol:(int)localCol {
+    return localRow * self.eachCount + localCol;
 }
 
 - (void)randomResult {

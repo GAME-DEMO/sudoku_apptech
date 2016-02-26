@@ -62,13 +62,13 @@
     
     for (int row = 0; row < [Presenter sharedInstance].eachCount; ++row) {
         for (int col = 0; col < [Presenter sharedInstance].eachCount; ++col) {
-            UIImageView *curImageView = [self.guessImageViewArray objectAtIndex:[[Presenter sharedInstance] indexFromRow:row withCol:col]];
+            UIImageView *curImageView = [self.guessImageViewArray objectAtIndex:[[Presenter sharedInstance] localIndexFromLocalRow:row withLocalCol:col]];
             
             // Leading
             if (col == 0) {
                 [self.guessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.guessBackgroundView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0]];
             } else {
-                UIImageView *leadingImageView = [self.guessImageViewArray objectAtIndex:[[Presenter sharedInstance] indexFromRow:row withCol:col - 1]];
+                UIImageView *leadingImageView = [self.guessImageViewArray objectAtIndex:[[Presenter sharedInstance] localIndexFromLocalRow:row withLocalCol:col - 1]];
                 [self.guessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:leadingImageView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0]];
             }
             
@@ -79,7 +79,7 @@
             
             // Width
             if (col > 0) {
-                UIImageView *previousImageView = [self.guessImageViewArray objectAtIndex:[[Presenter sharedInstance] indexFromRow:row withCol:col - 1]];
+                UIImageView *previousImageView = [self.guessImageViewArray objectAtIndex:[[Presenter sharedInstance] localIndexFromLocalRow:row withLocalCol:col - 1]];
                 [self.guessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:previousImageView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0]];
             }
             
@@ -87,7 +87,7 @@
             if (row == 0) {
                 [self.guessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.guessBackgroundView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0]];
             } else {
-                UIImageView *bottomImageView = [self.guessImageViewArray objectAtIndex:[[Presenter sharedInstance] indexFromRow:row - 1 withCol:col]];
+                UIImageView *bottomImageView = [self.guessImageViewArray objectAtIndex:[[Presenter sharedInstance] localIndexFromLocalRow:row - 1 withLocalCol:col]];
                 [self.guessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:bottomImageView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
             }
             
@@ -98,7 +98,7 @@
             
             // Height
             if (row > 0) {
-                UIImageView *previousImageView = [self.guessImageViewArray objectAtIndex:[[Presenter sharedInstance] indexFromRow:row - 1 withCol:col]];
+                UIImageView *previousImageView = [self.guessImageViewArray objectAtIndex:[[Presenter sharedInstance] localIndexFromLocalRow:row - 1 withLocalCol:col]];
                 [self.guessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:previousImageView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
             }
         }
