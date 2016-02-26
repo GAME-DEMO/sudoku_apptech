@@ -13,6 +13,7 @@ NSString * const ColorCollectionViewCellIdentifier = @"color_collection_view_cel
 @interface ColorCollectionViewCell ()
 
 @property (nonatomic, strong) UIButton *colorButton;
+@property (nonatomic, strong) UIView *colorView;
 
 @end
 

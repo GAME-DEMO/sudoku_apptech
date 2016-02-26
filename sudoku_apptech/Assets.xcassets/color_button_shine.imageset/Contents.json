@@ -1,0 +1,35 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 14,
+          "height" : 14
+        },
+        "cap-insets" : {
+          "bottom" : 35,
+          "top" : 35,
+          "right" : 35,
+          "left" : 35
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "color_button_shine@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
