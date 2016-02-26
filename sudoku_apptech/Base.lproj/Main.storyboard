@@ -115,7 +115,7 @@
                                 <rect key="frame" x="0.0" y="440" width="600" height="160"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NoZ-AG-AQ0" userLabel="Numbers Collection View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="106"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="107"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewLayout key="collectionViewLayout" id="y1B-TY-xrt" customClass="CenterFlowLayout"/>
                                         <cells>
@@ -135,7 +135,7 @@
                                         </connections>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6fL-LP-J7d" userLabel="Colors Collection View">
-                                        <rect key="frame" x="0.0" y="106" width="600" height="54"/>
+                                        <rect key="frame" x="0.0" y="107" width="600" height="53"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewLayout key="collectionViewLayout" id="Nq4-zg-PaH" customClass="CenterFlowLayout"/>
                                         <cells>

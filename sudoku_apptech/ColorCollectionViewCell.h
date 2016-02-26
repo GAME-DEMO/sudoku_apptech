@@ -12,4 +12,7 @@ extern NSString * const ColorCollectionViewCellIdentifier;
 
 @interface ColorCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, strong) UIColor *tintColorForBackground;
+@property (nonatomic, strong) UIColor *tintColorForContent;
+
 @end
