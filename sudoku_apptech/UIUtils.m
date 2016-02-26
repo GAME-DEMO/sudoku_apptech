@@ -13,7 +13,7 @@ static const int NumberTag = 1001;
 
 @implementation UIUtils
 
-+ (void)updateNumber:(int)number withTintColor:(UIColor *)color onView:(UIView *)view cover:(CGFloat)coverPercentage {
++ (void)updateNumber:(int)number withTintColor:(UIColor *)color onView:(UIView *)view {
     UIImageView *numberShadowImageView = [view viewWithTag:NumberShadowTag];
     if (numberShadowImageView == nil) {
         numberShadowImageView = [[UIImageView alloc] init];
@@ -22,10 +22,8 @@ static const int NumberTag = 1001;
         numberShadowImageView.tag = NumberShadowTag;
         [view addSubview:numberShadowImageView];
 
-        [view addConstraint:[NSLayoutConstraint constraintWithItem:numberShadowImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
-        [view addConstraint:[NSLayoutConstraint constraintWithItem:numberShadowImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
-        [view addConstraint:[NSLayoutConstraint constraintWithItem:numberShadowImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeWidth multiplier:MIN(coverPercentage, 1.0) constant:0.0]];
-        [view addConstraint:[NSLayoutConstraint constraintWithItem:numberShadowImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:view attribute:NSLayoutAttributeHeight multiplier:MIN(coverPercentage, 1.0) constant:0.0]];
+        [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[numberShadowImageView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(numberShadowImageView)]];
+        [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[numberShadowImageView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(numberShadowImageView)]];
     }
 
     UIImageView *numberImageView = [numberShadowImageView viewWithTag:NumberTag];

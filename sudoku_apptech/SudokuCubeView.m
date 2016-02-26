@@ -51,8 +51,11 @@
     self.cubeValueView.translatesAutoresizingMaskIntoConstraints = NO;
     self.cubeValueView.backgroundColor = [UIColor clearColor];
     [self addSubview:self.cubeValueView];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[cubeValueView]-0-|" options:0 metrics:nil views:@{@"cubeValueView":self.cubeValueView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[cubeValueView]-0-|" options:0 metrics:nil views:@{@"cubeValueView":self.cubeValueView}]];
+
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.cubeValueView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.cubeValueView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.cubeValueView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:0.8 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.cubeValueView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:0.8 constant:0.0]];
     
     self.cubeGuessBackgroundView = [[UIView alloc] init];
     self.cubeGuessBackgroundView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -120,7 +123,7 @@
 
 - (void)setCubeValue:(int)cubeValue {
     if (cubeValue > 0 && cubeValue <= [Presenter sharedInstance].dimension) {
-        [UIUtils updateNumber:cubeValue withTintColor:nil onView:self.cubeValueView cover:0.9];
+        [UIUtils updateNumber:cubeValue withTintColor:nil onView:self.cubeValueView];
     }
 }
 
