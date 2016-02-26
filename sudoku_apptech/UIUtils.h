@@ -10,6 +10,6 @@
 
 @interface UIUtils : NSObject
 
-+ (void)updateNumber:(int)number withTintColor:(UIColor *)color onView:(UIView *)view;
++ (void)updateNumber:(int)number withTintColor:(UIColor *)color onView:(UIView *)view cover:(CGFloat)coverPercentage;
 
 @end

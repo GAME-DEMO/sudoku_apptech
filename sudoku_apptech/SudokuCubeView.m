@@ -120,7 +120,7 @@
 
 - (void)setCubeValue:(int)cubeValue {
     if (cubeValue > 0 && cubeValue <= [Presenter sharedInstance].dimension) {
-        [UIUtils updateNumber:cubeValue withTintColor:nil onView:self.cubeValueView];
+        [UIUtils updateNumber:cubeValue withTintColor:nil onView:self.cubeValueView cover:0.9];
     }
 }
 

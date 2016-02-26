@@ -7,13 +7,13 @@
 //
 
 #import "ColorCollectionViewCell.h"
+#import "Presenter.h"
 
 NSString * const ColorCollectionViewCellIdentifier = @"color_collection_view_cell_identifier";
 
 @interface ColorCollectionViewCell ()
 
 @property (nonatomic, strong) UIView *colorView;
-@property (nonatomic, strong) UIImageView *colorShineImageView;
 @property (nonatomic, strong) UIImageView *colorBackgroundImageView;
 @property (nonatomic, strong) UIImageView *colorContentImageView;
 
@@ -56,21 +56,20 @@ NSString * const ColorCollectionViewCellIdentifier = @"color_collection_view_cel
     [self.colorView addConstraint:[NSLayoutConstraint constraintWithItem:self.colorView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.colorView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
 
     self.colorView.backgroundColor = [UIColor clearColor];
-    self.colorShineImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"color_button_shine"]];
-    self.colorShineImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    //self.colorShineImageView.hidden = YES;
-    [self.colorView addSubview:self.colorShineImageView];
-
-    [self.colorView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[shineView]-0-|" options:0 metrics:nil views:@{@"shineView" : self.colorShineImageView}]];
-    [self.colorView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[shineView]-0-|" options:0 metrics:nil views:@{@"shineView" : self.colorShineImageView}]];
-
     self.colorBackgroundImageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"color_button_template"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    self.colorBackgroundImageView.tintColor = [Presenter sharedInstance].randomColor;
     self.colorBackgroundImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.colorView addSubview:self.colorBackgroundImageView];
-    [self.colorView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(<=7@750)-[colorBackgroundImageView]-(<=7@750)-|" options:0 metrics:nil views:@{@"colorBackgroundImageView" : self.colorBackgroundImageView}]];
-    [self.colorView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(<=7@750)-[colorBackgroundImageView]-(<=7@750)-|" options:0 metrics:nil views:@{@"colorBackgroundImageView" : self.colorBackgroundImageView}]];
 
+    [self.colorView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[colorBackgroundImageView]-0-|" options:0 metrics:nil views:@{@"colorBackgroundImageView" : self.colorBackgroundImageView}]];
+    [self.colorView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[colorBackgroundImageView]-0-|" options:0 metrics:nil views:@{@"colorBackgroundImageView" : self.colorBackgroundImageView}]];
 
+    self.colorContentImageView = [[UIImageView alloc] init];
+    self.colorContentImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.colorBackgroundImageView addSubview:self.colorContentImageView];
+    self.colorContentImageView.backgroundColor = [Presenter sharedInstance].randomColor;
+    [self.colorBackgroundImageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=0,==2@750)-[colorContentImageView]-(>=0,==2@750)-|" options:0 metrics:nil views:@{@"colorContentImageView" : self.colorContentImageView}]];
+    [self.colorBackgroundImageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=0,==2@750)-[colorContentImageView]-(>=0,==2@750)-|" options:0 metrics:nil views:@{@"colorContentImageView" : self.colorContentImageView}]];
 }
 
 - (void)setTintColorForBackground:(UIColor *)tintColorForBackground {
