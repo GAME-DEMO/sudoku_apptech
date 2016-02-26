@@ -61,7 +61,7 @@
 }
 
 - (int)indexFromRow:(int)row withCol:(int)col {
-    return row * self.dimension + col;
+    return row * self.eachCount + col;
 }
 
 - (int)groupIndexFromCubeIndex:(int)index {
