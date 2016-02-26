@@ -158,6 +158,16 @@
     }
 }
 
+- (void)setCubeValue:(int)value atIndex:(int)index {
+    if (index >= 0 && index < self.cubeViewArray.count) {
+        [self.cubeViewArray objectAtIndex:index].cubeValue = value;
+    }
+}
 
+- (void)loadSudokuValues {
+    for (int i = 0; i < [Presenter sharedInstance].sudokuArray.count; ++i) {
+        [self setCubeValue:[[Presenter sharedInstance].sudokuArray objectAtIndex:i].intValue atIndex:i];
+    }
+}
 
 @end

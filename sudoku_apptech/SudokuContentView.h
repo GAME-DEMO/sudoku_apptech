@@ -12,4 +12,6 @@
 
 - (void)viewDidLoad;
 
+- (void)loadSudokuValues;
+
 @end

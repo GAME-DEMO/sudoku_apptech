@@ -15,6 +15,7 @@
 		AA1B5B1B1C769CA000EDEE4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA1B5B191C769CA000EDEE4A /* LaunchScreen.storyboard */; };
 		AA3E2A771C7991C000FA3006 /* SudokuFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3E2A761C7991C000FA3006 /* SudokuFootView.m */; };
 		AA3E2A831C7D7C4C00FA3006 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3E2A821C7D7C4C00FA3006 /* GradientView.m */; };
+		AA5200CB1C80127600882238 /* UIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5200CA1C80127600882238 /* UIUtils.m */; };
 		AADC00DE1C79569900319522 /* Algorithm.mm in Sources */ = {isa = PBXBuildFile; fileRef = AADC00DB1C79569900319522 /* Algorithm.mm */; };
 		AADC00DF1C79569900319522 /* Presenter.mm in Sources */ = {isa = PBXBuildFile; fileRef = AADC00DD1C79569900319522 /* Presenter.mm */; };
 		AADC00E31C795BA100319522 /* CenterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AADC00E21C795BA100319522 /* CenterFlowLayout.m */; };
@@ -39,6 +40,8 @@
 		AA3E2A761C7991C000FA3006 /* SudokuFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuFootView.m; sourceTree = "<group>"; };
 		AA3E2A811C7D7C4C00FA3006 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
 		AA3E2A821C7D7C4C00FA3006 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
+		AA5200C91C80127600882238 /* UIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtils.h; sourceTree = "<group>"; };
+		AA5200CA1C80127600882238 /* UIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUtils.m; sourceTree = "<group>"; };
 		AADC00DA1C79569900319522 /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
 		AADC00DB1C79569900319522 /* Algorithm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Algorithm.mm; sourceTree = "<group>"; };
 		AADC00DC1C79569900319522 /* Presenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Presenter.h; sourceTree = "<group>"; };
@@ -92,10 +95,6 @@
 				AA3E2A821C7D7C4C00FA3006 /* GradientView.m */,
 				AADC00DC1C79569900319522 /* Presenter.h */,
 				AADC00DD1C79569900319522 /* Presenter.mm */,
-				AA1B5B0E1C769CA000EDEE4A /* AppDelegate.h */,
-				AA1B5B0F1C769CA000EDEE4A /* AppDelegate.m */,
-				AA1B5B111C769CA000EDEE4A /* ViewController.h */,
-				AA1B5B121C769CA000EDEE4A /* ViewController.m */,
 				AADC00E41C795F6800319522 /* NumberCollectionViewCell.h */,
 				AADC00E51C795F6800319522 /* NumberCollectionViewCell.m */,
 				AADC00E71C795F8D00319522 /* ColorCollectionViewCell.h */,
@@ -108,6 +107,8 @@
 				AA3E2A761C7991C000FA3006 /* SudokuFootView.m */,
 				AADC00E11C795BA100319522 /* CenterFlowLayout.h */,
 				AADC00E21C795BA100319522 /* CenterFlowLayout.m */,
+				AA5200C91C80127600882238 /* UIUtils.h */,
+				AA5200CA1C80127600882238 /* UIUtils.m */,
 				AA1B5B141C769CA000EDEE4A /* Main.storyboard */,
 				AA1B5B171C769CA000EDEE4A /* Assets.xcassets */,
 				AA1B5B191C769CA000EDEE4A /* LaunchScreen.storyboard */,
@@ -120,6 +121,10 @@
 		AA1B5B0B1C769CA000EDEE4A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AA1B5B0E1C769CA000EDEE4A /* AppDelegate.h */,
+				AA1B5B0F1C769CA000EDEE4A /* AppDelegate.m */,
+				AA1B5B111C769CA000EDEE4A /* ViewController.h */,
+				AA1B5B121C769CA000EDEE4A /* ViewController.m */,
 				AA1B5B0C1C769CA000EDEE4A /* main.m */,
 				AADC00E01C7957B100319522 /* sudoku_apptech.pch */,
 			);
@@ -206,6 +211,7 @@
 				AADC00E31C795BA100319522 /* CenterFlowLayout.m in Sources */,
 				AA1B5B0D1C769CA000EDEE4A /* main.m in Sources */,
 				AADC00E61C795F6800319522 /* NumberCollectionViewCell.m in Sources */,
+				AA5200CB1C80127600882238 /* UIUtils.m in Sources */,
 				AADC00DE1C79569900319522 /* Algorithm.mm in Sources */,
 				AADC00DF1C79569900319522 /* Presenter.mm in Sources */,
 			);

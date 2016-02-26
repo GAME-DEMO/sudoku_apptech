@@ -11,7 +11,8 @@
 
 @interface Presenter ()
 
-@property (nonatomic, strong) NSArray *resultArray;
+@property (nonatomic, strong) NSArray<NSNumber *> *resultArray;
+@property (nonatomic, strong) NSArray<NSNumber *> *sudokuArray;
 
 @end
 
@@ -84,7 +85,7 @@
     self.resultArray = [NSArray arrayWithArray:results];
 }
 
-- (NSArray *)randomResultForLevel:(DIFFICULT_LEVEL)level {
+- (void)randomResultForLevel:(DIFFICULT_LEVEL)level {
     [self randomResult];
     
     int resultsCount = 0;
@@ -102,22 +103,22 @@
         
         switch (level) {
             case DIFFICULT_LEVEL_EASY: {
-                emptyCellsCount = arc4random() % 6 + 0;
+                emptyCellsCount += arc4random() % 6 + 0;
                 break;
             }
                 
             case DIFFICULT_LEVEL_MID: {
-                emptyCellsCount = arc4random() % 4 + 6;
+                emptyCellsCount += arc4random() % 4 + 6;
                 break;
             }
                 
             case DIFFICULT_LEVEL_HARD: {
-                emptyCellsCount = arc4random() % 4 + 10;
+                emptyCellsCount += arc4random() % 4 + 10;
                 break;
             }
                 
             case DIFFICULT_LEVEL_EXTRE_HARD: {
-                emptyCellsCount = arc4random() % 5 + 14;
+                emptyCellsCount += arc4random() % 5 + 14;
                 break;
             }
                 
@@ -144,7 +145,7 @@
     for (int i = 0; i < cubeValues.size(); ++i) {
         [results addObject:(@(cubeValues[i]))];
     }
-    return results;
+    self.sudokuArray = [NSArray arrayWithArray:results];
 }
 
 #pragma mark - Helper functions

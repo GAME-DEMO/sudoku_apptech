@@ -31,6 +31,9 @@ typedef NS_ENUM(NSUInteger, DIMENSION_LEVEL) {
 @property (nonatomic, readonly) int cubesCountForDimension;
 @property (nonatomic, readonly) int cubesCountForAll;
 
+@property (nonatomic, readonly) NSArray<NSNumber *> *resultArray;
+@property (nonatomic, readonly) NSArray<NSNumber *> *sudokuArray;
+
 - (int)globalRowFromGlobalIndex:(int)globalIndex;
 - (int)globalColFromGlobalIndex:(int)globalIndex;
 - (int)groupIndexFromCubeGlobalIndex:(int)globalIndex;
@@ -38,7 +41,7 @@ typedef NS_ENUM(NSUInteger, DIMENSION_LEVEL) {
 
 - (int)localIndexFromLocalRow:(int)localRow withLocalCol:(int)localCol;
 
-- (NSArray *)randomResultForLevel:(DIFFICULT_LEVEL)level;
+- (void)randomResultForLevel:(DIFFICULT_LEVEL)level;
 - (UIColor *)randomColor;
 
 - (BOOL)isDemensionLevelNine;

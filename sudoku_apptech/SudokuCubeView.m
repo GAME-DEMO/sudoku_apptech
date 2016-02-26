@@ -8,12 +8,13 @@
 
 #import "SudokuCubeView.h"
 #import "Presenter.h"
+#import "UIUtils.h"
 
 @interface SudokuCubeView ()
 
-@property (nonatomic, strong) UIImageView *valueImageView;
-@property (nonatomic, strong) UIView *guessBackgroundView;
-@property (nonatomic, strong) NSMutableArray<UIImageView *> *guessImageViewArray;
+@property (nonatomic, strong) UIView *cubeValueView;
+@property (nonatomic, strong) UIView *cubeGuessBackgroundView;
+@property (nonatomic, strong) NSMutableArray<UIImageView *> *cubeGuessImageViewArray;
 
 @end
 
@@ -34,74 +35,92 @@
     return self;
 }
 
+- (void)setShowGuess:(BOOL)showGuess {
+    _showGuess = showGuess;
+    if (showGuess) {
+        self.cubeValueView.hidden = YES;
+        self.cubeGuessBackgroundView.hidden = NO;
+    } else {
+        self.cubeValueView.hidden = NO;
+        self.cubeGuessBackgroundView.hidden = YES;
+    }
+}
+
 - (void)commonInit {
-    self.valueImageView = [[UIImageView alloc] init];
-    self.valueImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.valueImageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.valueImageView.backgroundColor = [UIColor clearColor];
-    [self addSubview:self.valueImageView];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[valueImageView]-0-|" options:0 metrics:nil views:@{@"valueImageView":self.valueImageView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[valueImageView]-0-|" options:0 metrics:nil views:@{@"valueImageView":self.valueImageView}]];
+    self.cubeValueView = [[UIView alloc] init];
+    self.cubeValueView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.cubeValueView.backgroundColor = [UIColor clearColor];
+    [self addSubview:self.cubeValueView];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[cubeValueView]-0-|" options:0 metrics:nil views:@{@"cubeValueView":self.cubeValueView}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[cubeValueView]-0-|" options:0 metrics:nil views:@{@"cubeValueView":self.cubeValueView}]];
     
-    self.guessBackgroundView = [[UIView alloc] init];
-    self.guessBackgroundView.translatesAutoresizingMaskIntoConstraints = NO;
-    self.guessBackgroundView.backgroundColor = [UIColor clearColor];
-    [self addSubview:self.guessBackgroundView];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[guessBackgroundView]-0-|" options:0 metrics:nil views:@{@"guessBackgroundView":self.guessBackgroundView}]];
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[guessBackgroundView]-0-|" options:0 metrics:nil views:@{@"guessBackgroundView":self.guessBackgroundView}]];
+    self.cubeGuessBackgroundView = [[UIView alloc] init];
+    self.cubeGuessBackgroundView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.cubeGuessBackgroundView.backgroundColor = [UIColor clearColor];
+    [self addSubview:self.cubeGuessBackgroundView];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[cubeGuessBackgroundView]-0-|" options:0 metrics:nil views:@{@"cubeGuessBackgroundView":self.cubeGuessBackgroundView}]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[cubeGuessBackgroundView]-0-|" options:0 metrics:nil views:@{@"cubeGuessBackgroundView":self.cubeGuessBackgroundView}]];
     
-    self.guessImageViewArray = [NSMutableArray arrayWithCapacity:[Presenter sharedInstance].dimension];
+    self.cubeGuessImageViewArray = [NSMutableArray arrayWithCapacity:[Presenter sharedInstance].dimension];
     for (int i = 0; i < [Presenter sharedInstance].dimension; ++i) {
         UIImageView *guessImageView = [[UIImageView alloc] init];
         guessImageView.translatesAutoresizingMaskIntoConstraints = NO;
         guessImageView.contentMode = UIViewContentModeScaleAspectFit;
         guessImageView.backgroundColor = [UIColor clearColor];
-        [self.guessBackgroundView addSubview:guessImageView];
-        [self.guessImageViewArray addObject:guessImageView];
+        [self.cubeGuessBackgroundView addSubview:guessImageView];
+        [self.cubeGuessImageViewArray addObject:guessImageView];
     }
     
     for (int row = 0; row < [Presenter sharedInstance].eachCount; ++row) {
         for (int col = 0; col < [Presenter sharedInstance].eachCount; ++col) {
-            UIImageView *curImageView = [self.guessImageViewArray objectAtIndex:[[Presenter sharedInstance] localIndexFromLocalRow:row withLocalCol:col]];
+            UIImageView *curImageView = [self.cubeGuessImageViewArray objectAtIndex:[[Presenter sharedInstance] localIndexFromLocalRow:row withLocalCol:col]];
             
             // Leading
             if (col == 0) {
-                [self.guessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.guessBackgroundView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0]];
+                [self.cubeGuessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.cubeGuessBackgroundView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0]];
             } else {
-                UIImageView *leadingImageView = [self.guessImageViewArray objectAtIndex:[[Presenter sharedInstance] localIndexFromLocalRow:row withLocalCol:col - 1]];
-                [self.guessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:leadingImageView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0]];
+                UIImageView *leadingImageView = [self.cubeGuessImageViewArray objectAtIndex:[[Presenter sharedInstance] localIndexFromLocalRow:row withLocalCol:col - 1]];
+                [self.cubeGuessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:leadingImageView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0]];
             }
             
             // Trailing
             if (col == [Presenter sharedInstance].eachCount - 1) {
-                [self.guessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.guessBackgroundView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0]];
+                [self.cubeGuessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.cubeGuessBackgroundView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0]];
             }
             
             // Width
             if (col > 0) {
-                UIImageView *previousImageView = [self.guessImageViewArray objectAtIndex:[[Presenter sharedInstance] localIndexFromLocalRow:row withLocalCol:col - 1]];
-                [self.guessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:previousImageView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0]];
+                UIImageView *previousImageView = [self.cubeGuessImageViewArray objectAtIndex:[[Presenter sharedInstance] localIndexFromLocalRow:row withLocalCol:col - 1]];
+                [self.cubeGuessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:previousImageView attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0]];
             }
             
             // Bottom
             if (row == 0) {
-                [self.guessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.guessBackgroundView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0]];
+                [self.cubeGuessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.cubeGuessBackgroundView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0]];
             } else {
-                UIImageView *bottomImageView = [self.guessImageViewArray objectAtIndex:[[Presenter sharedInstance] localIndexFromLocalRow:row - 1 withLocalCol:col]];
-                [self.guessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:bottomImageView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
+                UIImageView *bottomImageView = [self.cubeGuessImageViewArray objectAtIndex:[[Presenter sharedInstance] localIndexFromLocalRow:row - 1 withLocalCol:col]];
+                [self.cubeGuessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:bottomImageView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
             }
             
             // Top
             if (row == [Presenter sharedInstance].eachCount - 1) {
-               [self.guessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.guessBackgroundView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
+               [self.cubeGuessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.cubeGuessBackgroundView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0]];
             }
             
             // Height
             if (row > 0) {
-                UIImageView *previousImageView = [self.guessImageViewArray objectAtIndex:[[Presenter sharedInstance] localIndexFromLocalRow:row - 1 withLocalCol:col]];
-                [self.guessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:previousImageView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
+                UIImageView *previousImageView = [self.cubeGuessImageViewArray objectAtIndex:[[Presenter sharedInstance] localIndexFromLocalRow:row - 1 withLocalCol:col]];
+                [self.cubeGuessBackgroundView addConstraint:[NSLayoutConstraint constraintWithItem:curImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:previousImageView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
             }
         }
+    }
+
+    self.showGuess = NO;
+}
+
+- (void)setCubeValue:(int)cubeValue {
+    if (cubeValue > 0 && cubeValue <= [Presenter sharedInstance].dimension) {
+        [UIUtils updateNumber:cubeValue withTintColor:nil onView:self.cubeValueView];
     }
 }
 

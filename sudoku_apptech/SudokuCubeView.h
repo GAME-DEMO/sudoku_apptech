@@ -10,4 +10,9 @@
 
 @interface SudokuCubeView : UIView
 
+@property (nonatomic, assign) BOOL showGuess;
+
+@property (nonatomic, assign) int cubeValue;
+@property (nonatomic, readonly) NSMutableArray *cubeGuessArray;
+
 @end

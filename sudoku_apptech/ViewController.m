@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "SudokuContentView.h"
 #import "SudokuFootView.h"
+#import "Presenter.h"
 
 @interface ViewController ()
 
@@ -23,6 +24,9 @@
     [super viewDidLoad];
     [self.contentView viewDidLoad];
     [self.footView viewDidLoad];
+
+    [[Presenter sharedInstance] randomResultForLevel:DIFFICULT_LEVEL_HARD];
+    [self.contentView loadSudokuValues];
 }
 
 - (void)didReceiveMemoryWarning {
