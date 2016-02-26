@@ -81,6 +81,32 @@
         
     } else if (collectionView == self.colorCollectionView) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:ColorCollectionViewCellIdentifier forIndexPath:indexPath];
+        ColorCollectionViewCell *colorCell = (ColorCollectionViewCell *)cell;
+        switch (indexPath.item) {
+            case 0:
+                colorCell.colorBackgroundColor = RGBA(255.0, 95.0, 95.0, 1.0);
+                colorCell.colorContentColor = colorCell.colorBackgroundColor;
+                colorCell.colorContentHighlightColor = RGBA(255.0, 126.0, 126.0, 1.0);
+                colorCell.contentHighlight = YES;
+                break;
+
+            case 1:
+                colorCell.colorBackgroundColor = RGBA(34.0, 231.0, 214.0, 1.0);
+                colorCell.colorContentColor = colorCell.colorBackgroundColor;
+                colorCell.colorContentHighlightColor = RGBA(109.0, 254.0, 255.0, 1.0);
+                colorCell.contentHighlight = YES;
+                break;
+
+            case 2:
+                colorCell.colorBackgroundColor = RGBA(215.0, 229.0, 96.0, 1.0);
+                colorCell.colorContentColor = colorCell.colorBackgroundColor;
+                colorCell.colorContentHighlightColor = RGBA(240.0, 255.0, 109.0, 1.0);
+                colorCell.contentHighlight = YES;
+                break;
+
+            default:
+                break;
+        }
     }
 
 

@@ -25,7 +25,7 @@
     [self.contentView viewDidLoad];
     [self.footView viewDidLoad];
 
-    [[Presenter sharedInstance] randomResultForLevel:DIFFICULT_LEVEL_HARD];
+    [[Presenter sharedInstance] randomResultForLevel:DIFFICULT_LEVEL_EASY];
     [self.contentView loadSudokuValues];
 }
 

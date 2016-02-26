@@ -72,14 +72,15 @@ NSString * const ColorCollectionViewCellIdentifier = @"color_collection_view_cel
     [self.colorBackgroundImageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=0,==2@750)-[colorContentImageView]-(>=0,==2@750)-|" options:0 metrics:nil views:@{@"colorContentImageView" : self.colorContentImageView}]];
 }
 
-- (void)setTintColorForBackground:(UIColor *)tintColorForBackground {
-    _tintColorForBackground = tintColorForBackground;
-    self.colorBackgroundImageView.tintColor = tintColorForBackground;
+- (void)setColorBackgroundColor:(UIColor *)colorBackgroundColor {
+    _colorBackgroundColor = colorBackgroundColor;
+    self.colorBackgroundImageView.tintColor = colorBackgroundColor;
 }
 
-- (void)setTintColorForContent:(UIColor *)tintColorForContent {
-    _tintColorForContent = tintColorForContent;
-    self.colorContentImageView.tintColor = tintColorForContent;
+- (void)setContentHighlight:(BOOL)contentHighlight {
+    _contentHighlight = contentHighlight;
+    self.colorContentImageView.backgroundColor = contentHighlight ? self.colorContentHighlightColor : self.colorContentColor;
 }
+
 
 @end

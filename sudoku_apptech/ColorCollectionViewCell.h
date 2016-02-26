@@ -12,7 +12,9 @@ extern NSString * const ColorCollectionViewCellIdentifier;
 
 @interface ColorCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) UIColor *tintColorForBackground;
-@property (nonatomic, strong) UIColor *tintColorForContent;
+@property (nonatomic, strong) UIColor *colorBackgroundColor;
+@property (nonatomic, strong) UIColor *colorContentColor;
+@property (nonatomic, strong) UIColor *colorContentHighlightColor;
+@property (nonatomic, assign) BOOL contentHighlight;
 
 @end
