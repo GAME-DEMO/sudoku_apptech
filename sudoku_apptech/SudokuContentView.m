@@ -13,6 +13,7 @@
 @interface SudokuContentView ()
 
 @property (nonatomic, strong) NSMutableArray<SudokuCubeView *> *cubeViewArray;
+@property (nonatomic, strong) SudokuCubeView *currentSelectedCubeView;
 
 @end
 
@@ -156,6 +157,8 @@
             }
         }
     }
+    
+    self.userInteractionEnabled = YES;
 }
 
 - (void)setCubeValue:(int)value atIndex:(int)index {
@@ -168,6 +171,64 @@
     for (int i = 0; i < [Presenter sharedInstance].sudokuArray.count; ++i) {
         [self setCubeValue:[[Presenter sharedInstance].sudokuArray objectAtIndex:i].intValue atIndex:i];
     }
+}
+
+// 一维上点到线段的距离，线段用一个数组表示，[0]表示左点坐标，[1]表示右点坐标
+- (CGFloat)distanceFromDot:(CGFloat)dot toLine:(NSArray *)line {
+    if (dot < [line[0] floatValue]) {
+        return [line[0] floatValue] - dot;
+    } else if (dot > [line[1] floatValue]) {
+        return dot - [line[1] floatValue];
+    } else {
+        return 0;
+    }
+}
+
+// 这里使用曼哈顿距离而不是用欧几里得距离，是为了减轻计算量。
+- (CGFloat)distanceToCubeView:(SudokuCubeView *)cubeView fromPoint:(CGPoint)point {
+    CGRect frame = cubeView.frame;
+    
+    CGFloat xDistance = [self distanceFromDot:point.x toLine:@[@(frame.origin.x), @(frame.origin.x + frame.size.width)]];
+    CGFloat yDistance = [self distanceFromDot:point.y toLine:@[@(frame.origin.y), @(frame.origin.y + frame.size.height)]];
+    
+    return xDistance + yDistance;
+}
+
+- (SudokuCubeView *)nearestCubeViewFromPoint:(CGPoint)point {
+    SudokuCubeView *nearestCubeView = nil;
+    CGFloat nearestDistance = CGFLOAT_MAX;
+    for (SudokuCubeView *cubeView in self.cubeViewArray) {
+        CGFloat distance = [self distanceToCubeView:cubeView fromPoint:point];
+        if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearestCubeView = cubeView;
+        }
+    }
+    return nearestCubeView;
+}
+
+- (void)updateCurrentSelectedCubeViewAtPoint:(CGPoint)point {
+    
+    SudokuCubeView *nearestCubeView = [self nearestCubeViewFromPoint:point];
+    if (nearestCubeView != self.currentSelectedCubeView) {
+        self.currentSelectedCubeView.selected = NO;
+        self.currentSelectedCubeView = nearestCubeView;
+        self.currentSelectedCubeView.selected = YES;
+    }
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    UITouch *touch = [touches anyObject];
+    CGPoint touchPoint = [touch locationInView:self];
+    [self updateCurrentSelectedCubeViewAtPoint:touchPoint];
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesMoved:touches withEvent:event];
+    UITouch *touch = [touches anyObject];
+    CGPoint touchPoint = [touch locationInView:self];
+    [self updateCurrentSelectedCubeViewAtPoint:touchPoint];
 }
 
 @end

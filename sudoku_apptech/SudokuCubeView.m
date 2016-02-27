@@ -127,4 +127,9 @@
     }
 }
 
+- (void)setSelected:(BOOL)selected {
+    _selected = selected;
+    self.backgroundColor = selected ? [UIColor whiteColor] : [UIColor clearColor];
+}
+
 @end

@@ -14,5 +14,6 @@
 
 @property (nonatomic, assign) int cubeValue;
 @property (nonatomic, readonly) NSMutableArray *cubeGuessArray;
+@property (nonatomic, assign) BOOL selected;
 
 @end
