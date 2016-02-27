@@ -38,6 +38,8 @@
     centerLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     centerLayout.minimumLineSpacing = 8.0f;
     centerLayout.minimumInteritemSpacing = 8.0f;
+    
+    self.numberCollectionView.allowsMultipleSelection = YES;
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -60,6 +62,7 @@
     return CGSizeZero;
 }
 
+
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -78,6 +81,7 @@
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:NumberCollectionViewCellIdentifier forIndexPath:indexPath];
         NumberCollectionViewCell* numCell = (NumberCollectionViewCell *)cell;
         numCell.number = (int)indexPath.item + 1;
+        numCell.selected = NO;
         
     } else if (collectionView == self.colorCollectionView) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:ColorCollectionViewCellIdentifier forIndexPath:indexPath];
