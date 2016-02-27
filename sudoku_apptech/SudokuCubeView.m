@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIView *cubeValueView;
 @property (nonatomic, strong) UIView *cubeGuessBackgroundView;
 @property (nonatomic, strong) NSMutableArray<UIImageView *> *cubeGuessImageViewArray;
+@property (nonatomic, strong) UIImageView *cubeShineImageView;
 
 @end
 
@@ -118,7 +119,20 @@
         }
     }
 
+    self.cubeShineImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cube_light"]];
+    self.cubeShineImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.cubeShineImageView];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.cubeShineImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.cubeShineImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
+
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.cubeShineImageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:-9.5]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.cubeShineImageView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:-9.5]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.cubeShineImageView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:9.5]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.cubeShineImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:9.5]];
+    
     self.showGuess = NO;
+    self.clipsToBounds = NO;
 }
 
 - (void)setCubeValue:(int)cubeValue {
@@ -129,7 +143,7 @@
 
 - (void)setSelected:(BOOL)selected {
     _selected = selected;
-    self.backgroundColor = selected ? [UIColor whiteColor] : [UIColor clearColor];
+    self.cubeShineImageView.hidden = !selected;
 }
 
 @end

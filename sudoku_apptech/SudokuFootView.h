@@ -7,9 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NumberCollectionViewCell.h"
+#import "ColorCollectionViewCell.h"
+
+@protocol SudokuFootViewDelegate;
 
 @interface SudokuFootView : UIView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 - (void)viewDidLoad;
+
+@property (nonatomic, weak) id<SudokuFootViewDelegate> delegate;
+
+@end
+
+
+@protocol SudokuFootViewDelegate <NSObject>
+
+- (void)numberCellDidSelect:(NumberCollectionViewCell *)numberCell;
+- (void)numberCellDidDeselect:(NumberCollectionViewCell *)numberCell;
+- (void)colorCellDidSelect:(ColorCollectionViewCell *)colorCell;
+- (void)colorCellDidDeselect:(ColorCollectionViewCell *)colorCell;
 
 @end

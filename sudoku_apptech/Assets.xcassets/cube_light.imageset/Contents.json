@@ -5,6 +5,20 @@
       "scale" : "1x"
     },
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 112,
+          "height" : 112
+        },
+        "cap-insets" : {
+          "bottom" : 19,
+          "top" : 19,
+          "right" : 19,
+          "left" : 19
+        }
+      },
       "idiom" : "universal",
       "filename" : "cube_light@2x.png",
       "scale" : "2x"

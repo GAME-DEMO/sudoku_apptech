@@ -108,9 +108,9 @@
         for (int i = 0; i < [Presenter sharedInstance].cubesCountForAll; ++i) {
             SudokuCubeView *cubeView = [[SudokuCubeView alloc] init];
             cubeView.translatesAutoresizingMaskIntoConstraints = NO;
-            cubeView.backgroundColor = [UIColor clearColor];
             [self addSubview:cubeView];
             [self.cubeViewArray addObject:cubeView];
+            cubeView.selected = NO;
         }
         
         for (int row = 0; row < [Presenter sharedInstance].dimension; ++row) {
@@ -208,12 +208,12 @@
 }
 
 - (void)updateCurrentSelectedCubeViewAtPoint:(CGPoint)point {
-    
     SudokuCubeView *nearestCubeView = [self nearestCubeViewFromPoint:point];
     if (nearestCubeView != self.currentSelectedCubeView) {
         self.currentSelectedCubeView.selected = NO;
         self.currentSelectedCubeView = nearestCubeView;
         self.currentSelectedCubeView.selected = YES;
+        [self bringSubviewToFront:self.currentSelectedCubeView];
     }
 }
 
