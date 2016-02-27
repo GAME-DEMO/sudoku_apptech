@@ -77,9 +77,9 @@ NSString * const ColorCollectionViewCellIdentifier = @"color_collection_view_cel
     self.colorBackgroundImageView.tintColor = colorBackgroundColor;
 }
 
-- (void)setContentHighlight:(BOOL)contentHighlight {
-    _contentHighlight = contentHighlight;
-    self.colorContentImageView.backgroundColor = contentHighlight ? self.colorContentHighlightColor : self.colorContentColor;
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:selected];
+    self.colorContentImageView.backgroundColor = selected ? self.colorContentHighlightColor : self.colorContentColor;
 }
 
 
