@@ -30,6 +30,9 @@ typedef NS_ENUM(NSUInteger, DIMENSION_LEVEL) {
 @property (nonatomic, readonly) int groupsCount;
 @property (nonatomic, readonly) int cubesCountForDimension;
 @property (nonatomic, readonly) int cubesCountForAll;
+@property (nonatomic, readonly) NSArray<UIColor *> *contentNumberColorArray;
+@property (nonatomic, readonly) NSArray<UIColor *> *footColorButtonBasementColorArray;
+@property (nonatomic, readonly) NSArray<UIColor *> *footColorButtonHighlightColorArray;
 
 @property (nonatomic, readonly) NSArray<NSNumber *> *resultArray;
 @property (nonatomic, readonly) NSArray<NSNumber *> *sudokuArray;

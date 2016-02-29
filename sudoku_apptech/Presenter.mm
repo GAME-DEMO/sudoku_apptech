@@ -11,6 +11,10 @@
 
 @interface Presenter ()
 
+@property (nonatomic, strong) NSArray<UIColor *> *contentNumberColorArray;
+@property (nonatomic, strong) NSArray<UIColor *> *footColorButtonBasementColorArray;
+@property (nonatomic, strong) NSArray<UIColor *> *footColorButtonHighlightColorArray;
+
 @property (nonatomic, strong) NSArray<NSNumber *> *resultArray;
 @property (nonatomic, strong) NSArray<NSNumber *> *sudokuArray;
 
@@ -29,6 +33,17 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        
+        _footColorButtonBasementColorArray = [NSArray arrayWithObjects:
+                                              RGBA(255.0, 95.0, 95.0, 1.0),
+                                              RGBA(34.0, 231.0, 214.0, 1.0),
+                                              RGBA(215.0, 229.0, 96.0, 1.0),
+                                              nil];
+        _footColorButtonHighlightColorArray = [NSArray arrayWithObjects:
+                                               RGBA(255.0, 126.0, 126.0, 1.0),
+                                               RGBA(109.0, 254.0, 255.0, 1.0),
+                                               RGBA(240.0, 255.0, 109.0, 1.0),
+                                               nil];
     }
     return self;
 }

@@ -12,6 +12,10 @@
 
 @property (nonatomic, assign) int value;
 @property (nonatomic, strong) NSArray *guessArray;
+@property (nonatomic, assign) BOOL showGuess;
+
+@property (nonatomic, strong) NSArray *valueColorArray;
+@property (nonatomic, strong) NSArray *guessColorArray;
 
 @end
 
