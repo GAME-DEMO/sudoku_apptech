@@ -16,6 +16,7 @@
 		AA3E2A771C7991C000FA3006 /* SudokuFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3E2A761C7991C000FA3006 /* SudokuFootView.m */; };
 		AA3E2A831C7D7C4C00FA3006 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3E2A821C7D7C4C00FA3006 /* GradientView.m */; };
 		AA5200CB1C80127600882238 /* UIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AA5200CA1C80127600882238 /* UIUtils.m */; };
+		AAD34F901C84A19D00FC6424 /* UISudokuDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AAD34F8F1C84A19D00FC6424 /* UISudokuDataManager.m */; };
 		AADC00DE1C79569900319522 /* Algorithm.mm in Sources */ = {isa = PBXBuildFile; fileRef = AADC00DB1C79569900319522 /* Algorithm.mm */; };
 		AADC00DF1C79569900319522 /* Presenter.mm in Sources */ = {isa = PBXBuildFile; fileRef = AADC00DD1C79569900319522 /* Presenter.mm */; };
 		AADC00E31C795BA100319522 /* CenterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = AADC00E21C795BA100319522 /* CenterFlowLayout.m */; };
@@ -42,6 +43,8 @@
 		AA3E2A821C7D7C4C00FA3006 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 		AA5200C91C80127600882238 /* UIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtils.h; sourceTree = "<group>"; };
 		AA5200CA1C80127600882238 /* UIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUtils.m; sourceTree = "<group>"; };
+		AAD34F8E1C84A19D00FC6424 /* UISudokuDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISudokuDataManager.h; sourceTree = "<group>"; };
+		AAD34F8F1C84A19D00FC6424 /* UISudokuDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISudokuDataManager.m; sourceTree = "<group>"; };
 		AADC00DA1C79569900319522 /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
 		AADC00DB1C79569900319522 /* Algorithm.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Algorithm.mm; sourceTree = "<group>"; };
 		AADC00DC1C79569900319522 /* Presenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Presenter.h; sourceTree = "<group>"; };
@@ -95,6 +98,8 @@
 				AA3E2A821C7D7C4C00FA3006 /* GradientView.m */,
 				AADC00DC1C79569900319522 /* Presenter.h */,
 				AADC00DD1C79569900319522 /* Presenter.mm */,
+				AAD34F8E1C84A19D00FC6424 /* UISudokuDataManager.h */,
+				AAD34F8F1C84A19D00FC6424 /* UISudokuDataManager.m */,
 				AADC00E41C795F6800319522 /* NumberCollectionViewCell.h */,
 				AADC00E51C795F6800319522 /* NumberCollectionViewCell.m */,
 				AADC00E71C795F8D00319522 /* ColorCollectionViewCell.h */,
@@ -207,6 +212,7 @@
 				AA3E2A771C7991C000FA3006 /* SudokuFootView.m in Sources */,
 				AAFE9EE91C7F3E8B00850001 /* SudokuCubeView.m in Sources */,
 				AADC00F31C7E140700319522 /* SudokuContentView.m in Sources */,
+				AAD34F901C84A19D00FC6424 /* UISudokuDataManager.m in Sources */,
 				AADC00E91C795F8D00319522 /* ColorCollectionViewCell.m in Sources */,
 				AADC00E31C795BA100319522 /* CenterFlowLayout.m in Sources */,
 				AA1B5B0D1C769CA000EDEE4A /* main.m in Sources */,
