@@ -135,12 +135,16 @@
     self.clipsToBounds = NO;
 }
 
-- (void)setCubeValue:(int)cubeValue {
+- (void)setCubeValue:(int)cubeValue withValueColor:(UIColor *)valueColor {
     if (cubeValue > 0 && cubeValue <= [Presenter sharedInstance].dimension) {
-        [UIUtils updateCubeValue:cubeValue withTintColor:nil onCubeValueView:self.cubeValueView];
+        [UIUtils updateCubeValue:cubeValue withTintColor:valueColor onCubeValueView:self.cubeValueView];
     } else {
         [UIUtils removeCubeValueOnCubeValueView:self.cubeValueView];
     }
+}
+
+- (void)setCubeValue:(int)cubeValue {
+    return [self setCubeValue:cubeValue withValueColor:[UIColor whiteColor]];
 }
 
 - (void)setSelected:(BOOL)selected {

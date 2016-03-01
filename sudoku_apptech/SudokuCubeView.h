@@ -16,4 +16,6 @@
 @property (nonatomic, readonly) NSMutableArray *cubeGuessArray;
 @property (nonatomic, assign) BOOL selected;
 
+- (void)setCubeValue:(int)cubeValue withValueColor:(UIColor *)valueColor;
+
 @end

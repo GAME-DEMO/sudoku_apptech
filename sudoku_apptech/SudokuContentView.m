@@ -180,9 +180,15 @@
     }
 }
 
+- (void)setCubeValue:(int)value atIndex:(int)index withValueColor:(UIColor *)color {
+    if (index >= 0 && index < self.cubeViewArray.count) {
+        [[self.cubeViewArray objectAtIndex:index] setCubeValue:value withValueColor:color];
+    }
+}
+
 - (void)loadSudokuValues {
     for (int i = 0; i < [Presenter sharedInstance].sudokuArray.count; ++i) {
-        [self setCubeValue:[[Presenter sharedInstance].sudokuArray objectAtIndex:i].intValue atIndex:i];
+        [self setCubeValue:[[Presenter sharedInstance].sudokuArray objectAtIndex:i].intValue atIndex:i withValueColor:RGBA(150.0, 150.0, 150.0, 1.0)];
     }
     
     for (int row = [Presenter sharedInstance].dimension - 1; row >= 0; --row) {
