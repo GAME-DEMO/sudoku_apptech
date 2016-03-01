@@ -171,6 +171,16 @@
     for (int i = 0; i < [Presenter sharedInstance].sudokuArray.count; ++i) {
         [self setCubeValue:[[Presenter sharedInstance].sudokuArray objectAtIndex:i].intValue atIndex:i];
     }
+    
+    for (int row = [Presenter sharedInstance].dimension - 1; row >= 0; --row) {
+        for (int col = 0; col < [Presenter sharedInstance].dimension; ++col) {
+            int globalIndex = [[Presenter sharedInstance] globalIndexFromGlobalRow:row withGlobalCol:col];
+            if ([[Presenter sharedInstance].sudokuArray objectAtIndex:globalIndex].intValue == 0) {
+                [self selectCubeView:[self.cubeViewArray objectAtIndex:globalIndex]];
+                return;
+            }
+        }
+    }
 }
 
 // 一维上点到线段的距离，线段用一个数组表示，[0]表示左点坐标，[1]表示右点坐标
@@ -209,9 +219,13 @@
 
 - (void)updateCurrentSelectedCubeViewAtPoint:(CGPoint)point {
     SudokuCubeView *nearestCubeView = [self nearestCubeViewFromPoint:point];
-    if (nearestCubeView != self.currentSelectedCubeView) {
+    [self selectCubeView:nearestCubeView];
+}
+
+- (void)selectCubeView:(SudokuCubeView *)cubeView {
+    if (cubeView != self.currentSelectedCubeView) {
         self.currentSelectedCubeView.selected = NO;
-        self.currentSelectedCubeView = nearestCubeView;
+        self.currentSelectedCubeView = cubeView;
         self.currentSelectedCubeView.selected = YES;
         [self bringSubviewToFront:self.currentSelectedCubeView];
     }
