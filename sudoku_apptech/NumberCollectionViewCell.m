@@ -10,6 +10,8 @@
 #import "Presenter.h"
 
 NSString * const NumberCollectionViewCellIdentifier = @"number_collection_view_cell_identifier";
+NSString * const NumberCollectionViewCellSelectionChanged = @"NumberCollectionViewCellSelectionChanged";
+NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberCollectionViewCellSelectionChangedKeyCell";
 
 @interface NumberCollectionViewCell ()
 
@@ -82,6 +84,7 @@ NSString * const NumberCollectionViewCellIdentifier = @"number_collection_view_c
 }
 
 - (void)setNumber:(int)number {
+    _number = number;
     if (number > 0 && number < 10) {
         NSString *numberShadowImageName = [NSString stringWithFormat:@"b%d_shadow", number];
         self.numberShadowImageView.image = [UIImage imageNamed:numberShadowImageName];
@@ -96,6 +99,8 @@ NSString * const NumberCollectionViewCellIdentifier = @"number_collection_view_c
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
     self.numberBackgroundImageView.image = selected ? self.numberBackgroundHighlightImage : self.numberBackgroundNormalImage;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NumberCollectionViewCellSelectionChanged object:self userInfo:@{NumberCollectionViewCellSelectionChangedKeyCell : self}];
 }
 
 @end

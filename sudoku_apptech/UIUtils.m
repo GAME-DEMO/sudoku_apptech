@@ -13,17 +13,17 @@ static const int NumberTag = 1001;
 
 @implementation UIUtils
 
-+ (void)updateNumber:(int)number withTintColor:(UIColor *)color onView:(UIView *)view {
-    UIImageView *numberShadowImageView = [view viewWithTag:NumberShadowTag];
++ (void)updateCubeValue:(int)number withTintColor:(UIColor *)color onCubeValueView:(UIView *)cubeValueView {
+    UIImageView *numberShadowImageView = [cubeValueView viewWithTag:NumberShadowTag];
     if (numberShadowImageView == nil) {
         numberShadowImageView = [[UIImageView alloc] init];
         numberShadowImageView.translatesAutoresizingMaskIntoConstraints = NO;
         numberShadowImageView.contentMode = UIViewContentModeScaleAspectFit;
         numberShadowImageView.tag = NumberShadowTag;
-        [view addSubview:numberShadowImageView];
+        [cubeValueView addSubview:numberShadowImageView];
 
-        [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[numberShadowImageView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(numberShadowImageView)]];
-        [view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[numberShadowImageView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(numberShadowImageView)]];
+        [cubeValueView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[numberShadowImageView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(numberShadowImageView)]];
+        [cubeValueView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[numberShadowImageView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(numberShadowImageView)]];
     }
 
     UIImageView *numberImageView = [numberShadowImageView viewWithTag:NumberTag];
@@ -44,6 +44,13 @@ static const int NumberTag = 1001;
     NSString *numberImageName = [NSString stringWithFormat:@"b%d", number];
     numberImageView.image = [[UIImage imageNamed:numberImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     numberImageView.tintColor = color ? : [UIColor whiteColor];
+}
+
++ (void)removeCubeValueOnCubeValueView:(UIView *)cubeValueView {
+    UIImageView *numberShadowImageView = [cubeValueView viewWithTag:NumberShadowTag];
+    if (numberShadowImageView != nil) {
+        [numberShadowImageView removeFromSuperview];
+    }
 }
 
 @end

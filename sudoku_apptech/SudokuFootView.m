@@ -82,14 +82,12 @@
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:NumberCollectionViewCellIdentifier forIndexPath:indexPath];
         NumberCollectionViewCell* numCell = (NumberCollectionViewCell *)cell;
         numCell.number = (int)indexPath.item + 1;
-        numCell.selected = NO;
     } else if (collectionView == self.colorCollectionView) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:ColorCollectionViewCellIdentifier forIndexPath:indexPath];
         ColorCollectionViewCell *colorCell = (ColorCollectionViewCell *)cell;
         colorCell.colorBackgroundColor = [Presenter sharedInstance].footColorButtonBasementColorArray[indexPath.item];
         colorCell.colorContentColor = colorCell.colorBackgroundColor;
         colorCell.colorContentHighlightColor = [Presenter sharedInstance].footColorButtonHighlightColorArray[indexPath.item];
-        colorCell.selected = NO;
     }
 
     return cell;

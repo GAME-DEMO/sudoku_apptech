@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 extern NSString * const NumberCollectionViewCellIdentifier;
+extern NSString * const NumberCollectionViewCellSelectionChanged;
+extern NSString * const NumberCollectionViewCellSelectionChangedKeyCell;
 
 @interface NumberCollectionViewCell : UICollectionViewCell
 

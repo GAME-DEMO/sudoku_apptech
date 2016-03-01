@@ -67,7 +67,7 @@ NSString * const ColorCollectionViewCellIdentifier = @"color_collection_view_cel
     self.colorContentImageView = [[UIImageView alloc] init];
     self.colorContentImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.colorBackgroundImageView addSubview:self.colorContentImageView];
-    self.colorContentImageView.backgroundColor = [Presenter sharedInstance].randomColor;
+    self.colorContentImageView.backgroundColor = self.colorContentColor;
     [self.colorBackgroundImageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(>=0,==2@750)-[colorContentImageView]-(>=0,==2@750)-|" options:0 metrics:nil views:@{@"colorContentImageView" : self.colorContentImageView}]];
     [self.colorBackgroundImageView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(>=0,==2@750)-[colorContentImageView]-(>=0,==2@750)-|" options:0 metrics:nil views:@{@"colorContentImageView" : self.colorContentImageView}]];
 }

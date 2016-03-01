@@ -10,6 +10,7 @@
 
 @interface UIUtils : NSObject
 
-+ (void)updateNumber:(int)number withTintColor:(UIColor *)color onView:(UIView *)view;
++ (void)updateCubeValue:(int)number withTintColor:(UIColor *)color onCubeValueView:(UIView *)cubeValueView;
++ (void)removeCubeValueOnCubeValueView:(UIView *)cubeValueView;
 
 @end

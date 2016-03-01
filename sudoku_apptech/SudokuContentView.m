@@ -9,6 +9,7 @@
 #import "SudokuContentView.h"
 #import "Presenter.h"
 #import "SudokuCubeView.h"
+#import "NumberCollectionViewCell.h"
 
 @interface SudokuContentView ()
 
@@ -23,8 +24,20 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         _cubeViewArray = [NSMutableArray arrayWithCapacity:[Presenter sharedInstance].cubesCountForAll];
+        [[NSNotificationCenter defaultCenter] addObserverForName:NumberCollectionViewCellSelectionChanged object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+            NumberCollectionViewCell *numberCell = [note.userInfo objectForKey:NumberCollectionViewCellSelectionChangedKeyCell];
+            if (numberCell.selected) {
+                self.currentSelectedCubeView.cubeValue = numberCell.number;
+            } else {
+                self.currentSelectedCubeView.cubeValue = 0;
+            }
+        }];
     }
     return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
