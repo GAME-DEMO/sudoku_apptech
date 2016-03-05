@@ -10,6 +10,8 @@
 #import "Presenter.h"
 
 NSString * const ColorCollectionViewCellIdentifier = @"color_collection_view_cell_identifier";
+NSString * const ColorCollectionViewCellSelectionChanged = @"ColorCollectionViewCellSelectionChanged";
+NSString * const ColorCollectionViewCellSelectionChangedKeyCell = @"ColorCollectionViewCellSelectionChangedKeyCell";
 
 @interface ColorCollectionViewCell ()
 
@@ -80,6 +82,8 @@ NSString * const ColorCollectionViewCellIdentifier = @"color_collection_view_cel
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
     self.colorContentImageView.backgroundColor = selected ? self.colorContentHighlightColor : self.colorContentColor;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:ColorCollectionViewCellSelectionChanged object:self userInfo:@{ColorCollectionViewCellSelectionChangedKeyCell : self}];
 }
 
 

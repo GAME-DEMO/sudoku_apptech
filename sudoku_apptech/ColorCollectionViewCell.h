@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 extern NSString * const ColorCollectionViewCellIdentifier;
+extern NSString * const ColorCollectionViewCellSelectionChanged;
+extern NSString * const ColorCollectionViewCellSelectionChangedKeyCell;
 
 @interface ColorCollectionViewCell : UICollectionViewCell
 

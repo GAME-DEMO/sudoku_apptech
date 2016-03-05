@@ -10,6 +10,7 @@
 #import "Presenter.h"
 #import "SudokuCubeView.h"
 #import "NumberCollectionViewCell.h"
+#import "ColorCollectionViewCell.h"
 
 @interface SudokuContentView ()
 
@@ -31,6 +32,16 @@
             } else {
                 self.currentSelectedCubeView.cubeValue = 0;
             }
+        }];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:ColorCollectionViewCellSelectionChanged object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+            ColorCollectionViewCell *colorCell = [note.userInfo objectForKey:ColorCollectionViewCellSelectionChangedKeyCell];
+            if (colorCell.selected) {
+                
+            } else {
+                
+            }
+            
         }];
     }
     return self;
