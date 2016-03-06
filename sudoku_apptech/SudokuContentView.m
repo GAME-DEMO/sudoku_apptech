@@ -135,6 +135,7 @@
             [self addSubview:cubeView];
             [self.cubeViewArray addObject:cubeView];
             cubeView.selected = NO;
+            cubeView.index = i;
         }
         
         for (int row = 0; row < [Presenter sharedInstance].dimension; ++row) {
@@ -249,7 +250,9 @@
 
 - (void)updateCurrentSelectedCubeViewAtPoint:(CGPoint)point {
     SudokuCubeView *nearestCubeView = [self nearestCubeViewFromPoint:point];
-    [self selectCubeView:nearestCubeView];
+    if ([[Presenter sharedInstance].sudokuArray objectAtIndex:nearestCubeView.index].intValue == 0) {
+        [self selectCubeView:nearestCubeView];
+    }
 }
 
 - (void)selectCubeView:(SudokuCubeView *)cubeView {
