@@ -96,8 +96,17 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
     }
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesEnded:touches withEvent:event];
+}
+
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
+    
     self.numberBackgroundImageView.image = selected ? self.numberBackgroundHighlightImage : self.numberBackgroundNormalImage;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NumberCollectionViewCellSelectionChanged object:self userInfo:@{NumberCollectionViewCellSelectionChangedKeyCell : self}];
