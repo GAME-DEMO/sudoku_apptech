@@ -35,14 +35,18 @@
     if (self = [super init]) {
         
         _footColorButtonBasementColorArray = [NSArray arrayWithObjects:
-                                              RGBA(255.0, 95.0, 95.0, 1.0),
-                                              RGBA(34.0, 231.0, 214.0, 1.0),
-                                              RGBA(215.0, 229.0, 96.0, 1.0),
+                                              RGBA(255.0f, 95.0f, 95.0f, 1.0f),
+                                              RGBA(34.0f, 231.0f, 214.0f, 1.0f),
+                                              RGBA(215.0f, 229.0f, 96.0f, 1.0f),
+                                              RGBA(90.0f, 209.0f, 71.0f, 1.0f),
+                                              RGBA(191.0f, 103.0f, 62.0f, 1.0f),
                                               nil];
         _footColorButtonHighlightColorArray = [NSArray arrayWithObjects:
-                                               RGBA(255.0, 126.0, 126.0, 1.0),
-                                               RGBA(109.0, 254.0, 255.0, 1.0),
-                                               RGBA(240.0, 255.0, 109.0, 1.0),
+                                               RGBA(255.0f, 126.0f, 126.0f, 1.0f),
+                                               RGBA(109.0f, 254.0f, 255.0f, 1.0f),
+                                               RGBA(240.0f, 255.0f, 109.0f, 1.0f),
+                                               RGBA(109.0f, 246.0f, 87.0f, 1.0f),
+                                               RGBA(246.0f, 137.0f, 87.0f, 1.0f),
                                                nil];
     }
     return self;

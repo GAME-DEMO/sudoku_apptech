@@ -40,7 +40,7 @@
     centerLayout.minimumInteritemSpacing = 8.0f;
     
     self.numberCollectionView.allowsMultipleSelection = YES;
-    self.colorCollectionView.allowsMultipleSelection = NO;
+    self.colorCollectionView.allowsMultipleSelection = YES;
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -49,12 +49,12 @@
     if ([Presenter sharedInstance].isDemensionLevelNine) {
         if (collectionView == self.numberCollectionView) {
             CenterFlowLayout *layout = (CenterFlowLayout *)collectionView.collectionViewLayout;
-            CGFloat itemWidth = (collectionView.frame.size.width - layout.sectionInset.left - layout.sectionInset.right - 4 * layout.minimumInteritemSpacing - 1.0f) / 5.0f;
-            CGFloat itemHeight = (collectionView.frame.size.height - layout.sectionInset.top - layout.sectionInset.bottom - 1 * layout.minimumLineSpacing - 1.0f) / 2.0f;
+            CGFloat itemWidth = (collectionView.frame.size.width - layout.sectionInset.left - layout.sectionInset.right - 4.0f * layout.minimumInteritemSpacing - 1.0f) / 5.0f;
+            CGFloat itemHeight = (collectionView.frame.size.height - layout.sectionInset.top - layout.sectionInset.bottom - 1.0f * layout.minimumLineSpacing - 1.0f) / 2.0f;
             return CGSizeMake(itemWidth, itemHeight);
         } else if (collectionView == self.colorCollectionView) {
             CenterFlowLayout *layout = (CenterFlowLayout *)collectionView.collectionViewLayout;
-            CGFloat itemWidth = (collectionView.frame.size.width - layout.sectionInset.left - layout.sectionInset.right - 3.0f * layout.minimumInteritemSpacing - 1.0f) / 5.0f;
+            CGFloat itemWidth = (collectionView.frame.size.width - layout.sectionInset.left - layout.sectionInset.right - 4.0f * layout.minimumInteritemSpacing - 1.0f) / 5.0f;
             CGFloat itemHeight = (collectionView.frame.size.height - layout.sectionInset.top - layout.sectionInset.bottom - 1.0f);
             return CGSizeMake(itemWidth, itemHeight);
         }
@@ -70,7 +70,7 @@
     if (collectionView == self.numberCollectionView) {
         return 10;
     } else if (collectionView == self.colorCollectionView) {
-        return 3;
+        return 5;
     }
     return 0;
 }
