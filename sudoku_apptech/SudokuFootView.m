@@ -17,6 +17,9 @@
 @property (nonatomic, weak) IBOutlet UICollectionView *numberCollectionView;
 @property (nonatomic, weak) IBOutlet UICollectionView *colorCollectionView;
 
+@property (nonatomic, strong) NumberCollectionViewCell *currentSelectedNumberCell;
+@property (nonatomic, strong) ColorCollectionViewCell *currentSelectedColorCell;
+
 @end
 
 
@@ -40,7 +43,6 @@
     centerLayout.minimumInteritemSpacing = 8.0f;
     
     self.numberCollectionView.allowsMultipleSelection = YES;
-    self.colorCollectionView.allowsMultipleSelection = YES;
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -61,6 +63,26 @@
     }
 
     return CGSizeZero;
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    
+    if (collectionView == self.numberCollectionView) {
+        
+    } else if (collectionView == self.colorCollectionView) {
+        if (self.currentSelectedColorCell == cell) {
+            BOOL selected = self.currentSelectedColorCell.selected;
+            self.currentSelectedColorCell.selected = !selected;
+        } else {
+            self.currentSelectedColorCell.selected = NO;
+            self.currentSelectedColorCell = (ColorCollectionViewCell *)cell;
+            cell.selected = YES;
+        }
+        return NO;
+    }
+    
+    return YES;
 }
 
 
