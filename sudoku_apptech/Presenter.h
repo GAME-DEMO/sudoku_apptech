@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@class SudokuCubeView;
+
 typedef NS_ENUM(NSUInteger, DIFFICULT_LEVEL) {
     DIFFICULT_LEVEL_NONE,
     DIFFICULT_LEVEL_EASY,           // 40 ~ 45 Empty Cells
@@ -36,6 +38,8 @@ typedef NS_ENUM(NSUInteger, DIMENSION_LEVEL) {
 
 @property (nonatomic, readonly) NSArray<NSNumber *> *resultArray;
 @property (nonatomic, readonly) NSArray<NSNumber *> *sudokuArray;
+
+@property (nonatomic, strong) SudokuCubeView *currentSelectedCubeView;
 
 - (int)globalRowFromGlobalIndex:(int)globalIndex;
 - (int)globalColFromGlobalIndex:(int)globalIndex;

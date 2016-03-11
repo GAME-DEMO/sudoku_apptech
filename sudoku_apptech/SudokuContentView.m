@@ -33,16 +33,6 @@
                 self.currentSelectedCubeView.cubeValue = 0;
             }
         }];
-        
-        [[NSNotificationCenter defaultCenter] addObserverForName:ColorCollectionViewCellSelectionChanged object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
-            ColorCollectionViewCell *colorCell = [note.userInfo objectForKey:ColorCollectionViewCellSelectionChangedKeyCell];
-            if (colorCell.selected) {
-                
-            } else {
-                
-            }
-            
-        }];
     }
     return self;
 }
@@ -261,6 +251,7 @@
         self.currentSelectedCubeView = cubeView;
         self.currentSelectedCubeView.selected = YES;
         [self bringSubviewToFront:self.currentSelectedCubeView];
+        [Presenter sharedInstance].currentSelectedCubeView = self.currentSelectedCubeView;
     }
 }
 

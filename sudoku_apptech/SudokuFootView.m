@@ -17,7 +17,7 @@
 @property (nonatomic, weak) IBOutlet UICollectionView *numberCollectionView;
 @property (nonatomic, weak) IBOutlet UICollectionView *colorCollectionView;
 
-@property (nonatomic, strong) NumberCollectionViewCell *currentSelectedNumberCell;
+@property (nonatomic, strong) NumberCollectionViewCell *currentSelectedNumberCell; // Use for sudoku cube view is not in guess mode.
 @property (nonatomic, strong) ColorCollectionViewCell *currentSelectedColorCell;
 
 @end
@@ -27,8 +27,21 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
+        [[NSNotificationCenter defaultCenter] addObserverForName:ColorCollectionViewCellSelectionChanged object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+            ColorCollectionViewCell *colorCell = [note.userInfo objectForKey:ColorCollectionViewCellSelectionChangedKeyCell];
+            if (colorCell.selected) {
+                
+            } else {
+                
+            }
+            
+        }];
     }
     return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
@@ -41,8 +54,6 @@
     centerLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     centerLayout.minimumLineSpacing = 8.0f;
     centerLayout.minimumInteritemSpacing = 8.0f;
-    
-    self.numberCollectionView.allowsMultipleSelection = YES;
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -70,6 +81,7 @@
     
     if (collectionView == self.numberCollectionView) {
         
+        return NO;
     } else if (collectionView == self.colorCollectionView) {
         if (self.currentSelectedColorCell == cell) {
             BOOL selected = self.currentSelectedColorCell.selected;
