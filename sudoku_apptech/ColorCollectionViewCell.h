@@ -18,4 +18,7 @@ extern NSString * const ColorCollectionViewCellSelectionChangedKeyCell;
 @property (nonatomic, strong) UIColor *colorContentColor;
 @property (nonatomic, strong) UIColor *colorContentHighlightColor;
 
+- (void)setSelected:(BOOL)selected manual:(BOOL)manual;
++ (UIColor *)defaultSelectedColor;
+
 @end

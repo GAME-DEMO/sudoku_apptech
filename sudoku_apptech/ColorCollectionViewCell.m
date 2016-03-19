@@ -82,9 +82,17 @@ NSString * const ColorCollectionViewCellSelectionChangedKeyCell = @"ColorCollect
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
     self.colorContentImageView.backgroundColor = selected ? self.colorContentHighlightColor : self.colorContentColor;
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:ColorCollectionViewCellSelectionChanged object:self userInfo:@{ColorCollectionViewCellSelectionChangedKeyCell : self}];
 }
 
+- (void)setSelected:(BOOL)selected manual:(BOOL)manual {
+    [self setSelected:selected];
+    if (manual) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:ColorCollectionViewCellSelectionChanged object:self userInfo:@{ColorCollectionViewCellSelectionChangedKeyCell : self}];
+    }
+}
+
++ (UIColor *)defaultSelectedColor {
+    return [UIColor whiteColor];
+}
 
 @end

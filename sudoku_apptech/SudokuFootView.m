@@ -29,12 +29,25 @@
     if (self = [super initWithCoder:aDecoder]) {
         [[NSNotificationCenter defaultCenter] addObserverForName:ColorCollectionViewCellSelectionChanged object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
             ColorCollectionViewCell *colorCell = [note.userInfo objectForKey:ColorCollectionViewCellSelectionChangedKeyCell];
-            if (colorCell.selected) {
-                
+            if (colorCell != self.currentSelectedColorCell) {
+                if (colorCell.selected) {
+                    self.currentSelectedColorCell.selected = NO;
+                    self.currentSelectedColorCell = colorCell;
+                } else {
+                    if (self.currentSelectedColorCell) {
+                        self.currentSelectedColorCell.selected = NO;
+                        self.currentSelectedColorCell = nil;
+                    }
+                }
             } else {
-                
+                if (colorCell.selected) {
+                    // nothing to do
+                } else {
+                    self.currentSelectedColorCell = nil;
+                }
             }
             
+            [self.numberCollectionView reloadData];
         }];
     }
     return self;
@@ -85,11 +98,11 @@
     } else if (collectionView == self.colorCollectionView) {
         if (self.currentSelectedColorCell == cell) {
             BOOL selected = self.currentSelectedColorCell.selected;
-            self.currentSelectedColorCell.selected = !selected;
+            [self.currentSelectedColorCell setSelected:!selected manual:YES];
         } else {
             self.currentSelectedColorCell.selected = NO;
             self.currentSelectedColorCell = (ColorCollectionViewCell *)cell;
-            cell.selected = YES;
+            [self.currentSelectedColorCell setSelected:YES manual:YES];
         }
         return NO;
     }
@@ -116,6 +129,7 @@
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:NumberCollectionViewCellIdentifier forIndexPath:indexPath];
         NumberCollectionViewCell* numCell = (NumberCollectionViewCell *)cell;
         numCell.number = (int)indexPath.item + 1;
+        numCell.numberColor = self.currentSelectedColorCell != nil ? self.currentSelectedColorCell.colorContentColor : [ColorCollectionViewCell defaultSelectedColor];
     } else if (collectionView == self.colorCollectionView) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:ColorCollectionViewCellIdentifier forIndexPath:indexPath];
         ColorCollectionViewCell *colorCell = (ColorCollectionViewCell *)cell;

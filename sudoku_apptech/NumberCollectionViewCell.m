@@ -8,6 +8,7 @@
 
 #import "NumberCollectionViewCell.h"
 #import "Presenter.h"
+#import "ColorCollectionViewCell.h"
 
 NSString * const NumberCollectionViewCellIdentifier = @"number_collection_view_cell_identifier";
 NSString * const NumberCollectionViewCellSelectionChanged = @"NumberCollectionViewCellSelectionChanged";
@@ -91,9 +92,16 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
 
         NSString *numberImageName = [NSString stringWithFormat:@"b%d", number];
         self.numberImageView.image = [[UIImage imageNamed:numberImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        self.numberImageView.tintColor = [UIColor whiteColor];
-        //self.numberImageView.tintColor = [Presenter sharedInstance].randomColor;
+        self.numberImageView.tintColor = [ColorCollectionViewCell defaultSelectedColor];
+    } else {
+        self.numberShadowImageView.image = nil;
+        self.numberImageView.image = nil;
     }
+}
+
+- (void)setNumberColor:(UIColor *)numberColor {
+    _numberColor = numberColor;
+    self.numberImageView.tintColor = numberColor;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

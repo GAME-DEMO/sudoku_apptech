@@ -15,6 +15,7 @@ extern NSString * const NumberCollectionViewCellSelectionChangedKeyCell;
 @interface NumberCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, assign) int number;
+@property (nonatomic, strong) UIColor *numberColor;
 @property (nonatomic, assign) BOOL isAltKey;
 
 @end
