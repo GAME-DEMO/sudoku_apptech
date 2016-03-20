@@ -179,6 +179,10 @@
     return self.dimension == DIMENSION_LEVEL_NINE;
 }
 
+- (BOOL)isInDemension:(int)number {
+    return 0 < number && number <= self.dimension;
+}
+
 #pragma mark - UI related
 
 + (UIInterfaceOrientation) appOrientation {

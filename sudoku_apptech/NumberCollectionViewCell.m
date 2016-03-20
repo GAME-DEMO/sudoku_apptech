@@ -66,7 +66,7 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.numberBackgroundImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationLessThanOrEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
 
     [self.numberBackgroundImageView addConstraint:[NSLayoutConstraint constraintWithItem:self.numberBackgroundImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.numberBackgroundImageView attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0.0]];
-
+    
     self.numberShadowImageView = [[UIImageView alloc] init];
     self.numberShadowImageView.translatesAutoresizingMaskIntoConstraints = NO;
     self.numberShadowImageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -86,7 +86,7 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
 
 - (void)setNumber:(int)number {
     _number = number;
-    if (number > 0 && number < 10) {
+    if ([[Presenter sharedInstance] isInDemension:number]) {
         NSString *numberShadowImageName = [NSString stringWithFormat:@"b%d_shadow", number];
         self.numberShadowImageView.image = [UIImage imageNamed:numberShadowImageName];
 
@@ -94,14 +94,18 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
         self.numberImageView.image = [[UIImage imageNamed:numberImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         self.numberImageView.tintColor = [ColorCollectionViewCell defaultSelectedColor];
     } else {
-        self.numberShadowImageView.image = nil;
+        self.numberShadowImageView.image = [UIImage imageNamed:@"pencil"];
         self.numberImageView.image = nil;
     }
 }
 
+- (BOOL)isAltKey {
+    return ![[Presenter sharedInstance] isInDemension:self.number];
+}
+
 - (void)setNumberColor:(UIColor *)numberColor {
     _numberColor = numberColor;
-    self.numberImageView.tintColor = numberColor;
+    [self reloadColor];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -114,10 +118,19 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
 
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
-    
-    self.numberBackgroundImageView.image = selected ? self.numberBackgroundHighlightImage : self.numberBackgroundNormalImage;
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:NumberCollectionViewCellSelectionChanged object:self userInfo:@{NumberCollectionViewCellSelectionChangedKeyCell : self}];
+    [self reloadColor];
+}
+
+- (void)setSelected:(BOOL)selected manual:(BOOL)manual {
+    [self setSelected:selected];
+    if (manual) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NumberCollectionViewCellSelectionChanged object:self userInfo:@{NumberCollectionViewCellSelectionChangedKeyCell : self}];
+    }
+}
+
+- (void)reloadColor {
+    self.numberImageView.tintColor = self.numberColor;
+    self.numberBackgroundImageView.image = self.selected ? self.numberBackgroundHighlightImage : self.numberBackgroundNormalImage;
 }
 
 @end

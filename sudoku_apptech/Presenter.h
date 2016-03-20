@@ -52,6 +52,7 @@ typedef NS_ENUM(NSUInteger, DIMENSION_LEVEL) {
 - (UIColor *)randomColor;
 
 - (BOOL)isDemensionLevelNine;
+- (BOOL)isInDemension:(int)number;
 
 #pragma mark - UI related
 
