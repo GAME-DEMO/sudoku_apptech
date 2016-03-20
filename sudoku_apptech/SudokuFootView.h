@@ -17,6 +17,7 @@
 - (void)viewDidLoad;
 
 @property (nonatomic, weak) id<SudokuFootViewDelegate> delegate;
+@property (nonatomic, assign) BOOL guessMode;
 
 @end
 
