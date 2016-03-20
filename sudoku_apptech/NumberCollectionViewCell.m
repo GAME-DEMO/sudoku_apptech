@@ -23,6 +23,11 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
 @property (nonatomic, strong) UIImage *numberBackgroundNormalImage;
 @property (nonatomic, strong) UIImage *numberBackgroundHighlightImage;
 
+@property (nonatomic, strong) NSLayoutConstraint *valueNumberWidthConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *valueNumberHeightConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *guessNumberWidthConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *guessNumberHeightConstraint;
+
 @end
 
 @implementation NumberCollectionViewCell
@@ -73,8 +78,18 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
     [self.numberBackgroundImageView addSubview:self.numberShadowImageView];
     [self.numberBackgroundImageView addConstraint:[NSLayoutConstraint constraintWithItem:self.numberShadowImageView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.numberBackgroundImageView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0]];
     [self.numberBackgroundImageView addConstraint:[NSLayoutConstraint constraintWithItem:self.numberShadowImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.numberBackgroundImageView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0.0]];
-    [self.numberBackgroundImageView addConstraint:[NSLayoutConstraint constraintWithItem:self.numberShadowImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.numberBackgroundImageView attribute:NSLayoutAttributeWidth multiplier:3.0f / 4.0f constant:0.0]];
-    [self.numberBackgroundImageView addConstraint:[NSLayoutConstraint constraintWithItem:self.numberShadowImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.numberBackgroundImageView attribute:NSLayoutAttributeHeight multiplier:3.0f / 4.0f constant:0.0]];
+
+    self.valueNumberWidthConstraint = [NSLayoutConstraint constraintWithItem:self.numberShadowImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.numberBackgroundImageView attribute:NSLayoutAttributeWidth multiplier:3.0f / 4.0f constant:0.0];
+    [self.numberBackgroundImageView addConstraint:self.valueNumberWidthConstraint];
+    self.valueNumberHeightConstraint = [NSLayoutConstraint constraintWithItem:self.numberShadowImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.numberBackgroundImageView attribute:NSLayoutAttributeHeight multiplier:3.0f / 4.0f constant:0.0];
+    [self.numberBackgroundImageView addConstraint:self.valueNumberHeightConstraint];
+
+    self.guessNumberWidthConstraint = [NSLayoutConstraint constraintWithItem:self.numberShadowImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.numberBackgroundImageView attribute:NSLayoutAttributeWidth multiplier:1.0f / 3.0f constant:0.0];
+    [self.numberBackgroundImageView addConstraint:self.guessNumberWidthConstraint];
+    self.guessNumberWidthConstraint.active = NO;
+    self.guessNumberHeightConstraint = [NSLayoutConstraint constraintWithItem:self.numberShadowImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.numberBackgroundImageView attribute:NSLayoutAttributeHeight multiplier:1.0f / 3.0f constant:0.0];
+    [self.numberBackgroundImageView addConstraint:self.guessNumberHeightConstraint];
+    self.guessNumberHeightConstraint.active = NO;
 
     self.numberImageView = [[UIImageView alloc] init];
     self.numberImageView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -97,6 +112,7 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
         self.numberShadowImageView.image = [UIImage imageNamed:@"pencil"];
         self.numberImageView.image = nil;
     }
+    [self reload];
 }
 
 - (BOOL)isAltKey {
@@ -105,16 +121,17 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
 
 - (void)setNumberColor:(UIColor *)numberColor {
     _numberColor = numberColor;
-    [self reloadColor];
+    [self reload];
 }
 
 - (void)setGuessMode:(BOOL)guessMode {
     _guessMode = guessMode;
+    [self reload];
 }
 
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
-    [self reloadColor];
+    [self reload];
 }
 
 - (void)setSelected:(BOOL)selected manual:(BOOL)manual {
@@ -124,9 +141,23 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
     }
 }
 
-- (void)reloadColor {
+- (void)reload {
     self.numberImageView.tintColor = self.numberColor;
     self.numberBackgroundImageView.image = self.selected ? self.numberBackgroundHighlightImage : self.numberBackgroundNormalImage;
+
+    if (self.isAltKey == NO) {
+        self.valueNumberWidthConstraint.active = !self.guessMode;
+        self.valueNumberHeightConstraint.active = !self.guessMode;
+        self.guessNumberHeightConstraint.active = self.guessMode;
+        self.guessNumberWidthConstraint.active = self.guessMode;
+    } else {
+        self.valueNumberWidthConstraint.active = YES;
+        self.valueNumberHeightConstraint.active = YES;
+        self.guessNumberHeightConstraint.active = NO;
+        self.guessNumberWidthConstraint.active = NO;
+    }
+    [self layoutIfNeeded];
 }
+
 
 @end
