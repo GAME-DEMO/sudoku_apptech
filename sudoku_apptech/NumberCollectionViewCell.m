@@ -108,12 +108,8 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
     [self reloadColor];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesBegan:touches withEvent:event];
-}
-
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesEnded:touches withEvent:event];
+- (void)setGuessMode:(BOOL)guessMode {
+    _guessMode = guessMode;
 }
 
 - (void)setSelected:(BOOL)selected {
