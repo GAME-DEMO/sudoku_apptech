@@ -16,17 +16,6 @@
 
 - (void)viewDidLoad;
 
-@property (nonatomic, weak) id<SudokuFootViewDelegate> delegate;
 @property (nonatomic, assign) BOOL guessMode;
-
-@end
-
-
-@protocol SudokuFootViewDelegate <NSObject>
-
-- (void)numberCellDidSelect:(NumberCollectionViewCell *)numberCell;
-- (void)numberCellDidDeselect:(NumberCollectionViewCell *)numberCell;
-- (void)colorCellDidSelect:(ColorCollectionViewCell *)colorCell;
-- (void)colorCellDidDeselect:(ColorCollectionViewCell *)colorCell;
 
 @end
