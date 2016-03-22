@@ -27,6 +27,11 @@
         _cubeViewArray = [NSMutableArray arrayWithCapacity:[Presenter sharedInstance].cubesCountForAll];
         [[NSNotificationCenter defaultCenter] addObserverForName:NumberCollectionViewCellSelectionChanged object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
             NumberCollectionViewCell *numberCell = [note.userInfo objectForKey:NumberCollectionViewCellSelectionChangedKeyCell];
+            if (numberCell.isAltKey) {
+                if (self.currentSelectedCubeView) {
+                    self.currentSelectedCubeView.guessMode = numberCell.guessMode;
+                }
+            }
             if (numberCell.selected) {
                 self.currentSelectedCubeView.cubeValue = numberCell.number;
             } else {

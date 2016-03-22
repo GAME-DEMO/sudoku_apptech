@@ -61,6 +61,7 @@
     self.cubeGuessBackgroundView = [[UIView alloc] init];
     self.cubeGuessBackgroundView.translatesAutoresizingMaskIntoConstraints = NO;
     self.cubeGuessBackgroundView.backgroundColor = [UIColor clearColor];
+    self.cubeGuessBackgroundView.hidden = YES;
     [self addSubview:self.cubeGuessBackgroundView];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[cubeGuessBackgroundView]-0-|" options:0 metrics:nil views:@{@"cubeGuessBackgroundView":self.cubeGuessBackgroundView}]];
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[cubeGuessBackgroundView]-0-|" options:0 metrics:nil views:@{@"cubeGuessBackgroundView":self.cubeGuessBackgroundView}]];
@@ -150,6 +151,13 @@
 - (void)setSelected:(BOOL)selected {
     _selected = selected;
     self.cubeShineImageView.hidden = !selected;
+}
+
+- (void)setGuessMode:(BOOL)guessMode {
+    _guessMode = guessMode;
+    
+    self.cubeGuessBackgroundView.hidden = !guessMode;
+    self.cubeValueView.hidden = guessMode;
 }
 
 @end
