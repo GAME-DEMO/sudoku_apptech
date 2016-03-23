@@ -51,7 +51,12 @@
             [self.numberCollectionView reloadData];
         }];
 
-        [[NSNotificationCenter defaultCenter] addObserverForName:CurrentSelectedCubeViewChangeNotiifcationName object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:CurrentSelectedCubeViewChangedNotificationName object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+            [self.numberCollectionView reloadData];
+        }];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:CurrentSelectedCubeViewGuessModeChangedNotificationName object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
             [self.numberCollectionView reloadData];
         }];
     }

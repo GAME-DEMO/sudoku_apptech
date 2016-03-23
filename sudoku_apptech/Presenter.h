@@ -23,7 +23,8 @@ typedef NS_ENUM(NSUInteger, DIMENSION_LEVEL) {
     DIMENSION_LEVEL_NINE = 9,
 };
 
-extern NSString * const CurrentSelectedCubeViewChangeNotificationName;
+extern NSString * const CurrentSelectedCubeViewChangedNotificationName;
+extern NSString * const CurrentSelectedCubeViewGuessModeChangedNotificationName;
 
 @interface Presenter : NSObject
 

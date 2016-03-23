@@ -151,7 +151,6 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
         self.valueNumberHeightConstraint.active = YES;
         self.guessNumberHeightConstraint.active = NO;
         self.guessNumberWidthConstraint.active = NO;
-        self.selected = [Presenter sharedInstance].currentSelectedCubeView.guessMode;
     }
     
     [self layoutIfNeeded];

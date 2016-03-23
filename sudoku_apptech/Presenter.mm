@@ -11,7 +11,8 @@
 #import "NumberCollectionViewCell.h"
 #import "SudokuCubeView.h"
 
-NSString * const CurrentSelectedCubeViewChangeNotificationName = @"CurrentSelectedCubeViewChangeNotificationName";
+NSString * const CurrentSelectedCubeViewChangedNotificationName = @"CurrentSelectedCubeViewChangeNotificationName";
+NSString * const CurrentSelectedCubeViewGuessModeChangedNotificationName = @"CurrentSelectedCubeViewGuessModeChangedNotificationName";
 
 @interface Presenter ()
 
@@ -58,6 +59,7 @@ NSString * const CurrentSelectedCubeViewChangeNotificationName = @"CurrentSelect
             if (numberCell.isAltKey) {
                 if (self.currentSelectedCubeView) {
                     self.currentSelectedCubeView.guessMode = numberCell.selected;
+                    [[NSNotificationCenter defaultCenter] postNotificationName:CurrentSelectedCubeViewGuessModeChangedNotificationName object:nil userInfo:nil];
                 }
             }
         }];
@@ -223,7 +225,7 @@ NSString * const CurrentSelectedCubeViewChangeNotificationName = @"CurrentSelect
 - (void)setCurrentSelectedCubeView:(SudokuCubeView *)currentSelectedCubeView manual:(BOOL)manual {
     [self setCurrentSelectedCubeView:currentSelectedCubeView];
     if (manual) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:CurrentSelectedCubeViewChangeNotificationName object:self userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:CurrentSelectedCubeViewChangedNotificationName object:self userInfo:nil];
     }
 }
 
