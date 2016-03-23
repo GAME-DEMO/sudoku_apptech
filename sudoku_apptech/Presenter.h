@@ -23,6 +23,8 @@ typedef NS_ENUM(NSUInteger, DIMENSION_LEVEL) {
     DIMENSION_LEVEL_NINE = 9,
 };
 
+extern NSString * const CurrentSelectedCubeViewChangeNotificationName;
+
 @interface Presenter : NSObject
 
 + (instancetype)sharedInstance;
@@ -61,5 +63,7 @@ typedef NS_ENUM(NSUInteger, DIMENSION_LEVEL) {
 
 + (BOOL)isPortraitForSize:(CGSize)size;
 + (BOOL)isLandscapeForSize:(CGSize)size;
+
+- (void)setCurrentSelectedCubeView:(SudokuCubeView *)currentSelectedCubeView manual:(BOOL)manual;
 
 @end

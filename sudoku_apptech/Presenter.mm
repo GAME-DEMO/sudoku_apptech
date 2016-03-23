@@ -8,6 +8,10 @@
 
 #import "Presenter.h"
 #import "Algorithm.h"
+#import "NumberCollectionViewCell.h"
+#import "SudokuCubeView.h"
+
+NSString * const CurrentSelectedCubeViewChangeNotificationName = @"CurrentSelectedCubeViewChangeNotificationName";
 
 @interface Presenter ()
 
@@ -48,6 +52,15 @@
                                                RGBA(109.0f, 246.0f, 87.0f, 1.0f),
                                                RGBA(246.0f, 137.0f, 87.0f, 1.0f),
                                                nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:NumberCollectionViewCellSelectionChanged object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+            NumberCollectionViewCell *numberCell = [note.userInfo objectForKey:NumberCollectionViewCellSelectionChangedKeyCell];
+            if (numberCell.isAltKey) {
+                if (self.currentSelectedCubeView) {
+                    self.currentSelectedCubeView.guessMode = numberCell.selected;
+                }
+            }
+        }];
     }
     return self;
 }
@@ -207,5 +220,11 @@
     return size.width > size.height;
 }
 
+- (void)setCurrentSelectedCubeView:(SudokuCubeView *)currentSelectedCubeView manual:(BOOL)manual {
+    [self setCurrentSelectedCubeView:currentSelectedCubeView];
+    if (manual) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:CurrentSelectedCubeViewChangeNotificationName object:self userInfo:nil];
+    }
+}
 
 @end

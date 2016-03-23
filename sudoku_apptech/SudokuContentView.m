@@ -15,7 +15,6 @@
 @interface SudokuContentView ()
 
 @property (nonatomic, strong) NSMutableArray<SudokuCubeView *> *cubeViewArray;
-@property (nonatomic, strong) SudokuCubeView *currentSelectedCubeView;
 
 @end
 
@@ -25,19 +24,6 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         _cubeViewArray = [NSMutableArray arrayWithCapacity:[Presenter sharedInstance].cubesCountForAll];
-        [[NSNotificationCenter defaultCenter] addObserverForName:NumberCollectionViewCellSelectionChanged object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
-            NumberCollectionViewCell *numberCell = [note.userInfo objectForKey:NumberCollectionViewCellSelectionChangedKeyCell];
-            if (numberCell.isAltKey) {
-                if (self.currentSelectedCubeView) {
-                    self.currentSelectedCubeView.guessMode = numberCell.guessMode;
-                }
-            }
-            if (numberCell.selected) {
-                self.currentSelectedCubeView.cubeValue = numberCell.number;
-            } else {
-                self.currentSelectedCubeView.cubeValue = 0;
-            }
-        }];
     }
     return self;
 }
@@ -251,12 +237,11 @@
 }
 
 - (void)selectCubeView:(SudokuCubeView *)cubeView {
-    if (cubeView != self.currentSelectedCubeView) {
-        self.currentSelectedCubeView.selected = NO;
-        self.currentSelectedCubeView = cubeView;
-        self.currentSelectedCubeView.selected = YES;
-        [self bringSubviewToFront:self.currentSelectedCubeView];
-        [Presenter sharedInstance].currentSelectedCubeView = self.currentSelectedCubeView;
+    if (cubeView != [Presenter sharedInstance].currentSelectedCubeView) {
+        [Presenter sharedInstance].currentSelectedCubeView.selected = NO;
+        cubeView.selected = YES;
+        [self bringSubviewToFront:cubeView];
+        [[Presenter sharedInstance] setCurrentSelectedCubeView:cubeView manual:YES];
     }
 }
 

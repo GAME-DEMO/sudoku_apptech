@@ -11,6 +11,7 @@
 #import "ColorCollectionViewCell.h"
 #import "CenterFlowLayout.h"
 #import "Presenter.h"
+#import "SudokuCubeView.h"
 
 @interface SudokuFootView ()
 
@@ -50,12 +51,8 @@
             [self.numberCollectionView reloadData];
         }];
 
-        [[NSNotificationCenter defaultCenter] addObserverForName:NumberCollectionViewCellSelectionChanged object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
-            NumberCollectionViewCell *numberCell = [note.userInfo objectForKey:NumberCollectionViewCellSelectionChangedKeyCell];
-            if (numberCell.isAltKey) {
-                self.guessMode = numberCell.selected;
-                [self.numberCollectionView reloadData];
-            }
+        [[NSNotificationCenter defaultCenter] addObserverForName:CurrentSelectedCubeViewChangeNotiifcationName object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+            [self.numberCollectionView reloadData];
         }];
     }
     return self;
@@ -103,7 +100,7 @@
     if (collectionView == self.numberCollectionView) {
         NumberCollectionViewCell *numberCell = (NumberCollectionViewCell *)cell;
         if (numberCell.isAltKey) {
-            [numberCell setSelected:!self.guessMode manual:YES];
+            [numberCell setSelected:![Presenter sharedInstance].currentSelectedCubeView.guessMode manual:YES];
         }
         return NO;
     } else if (collectionView == self.colorCollectionView) {
@@ -141,10 +138,7 @@
         NumberCollectionViewCell* numCell = (NumberCollectionViewCell *)cell;
         numCell.number = (int)indexPath.item + 1;
         numCell.numberColor = self.currentSelectedColorCell != nil ? self.currentSelectedColorCell.colorContentColor : [ColorCollectionViewCell defaultSelectedColor];
-        numCell.guessMode = self.guessMode;
-        if (numCell.isAltKey) {
-            numCell.selected = self.guessMode;
-        }
+        [numCell reload];
     } else if (collectionView == self.colorCollectionView) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:ColorCollectionViewCellIdentifier forIndexPath:indexPath];
         ColorCollectionViewCell *colorCell = (ColorCollectionViewCell *)cell;

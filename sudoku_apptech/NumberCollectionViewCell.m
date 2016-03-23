@@ -9,6 +9,7 @@
 #import "NumberCollectionViewCell.h"
 #import "Presenter.h"
 #import "ColorCollectionViewCell.h"
+#import "SudokuCubeView.h"
 
 NSString * const NumberCollectionViewCellIdentifier = @"number_collection_view_cell_identifier";
 NSString * const NumberCollectionViewCellSelectionChanged = @"NumberCollectionViewCellSelectionChanged";
@@ -124,11 +125,6 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
     [self reload];
 }
 
-- (void)setGuessMode:(BOOL)guessMode {
-    _guessMode = guessMode;
-    [self reload];
-}
-
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
     [self reload];
@@ -144,18 +140,20 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
 - (void)reload {
     self.numberImageView.tintColor = self.numberColor;
     self.numberBackgroundImageView.image = self.selected ? self.numberBackgroundHighlightImage : self.numberBackgroundNormalImage;
-
+    
     if (self.isAltKey == NO) {
-        self.valueNumberWidthConstraint.active = !self.guessMode;
-        self.valueNumberHeightConstraint.active = !self.guessMode;
-        self.guessNumberHeightConstraint.active = self.guessMode;
-        self.guessNumberWidthConstraint.active = self.guessMode;
+        self.valueNumberWidthConstraint.active = ![Presenter sharedInstance].currentSelectedCubeView.guessMode;
+        self.valueNumberHeightConstraint.active = ![Presenter sharedInstance].currentSelectedCubeView.guessMode;
+        self.guessNumberHeightConstraint.active = [Presenter sharedInstance].currentSelectedCubeView.guessMode;
+        self.guessNumberWidthConstraint.active = [Presenter sharedInstance].currentSelectedCubeView.guessMode;
     } else {
         self.valueNumberWidthConstraint.active = YES;
         self.valueNumberHeightConstraint.active = YES;
         self.guessNumberHeightConstraint.active = NO;
         self.guessNumberWidthConstraint.active = NO;
+        self.selected = [Presenter sharedInstance].currentSelectedCubeView.guessMode;
     }
+    
     [self layoutIfNeeded];
 }
 

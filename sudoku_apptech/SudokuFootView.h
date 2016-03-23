@@ -16,6 +16,4 @@
 
 - (void)viewDidLoad;
 
-@property (nonatomic, assign) BOOL guessMode;
-
 @end
