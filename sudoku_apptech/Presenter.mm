@@ -61,6 +61,8 @@ NSString * const CurrentSelectedCubeViewGuessModeChangedNotificationName = @"Cur
                     self.currentSelectedCubeView.guessMode = numberCell.selected;
                     [[NSNotificationCenter defaultCenter] postNotificationName:CurrentSelectedCubeViewGuessModeChangedNotificationName object:nil userInfo:nil];
                 }
+            } else {
+                
             }
         }];
     }

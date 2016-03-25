@@ -106,6 +106,8 @@
         NumberCollectionViewCell *numberCell = (NumberCollectionViewCell *)cell;
         if (numberCell.isAltKey) {
             [numberCell setSelected:![Presenter sharedInstance].currentSelectedCubeView.guessMode manual:YES];
+        } else {
+            
         }
         return NO;
     } else if (collectionView == self.colorCollectionView) {
