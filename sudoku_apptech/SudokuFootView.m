@@ -19,7 +19,6 @@
 @property (nonatomic, weak) IBOutlet UICollectionView *colorCollectionView;
 
 @property (nonatomic, strong) NumberCollectionViewCell *currentSelectedNumberCell; // Use for sudoku cube view is not in guess mode.
-@property (nonatomic, strong) ColorCollectionViewCell *currentSelectedColorCell;
 
 @end
 
@@ -28,29 +27,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        [[NSNotificationCenter defaultCenter] addObserverForName:ColorCollectionViewCellSelectionChanged object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
-            ColorCollectionViewCell *colorCell = [note.userInfo objectForKey:ColorCollectionViewCellSelectionChangedKeyCell];
-            if (colorCell != self.currentSelectedColorCell) {
-                if (colorCell.selected) {
-                    self.currentSelectedColorCell.selected = NO;
-                    self.currentSelectedColorCell = colorCell;
-                } else {
-                    if (self.currentSelectedColorCell) {
-                        self.currentSelectedColorCell.selected = NO;
-                        self.currentSelectedColorCell = nil;
-                    }
-                }
-            } else {
-                if (colorCell.selected) {
-                    // nothing to do
-                } else {
-                    self.currentSelectedColorCell = nil;
-                }
-            }
-            
-            [self.numberCollectionView reloadData];
-        }];
-
+        [Presenter sharedInstance].footView = self;
         
         [[NSNotificationCenter defaultCenter] addObserverForName:CurrentSelectedCubeViewChangedNotificationName object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
             [self.numberCollectionView reloadData];
@@ -101,7 +78,6 @@
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    
     if (collectionView == self.numberCollectionView) {
         NumberCollectionViewCell *numberCell = (NumberCollectionViewCell *)cell;
         if (numberCell.isAltKey) {
@@ -111,14 +87,8 @@
         }
         return NO;
     } else if (collectionView == self.colorCollectionView) {
-        if (self.currentSelectedColorCell == cell) {
-            BOOL selected = self.currentSelectedColorCell.selected;
-            [self.currentSelectedColorCell setSelected:!selected manual:YES];
-        } else {
-            self.currentSelectedColorCell.selected = NO;
-            self.currentSelectedColorCell = (ColorCollectionViewCell *)cell;
-            [self.currentSelectedColorCell setSelected:YES manual:YES];
-        }
+        ColorCollectionViewCell *colorCell = (ColorCollectionViewCell *)cell;
+        [[Presenter sharedInstance] colorCollectionCellDidClick:colorCell];
         return NO;
     }
     
@@ -144,7 +114,7 @@
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:NumberCollectionViewCellIdentifier forIndexPath:indexPath];
         NumberCollectionViewCell* numCell = (NumberCollectionViewCell *)cell;
         numCell.number = (int)indexPath.item + 1;
-        numCell.numberColor = self.currentSelectedColorCell != nil ? self.currentSelectedColorCell.colorContentColor : [ColorCollectionViewCell defaultSelectedColor];
+        numCell.numberColor = [Presenter sharedInstance].currentSelectedColorCell != nil ? [Presenter sharedInstance].currentSelectedColorCell.colorContentColor : [ColorCollectionViewCell defaultSelectedColor];
         [numCell reload];
     } else if (collectionView == self.colorCollectionView) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:ColorCollectionViewCellIdentifier forIndexPath:indexPath];

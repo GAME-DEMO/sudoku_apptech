@@ -14,6 +14,9 @@
 
 @interface SudokuFootView : UIView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
+@property (nonatomic, weak, readonly) UICollectionView *numberCollectionView;
+@property (nonatomic, weak, readonly) UICollectionView *colorCollectionView;
+
 - (void)viewDidLoad;
 
 @end

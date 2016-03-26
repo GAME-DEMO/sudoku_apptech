@@ -8,8 +8,10 @@
 
 #import "Presenter.h"
 #import "Algorithm.h"
+#import "ColorCollectionViewCell.h"
 #import "NumberCollectionViewCell.h"
 #import "SudokuCubeView.h"
+#import "SudokuFootView.h"
 
 NSString * const CurrentSelectedCubeViewChangedNotificationName = @"CurrentSelectedCubeViewChangeNotificationName";
 NSString * const CurrentSelectedCubeViewGuessModeChangedNotificationName = @"CurrentSelectedCubeViewGuessModeChangedNotificationName";
@@ -229,6 +231,21 @@ NSString * const CurrentSelectedCubeViewGuessModeChangedNotificationName = @"Cur
     if (manual) {
         [[NSNotificationCenter defaultCenter] postNotificationName:CurrentSelectedCubeViewChangedNotificationName object:self userInfo:nil];
     }
+}
+
+- (void)colorCollectionCellDidClick:(ColorCollectionViewCell *)colorCell {
+    if (self.currentSelectedColorCell == colorCell) {
+        BOOL selected = !self.currentSelectedColorCell.selected;
+        self.currentSelectedColorCell.selected = selected;
+        if (!selected) {
+            self.currentSelectedColorCell = nil;
+        }
+    } else {
+        self.currentSelectedColorCell.selected = NO;
+        self.currentSelectedColorCell = colorCell;
+        self.currentSelectedColorCell.selected = YES;
+    }
+    [self.footView.numberCollectionView reloadData];
 }
 
 @end

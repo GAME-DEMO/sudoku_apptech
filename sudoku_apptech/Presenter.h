@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 
 @class SudokuCubeView;
+@class SudokuFootView;
+@class ColorCollectionViewCell;
 
 typedef NS_ENUM(NSUInteger, DIFFICULT_LEVEL) {
     DIFFICULT_LEVEL_NONE,
@@ -43,6 +45,8 @@ extern NSString * const CurrentSelectedCubeViewGuessModeChangedNotificationName;
 @property (nonatomic, readonly) NSArray<NSNumber *> *sudokuArray;
 
 @property (nonatomic, strong) SudokuCubeView *currentSelectedCubeView;
+@property (nonatomic, weak) SudokuFootView *footView;
+@property (nonatomic, weak) ColorCollectionViewCell *currentSelectedColorCell;
 
 - (int)globalRowFromGlobalIndex:(int)globalIndex;
 - (int)globalColFromGlobalIndex:(int)globalIndex;
@@ -66,5 +70,7 @@ extern NSString * const CurrentSelectedCubeViewGuessModeChangedNotificationName;
 + (BOOL)isLandscapeForSize:(CGSize)size;
 
 - (void)setCurrentSelectedCubeView:(SudokuCubeView *)currentSelectedCubeView manual:(BOOL)manual;
+
+- (void)colorCollectionCellDidClick:(ColorCollectionViewCell *)colorCell;
 
 @end
