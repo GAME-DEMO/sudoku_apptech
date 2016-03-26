@@ -250,8 +250,25 @@ const NSInteger INVALID_COLOR_CELL_INDEX = -1;
         self.currentSelectedCubeView.guessMode = numberCell.selected;
         [self.footView.numberCollectionView reloadData];
     } else {
-        
+        numberCell.selected = !numberCell.selected;
+        if (!self.currentSelectedCubeView.guessMode) {
+            if (numberCell.selected) {
+                self.currentSelectedCubeView.cubeValue = numberCell.number;
+            } else {
+                self.currentSelectedCubeView.cubeValue = 0;
+            }
+        } else {
+            if (numberCell.selected) {
+                
+            }
+        }
     }
+}
+
+- (UIColor *)currentSelectedColor {
+    return self.currentSelectedColorCellIndex != INVALID_COLOR_CELL_INDEX ?
+    self.footColorButtonBasementColorArray[self.currentSelectedColorCellIndex] :
+    [ColorCollectionViewCell defaultSelectedColor];
 }
 
 @end

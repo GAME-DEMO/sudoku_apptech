@@ -145,7 +145,7 @@
 }
 
 - (void)setCubeValue:(int)cubeValue {
-    return [self setCubeValue:cubeValue withValueColor:[UIColor whiteColor]];
+    return [self setCubeValue:cubeValue withValueColor:[Presenter sharedInstance].currentSelectedColor];
 }
 
 - (void)setSelected:(BOOL)selected {

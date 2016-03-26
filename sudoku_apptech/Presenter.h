@@ -71,5 +71,6 @@ extern const NSInteger INVALID_COLOR_CELL_INDEX;
 
 - (void)colorCollectionCellDidClick:(ColorCollectionViewCell *)colorCell;
 - (void)numberCollectionCellDidClick:(NumberCollectionViewCell *)numberCell;
+- (UIColor *)currentSelectedColor;
 
 @end

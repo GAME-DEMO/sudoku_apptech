@@ -101,7 +101,7 @@
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:NumberCollectionViewCellIdentifier forIndexPath:indexPath];
         NumberCollectionViewCell* numCell = (NumberCollectionViewCell *)cell;
         numCell.number = (int)indexPath.item + 1;
-        numCell.numberColor = [Presenter sharedInstance].currentSelectedColorCellIndex != INVALID_COLOR_CELL_INDEX ? [Presenter sharedInstance].footColorButtonBasementColorArray[[Presenter sharedInstance].currentSelectedColorCellIndex] : [ColorCollectionViewCell defaultSelectedColor];
+        numCell.numberColor = [Presenter sharedInstance].currentSelectedColor;
         if (numCell.isAltKey) {
             numCell.selected = [Presenter sharedInstance].currentSelectedCubeView.guessMode;
         }

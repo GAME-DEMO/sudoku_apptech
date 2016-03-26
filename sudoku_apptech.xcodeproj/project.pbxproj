@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA1887571CA6F5CE003B963C /* SudokuUINumber.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1887561CA6F5CE003B963C /* SudokuUINumber.m */; };
 		AA1B5B0D1C769CA000EDEE4A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5B0C1C769CA000EDEE4A /* main.m */; };
 		AA1B5B101C769CA000EDEE4A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5B0F1C769CA000EDEE4A /* AppDelegate.m */; };
 		AA1B5B131C769CA000EDEE4A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA1B5B121C769CA000EDEE4A /* ViewController.m */; };
@@ -27,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA1887551CA6F5CE003B963C /* SudokuUINumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudokuUINumber.h; sourceTree = "<group>"; };
+		AA1887561CA6F5CE003B963C /* SudokuUINumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudokuUINumber.m; sourceTree = "<group>"; };
 		AA1B5B081C769CA000EDEE4A /* sudoku_apptech.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sudoku_apptech.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA1B5B0C1C769CA000EDEE4A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AA1B5B0E1C769CA000EDEE4A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -96,6 +99,8 @@
 				AADC00DB1C79569900319522 /* Algorithm.mm */,
 				AA3E2A811C7D7C4C00FA3006 /* GradientView.h */,
 				AA3E2A821C7D7C4C00FA3006 /* GradientView.m */,
+				AA1887551CA6F5CE003B963C /* SudokuUINumber.h */,
+				AA1887561CA6F5CE003B963C /* SudokuUINumber.m */,
 				AADC00DC1C79569900319522 /* Presenter.h */,
 				AADC00DD1C79569900319522 /* Presenter.mm */,
 				AAD34F8E1C84A19D00FC6424 /* UISudokuDataManager.h */,
@@ -211,6 +216,7 @@
 				AA3E2A831C7D7C4C00FA3006 /* GradientView.m in Sources */,
 				AA3E2A771C7991C000FA3006 /* SudokuFootView.m in Sources */,
 				AAFE9EE91C7F3E8B00850001 /* SudokuCubeView.m in Sources */,
+				AA1887571CA6F5CE003B963C /* SudokuUINumber.m in Sources */,
 				AADC00F31C7E140700319522 /* SudokuContentView.m in Sources */,
 				AAD34F901C84A19D00FC6424 /* UISudokuDataManager.m in Sources */,
 				AADC00E91C795F8D00319522 /* ColorCollectionViewCell.m in Sources */,
