@@ -13,6 +13,8 @@
 #import "SudokuCubeView.h"
 #import "SudokuFootView.h"
 
+const NSInteger INVALID_COLOR_CELL_INDEX = -1;
+
 @interface Presenter ()
 
 @property (nonatomic, strong) NSArray<UIColor *> *contentNumberColorArray;
@@ -21,6 +23,8 @@
 
 @property (nonatomic, strong) NSArray<NSNumber *> *resultArray;
 @property (nonatomic, strong) NSArray<NSNumber *> *sudokuArray;
+
+@property (nonatomic, assign) NSInteger currentSelectedColorCellIndex;
 
 @end
 
@@ -52,6 +56,7 @@
                                                RGBA(109.0f, 246.0f, 87.0f, 1.0f),
                                                RGBA(246.0f, 137.0f, 87.0f, 1.0f),
                                                nil];
+        _currentSelectedColorCellIndex = INVALID_COLOR_CELL_INDEX;
     }
     return self;
 }
@@ -217,16 +222,24 @@
 }
 
 - (void)colorCollectionCellDidClick:(ColorCollectionViewCell *)colorCell {
-    if (self.currentSelectedColorCell == colorCell) {
-        BOOL selected = !self.currentSelectedColorCell.selected;
-        self.currentSelectedColorCell.selected = selected;
+    if (self.currentSelectedColorCellIndex == colorCell.colorIndex) {
+        BOOL selected = !colorCell.selected;
+        colorCell.selected = selected;
         if (!selected) {
-            self.currentSelectedColorCell = nil;
+            self.currentSelectedColorCellIndex = INVALID_COLOR_CELL_INDEX;
         }
     } else {
-        self.currentSelectedColorCell.selected = NO;
-        self.currentSelectedColorCell = colorCell;
-        self.currentSelectedColorCell.selected = YES;
+        if (self.currentSelectedColorCellIndex != INVALID_COLOR_CELL_INDEX) {
+            for (ColorCollectionViewCell *cell in self.footView.colorCollectionView.visibleCells) {
+                if (cell.colorIndex == self.currentSelectedColorCellIndex) {
+                    cell.selected = NO;
+                    break;
+                }
+            }
+        }
+
+        self.currentSelectedColorCellIndex = colorCell.colorIndex;
+        colorCell.selected = YES;
     }
     [self.footView.numberCollectionView reloadData];
 }

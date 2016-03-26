@@ -26,6 +26,8 @@ typedef NS_ENUM(NSUInteger, DIMENSION_LEVEL) {
     DIMENSION_LEVEL_NINE = 9,
 };
 
+extern const NSInteger INVALID_COLOR_CELL_INDEX;
+
 @interface Presenter : NSObject
 
 + (instancetype)sharedInstance;
@@ -44,7 +46,7 @@ typedef NS_ENUM(NSUInteger, DIMENSION_LEVEL) {
 
 @property (nonatomic, strong) SudokuCubeView *currentSelectedCubeView;
 @property (nonatomic, weak) SudokuFootView *footView;
-@property (nonatomic, weak) ColorCollectionViewCell *currentSelectedColorCell;
+@property (nonatomic, readonly) NSInteger currentSelectedColorCellIndex;
 
 - (int)globalRowFromGlobalIndex:(int)globalIndex;
 - (int)globalColFromGlobalIndex:(int)globalIndex;

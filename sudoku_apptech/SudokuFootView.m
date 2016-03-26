@@ -101,7 +101,7 @@
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:NumberCollectionViewCellIdentifier forIndexPath:indexPath];
         NumberCollectionViewCell* numCell = (NumberCollectionViewCell *)cell;
         numCell.number = (int)indexPath.item + 1;
-        numCell.numberColor = [Presenter sharedInstance].currentSelectedColorCell != nil ? [Presenter sharedInstance].currentSelectedColorCell.colorContentColor : [ColorCollectionViewCell defaultSelectedColor];
+        numCell.numberColor = [Presenter sharedInstance].currentSelectedColorCellIndex != INVALID_COLOR_CELL_INDEX ? [Presenter sharedInstance].footColorButtonBasementColorArray[[Presenter sharedInstance].currentSelectedColorCellIndex] : [ColorCollectionViewCell defaultSelectedColor];
         if (numCell.isAltKey) {
             numCell.selected = [Presenter sharedInstance].currentSelectedCubeView.guessMode;
         }
@@ -109,6 +109,8 @@
     } else if (collectionView == self.colorCollectionView) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:ColorCollectionViewCellIdentifier forIndexPath:indexPath];
         ColorCollectionViewCell *colorCell = (ColorCollectionViewCell *)cell;
+        colorCell.colorIndex = indexPath.item;
+        colorCell.selected = indexPath.item == [Presenter sharedInstance].currentSelectedColorCellIndex;
         colorCell.colorBackgroundColor = [Presenter sharedInstance].footColorButtonBasementColorArray[indexPath.item];
         colorCell.colorContentColor = colorCell.colorBackgroundColor;
         colorCell.colorContentHighlightColor = [Presenter sharedInstance].footColorButtonHighlightColorArray[indexPath.item];
