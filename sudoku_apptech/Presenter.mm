@@ -13,9 +13,6 @@
 #import "SudokuCubeView.h"
 #import "SudokuFootView.h"
 
-NSString * const CurrentSelectedCubeViewChangedNotificationName = @"CurrentSelectedCubeViewChangeNotificationName";
-NSString * const CurrentSelectedCubeViewGuessModeChangedNotificationName = @"CurrentSelectedCubeViewGuessModeChangedNotificationName";
-
 @interface Presenter ()
 
 @property (nonatomic, strong) NSArray<UIColor *> *contentNumberColorArray;
@@ -55,18 +52,6 @@ NSString * const CurrentSelectedCubeViewGuessModeChangedNotificationName = @"Cur
                                                RGBA(109.0f, 246.0f, 87.0f, 1.0f),
                                                RGBA(246.0f, 137.0f, 87.0f, 1.0f),
                                                nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserverForName:NumberCollectionViewCellSelectionChanged object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
-            NumberCollectionViewCell *numberCell = [note.userInfo objectForKey:NumberCollectionViewCellSelectionChangedKeyCell];
-            if (numberCell.isAltKey) {
-                if (self.currentSelectedCubeView) {
-                    self.currentSelectedCubeView.guessMode = numberCell.selected;
-                    [[NSNotificationCenter defaultCenter] postNotificationName:CurrentSelectedCubeViewGuessModeChangedNotificationName object:nil userInfo:nil];
-                }
-            } else {
-                
-            }
-        }];
     }
     return self;
 }
@@ -226,11 +211,9 @@ NSString * const CurrentSelectedCubeViewGuessModeChangedNotificationName = @"Cur
     return size.width > size.height;
 }
 
-- (void)setCurrentSelectedCubeView:(SudokuCubeView *)currentSelectedCubeView manual:(BOOL)manual {
-    [self setCurrentSelectedCubeView:currentSelectedCubeView];
-    if (manual) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:CurrentSelectedCubeViewChangedNotificationName object:self userInfo:nil];
-    }
+- (void)setCurrentSelectedCubeView:(SudokuCubeView *)currentSelectedCubeView {
+    _currentSelectedCubeView = currentSelectedCubeView;
+    [self.footView.numberCollectionView reloadData];
 }
 
 - (void)colorCollectionCellDidClick:(ColorCollectionViewCell *)colorCell {
@@ -246,6 +229,16 @@ NSString * const CurrentSelectedCubeViewGuessModeChangedNotificationName = @"Cur
         self.currentSelectedColorCell.selected = YES;
     }
     [self.footView.numberCollectionView reloadData];
+}
+
+- (void)numberCollectionCellDidClick:(NumberCollectionViewCell *)numberCell {
+    if (numberCell.isAltKey) {
+        numberCell.selected = !numberCell.selected;
+        self.currentSelectedCubeView.guessMode = numberCell.selected;
+        [self.footView.numberCollectionView reloadData];
+    } else {
+        
+    }
 }
 
 @end

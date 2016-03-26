@@ -12,8 +12,6 @@
 #import "SudokuCubeView.h"
 
 NSString * const NumberCollectionViewCellIdentifier = @"number_collection_view_cell_identifier";
-NSString * const NumberCollectionViewCellSelectionChanged = @"NumberCollectionViewCellSelectionChanged";
-NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberCollectionViewCellSelectionChangedKeyCell";
 
 @interface NumberCollectionViewCell ()
 
@@ -128,13 +126,6 @@ NSString * const NumberCollectionViewCellSelectionChangedKeyCell = @"NumberColle
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
     [self reload];
-}
-
-- (void)setSelected:(BOOL)selected manual:(BOOL)manual {
-    [self setSelected:selected];
-    if (manual) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:NumberCollectionViewCellSelectionChanged object:self userInfo:@{NumberCollectionViewCellSelectionChangedKeyCell : self}];
-    }
 }
 
 - (void)reload {

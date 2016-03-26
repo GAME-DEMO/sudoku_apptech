@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 extern NSString * const NumberCollectionViewCellIdentifier;
-extern NSString * const NumberCollectionViewCellSelectionChanged;
-extern NSString * const NumberCollectionViewCellSelectionChangedKeyCell;
 
 @interface NumberCollectionViewCell : UICollectionViewCell
 
@@ -18,6 +16,5 @@ extern NSString * const NumberCollectionViewCellSelectionChangedKeyCell;
 @property (nonatomic, strong) UIColor *numberColor;
 @property (nonatomic, readonly) BOOL isAltKey;
 
-- (void)setSelected:(BOOL)selected manual:(BOOL)manual;
 - (void)reload;
 @end

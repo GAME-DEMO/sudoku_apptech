@@ -12,6 +12,7 @@
 @class SudokuCubeView;
 @class SudokuFootView;
 @class ColorCollectionViewCell;
+@class NumberCollectionViewCell;
 
 typedef NS_ENUM(NSUInteger, DIFFICULT_LEVEL) {
     DIFFICULT_LEVEL_NONE,
@@ -24,9 +25,6 @@ typedef NS_ENUM(NSUInteger, DIFFICULT_LEVEL) {
 typedef NS_ENUM(NSUInteger, DIMENSION_LEVEL) {
     DIMENSION_LEVEL_NINE = 9,
 };
-
-extern NSString * const CurrentSelectedCubeViewChangedNotificationName;
-extern NSString * const CurrentSelectedCubeViewGuessModeChangedNotificationName;
 
 @interface Presenter : NSObject
 
@@ -69,8 +67,7 @@ extern NSString * const CurrentSelectedCubeViewGuessModeChangedNotificationName;
 + (BOOL)isPortraitForSize:(CGSize)size;
 + (BOOL)isLandscapeForSize:(CGSize)size;
 
-- (void)setCurrentSelectedCubeView:(SudokuCubeView *)currentSelectedCubeView manual:(BOOL)manual;
-
 - (void)colorCollectionCellDidClick:(ColorCollectionViewCell *)colorCell;
+- (void)numberCollectionCellDidClick:(NumberCollectionViewCell *)numberCell;
 
 @end

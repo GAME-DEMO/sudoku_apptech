@@ -28,20 +28,11 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         [Presenter sharedInstance].footView = self;
-        
-        [[NSNotificationCenter defaultCenter] addObserverForName:CurrentSelectedCubeViewChangedNotificationName object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
-            [self.numberCollectionView reloadData];
-        }];
-        
-        [[NSNotificationCenter defaultCenter] addObserverForName:CurrentSelectedCubeViewGuessModeChangedNotificationName object:nil queue:nil usingBlock:^(NSNotification * _Nonnull note) {
-            [self.numberCollectionView reloadData];
-        }];
     }
     return self;
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
@@ -80,11 +71,7 @@
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     if (collectionView == self.numberCollectionView) {
         NumberCollectionViewCell *numberCell = (NumberCollectionViewCell *)cell;
-        if (numberCell.isAltKey) {
-            [numberCell setSelected:![Presenter sharedInstance].currentSelectedCubeView.guessMode manual:YES];
-        } else {
-            
-        }
+        [[Presenter sharedInstance] numberCollectionCellDidClick:numberCell];
         return NO;
     } else if (collectionView == self.colorCollectionView) {
         ColorCollectionViewCell *colorCell = (ColorCollectionViewCell *)cell;
@@ -115,6 +102,9 @@
         NumberCollectionViewCell* numCell = (NumberCollectionViewCell *)cell;
         numCell.number = (int)indexPath.item + 1;
         numCell.numberColor = [Presenter sharedInstance].currentSelectedColorCell != nil ? [Presenter sharedInstance].currentSelectedColorCell.colorContentColor : [ColorCollectionViewCell defaultSelectedColor];
+        if (numCell.isAltKey) {
+            numCell.selected = [Presenter sharedInstance].currentSelectedCubeView.guessMode;
+        }
         [numCell reload];
     } else if (collectionView == self.colorCollectionView) {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:ColorCollectionViewCellIdentifier forIndexPath:indexPath];

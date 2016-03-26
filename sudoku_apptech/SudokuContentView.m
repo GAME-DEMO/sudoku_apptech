@@ -241,7 +241,7 @@
         [Presenter sharedInstance].currentSelectedCubeView.selected = NO;
         cubeView.selected = YES;
         [self bringSubviewToFront:cubeView];
-        [[Presenter sharedInstance] setCurrentSelectedCubeView:cubeView manual:YES];
+        [Presenter sharedInstance].currentSelectedCubeView = cubeView;
     }
 }
 
