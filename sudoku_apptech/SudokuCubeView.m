@@ -123,9 +123,7 @@
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.cubeShineImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:3.0]];
 
     self.clipsToBounds = NO;
-
-    self.cubeValueView.hidden = NO;
-    self.cubeGuessBackgroundView.hidden = YES;
+    self.guessMode = NO;
 }
 
 - (void)setCubeValue:(SudokuUINumber *)cubeValue {
