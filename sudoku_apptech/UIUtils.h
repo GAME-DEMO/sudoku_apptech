@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class SudokuUINumber;
+
 @interface UIUtils : NSObject
 
-+ (void)updateCubeValue:(int)number withTintColor:(UIColor *)color onCubeValueView:(UIView *)cubeValueView;
-+ (void)removeCubeValueOnCubeValueView:(UIView *)cubeValueView;
++ (void)updateValue:(SudokuUINumber *)value onValueView:(UIView *)valueView;
++ (void)removeValueOnValueView:(UIView *)valueView;
 
 @end

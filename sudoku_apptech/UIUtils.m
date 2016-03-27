@@ -7,23 +7,29 @@
 //
 
 #import "UIUtils.h"
+#import "SudokuUINumber.h"
+#import "ColorCollectionViewCell.h"
+#import "Presenter.h"
 
 static const int NumberShadowTag = 1000;
 static const int NumberTag = 1001;
 
 @implementation UIUtils
 
-+ (void)updateCubeValue:(int)number withTintColor:(UIColor *)color onCubeValueView:(UIView *)cubeValueView {
-    UIImageView *numberShadowImageView = [cubeValueView viewWithTag:NumberShadowTag];
++ (void)updateValue:(SudokuUINumber *)value onValueView:(UIView *)valueView {
+    int number = value.number;
+    UIColor *color = value.color;
+
+    UIImageView *numberShadowImageView = [valueView viewWithTag:NumberShadowTag];
     if (numberShadowImageView == nil) {
         numberShadowImageView = [[UIImageView alloc] init];
         numberShadowImageView.translatesAutoresizingMaskIntoConstraints = NO;
         numberShadowImageView.contentMode = UIViewContentModeScaleAspectFit;
         numberShadowImageView.tag = NumberShadowTag;
-        [cubeValueView addSubview:numberShadowImageView];
+        [valueView addSubview:numberShadowImageView];
 
-        [cubeValueView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[numberShadowImageView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(numberShadowImageView)]];
-        [cubeValueView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[numberShadowImageView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(numberShadowImageView)]];
+        [valueView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[numberShadowImageView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(numberShadowImageView)]];
+        [valueView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[numberShadowImageView]-0-|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(numberShadowImageView)]];
     }
 
     UIImageView *numberImageView = [numberShadowImageView viewWithTag:NumberTag];
@@ -43,11 +49,11 @@ static const int NumberTag = 1001;
 
     NSString *numberImageName = [NSString stringWithFormat:@"b%d", number];
     numberImageView.image = [[UIImage imageNamed:numberImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    numberImageView.tintColor = color ? : [UIColor whiteColor];
+    numberImageView.tintColor = color ? : [ColorCollectionViewCell defaultSelectedColor];
 }
 
-+ (void)removeCubeValueOnCubeValueView:(UIView *)cubeValueView {
-    UIImageView *numberShadowImageView = [cubeValueView viewWithTag:NumberShadowTag];
++ (void)removeValueOnValueView:(UIView *)valueView {
+    UIImageView *numberShadowImageView = [valueView viewWithTag:NumberShadowTag];
     if (numberShadowImageView != nil) {
         [numberShadowImageView removeFromSuperview];
     }

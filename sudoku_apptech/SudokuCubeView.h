@@ -19,4 +19,7 @@
 @property (nonatomic, assign) int index;
 @property (nonatomic, assign) BOOL guessMode;
 
+- (void)setGuess:(SudokuUINumber *)guess;
+- (void)removeGuessValue:(int)guessValue;
+
 @end

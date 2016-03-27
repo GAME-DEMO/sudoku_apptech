@@ -33,9 +33,6 @@
     return self;
 }
 
-- (void)dealloc {
-}
-
 - (void)viewDidLoad {
     CenterFlowLayout *centerLayout = (CenterFlowLayout *)self.numberCollectionView.collectionViewLayout;
     centerLayout.sectionInset = UIEdgeInsetsMake(10, 10, 0, 10);
@@ -106,7 +103,11 @@
         if (numCell.isAltKey) {
             numCell.selected = [Presenter sharedInstance].currentSelectedCubeView.guessMode;
         } else {
-            numCell.selected = numCell.number == [Presenter sharedInstance].currentSelectedCubeView.cubeValue.number;
+            if (![Presenter sharedInstance].currentSelectedCubeView.guessMode) {
+                numCell.selected = numCell.number == [Presenter sharedInstance].currentSelectedCubeView.cubeValue.number;
+            } else {
+                numCell.selected = [[Presenter sharedInstance].currentSelectedCubeView.cubeGuessArray objectAtIndex:indexPath.item] != [NSNull null];
+            }
         }
         [numCell reload];
     } else if (collectionView == self.colorCollectionView) {

@@ -260,7 +260,9 @@ const NSInteger INVALID_COLOR_CELL_INDEX = -1;
             }
         } else {
             if (numberCell.selected) {
-                
+                [self.currentSelectedCubeView setGuess:[SudokuUINumber numberWithNumber:numberCell.number]];
+            } else {
+                [self.currentSelectedCubeView removeGuessValue:numberCell.number];
             }
         }
         [self.footView.numberCollectionView reloadData];
