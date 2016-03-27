@@ -12,8 +12,6 @@
 
 @interface SudokuCubeView : UIView
 
-@property (nonatomic, assign) BOOL showGuess;
-
 @property (nonatomic, strong) SudokuUINumber *cubeValue;
 @property (nonatomic, readonly) NSMutableArray *cubeGuessArray;
 @property (nonatomic, assign) BOOL selected;

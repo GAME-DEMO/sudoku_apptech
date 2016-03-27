@@ -37,17 +37,6 @@
     return self;
 }
 
-- (void)setShowGuess:(BOOL)showGuess {
-    _showGuess = showGuess;
-    if (showGuess) {
-        self.cubeValueView.hidden = YES;
-        self.cubeGuessBackgroundView.hidden = NO;
-    } else {
-        self.cubeValueView.hidden = NO;
-        self.cubeGuessBackgroundView.hidden = YES;
-    }
-}
-
 - (void)commonInit {
     self.cubeValueView = [[UIView alloc] init];
     self.cubeValueView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -132,9 +121,11 @@
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.cubeShineImageView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeLeft multiplier:1.0 constant:-3.0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.cubeShineImageView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1.0 constant:3.0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.cubeShineImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:3.0]];
-    
-    self.showGuess = NO;
+
     self.clipsToBounds = NO;
+
+    self.cubeValueView.hidden = NO;
+    self.cubeGuessBackgroundView.hidden = YES;
 }
 
 - (void)setCubeValue:(SudokuUINumber *)cubeValue {
