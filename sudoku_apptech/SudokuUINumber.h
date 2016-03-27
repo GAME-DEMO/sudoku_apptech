@@ -10,6 +10,9 @@
 
 @interface SudokuUINumber : NSObject
 
++ (instancetype)numberWithNumber:(int)number withColor:(UIColor *)color;
++ (instancetype)numberWithNumber:(int)number;
+
 @property (nonatomic, assign) int number;
 @property (nonatomic, strong) UIColor *color;
 

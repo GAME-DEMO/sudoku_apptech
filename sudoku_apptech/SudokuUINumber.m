@@ -11,6 +11,14 @@
 
 @implementation SudokuUINumber
 
++ (instancetype)numberWithNumber:(int)number withColor:(UIColor *)color {
+    return [[SudokuUINumber alloc] initWithNumber:number withColor:color];
+}
+
++ (instancetype)numberWithNumber:(int)number {
+    return [[SudokuUINumber alloc] initWithNumber:number];
+}
+
 - (instancetype)initWithNumber:(int)number withColor:(UIColor *)color {
     if (self = [super init]) {
         self.number = number;

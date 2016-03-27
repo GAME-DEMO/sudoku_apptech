@@ -12,6 +12,7 @@
 #import "CenterFlowLayout.h"
 #import "Presenter.h"
 #import "SudokuCubeView.h"
+#import "SudokuUINumber.h"
 
 @interface SudokuFootView ()
 
@@ -104,6 +105,8 @@
         numCell.numberColor = [Presenter sharedInstance].currentSelectedColor;
         if (numCell.isAltKey) {
             numCell.selected = [Presenter sharedInstance].currentSelectedCubeView.guessMode;
+        } else {
+            numCell.selected = numCell.number == [Presenter sharedInstance].currentSelectedCubeView.cubeValue.number;
         }
         [numCell reload];
     } else if (collectionView == self.colorCollectionView) {

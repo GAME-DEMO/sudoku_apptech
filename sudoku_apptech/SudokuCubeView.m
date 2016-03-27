@@ -9,6 +9,7 @@
 #import "SudokuCubeView.h"
 #import "Presenter.h"
 #import "UIUtils.h"
+#import "SudokuUINumber.h"
 
 @interface SudokuCubeView ()
 
@@ -136,16 +137,16 @@
     self.clipsToBounds = NO;
 }
 
-- (void)setCubeValue:(int)cubeValue withValueColor:(UIColor *)valueColor {
-    if (cubeValue > 0 && cubeValue <= [Presenter sharedInstance].dimension) {
-        [UIUtils updateCubeValue:cubeValue withTintColor:valueColor onCubeValueView:self.cubeValueView];
+- (void)setCubeValue:(SudokuUINumber *)cubeValue {
+    _cubeValue = cubeValue;
+    int number = cubeValue.number;
+    UIColor *color = cubeValue.color;
+    
+    if (number > 0 && number <= [Presenter sharedInstance].dimension) {
+        [UIUtils updateCubeValue:number withTintColor:color onCubeValueView:self.cubeValueView];
     } else {
         [UIUtils removeCubeValueOnCubeValueView:self.cubeValueView];
     }
-}
-
-- (void)setCubeValue:(int)cubeValue {
-    return [self setCubeValue:cubeValue withValueColor:[Presenter sharedInstance].currentSelectedColor];
 }
 
 - (void)setSelected:(BOOL)selected {

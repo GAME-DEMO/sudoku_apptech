@@ -11,6 +11,7 @@
 #import "SudokuCubeView.h"
 #import "NumberCollectionViewCell.h"
 #import "ColorCollectionViewCell.h"
+#import "SudokuUINumber.h"
 
 @interface SudokuContentView ()
 
@@ -169,13 +170,13 @@
 
 - (void)setCubeValue:(int)value atIndex:(int)index {
     if (index >= 0 && index < self.cubeViewArray.count) {
-        [self.cubeViewArray objectAtIndex:index].cubeValue = value;
+        [self.cubeViewArray objectAtIndex:index].cubeValue = [SudokuUINumber numberWithNumber:value];
     }
 }
 
 - (void)setCubeValue:(int)value atIndex:(int)index withValueColor:(UIColor *)color {
     if (index >= 0 && index < self.cubeViewArray.count) {
-        [[self.cubeViewArray objectAtIndex:index] setCubeValue:value withValueColor:color];
+        [[self.cubeViewArray objectAtIndex:index] setCubeValue:[SudokuUINumber numberWithNumber:value withColor:color]];
     }
 }
 

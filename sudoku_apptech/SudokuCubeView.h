@@ -14,13 +14,11 @@
 
 @property (nonatomic, assign) BOOL showGuess;
 
-@property (nonatomic, assign) int cubeValue;
+@property (nonatomic, strong) SudokuUINumber *cubeValue;
 @property (nonatomic, readonly) NSMutableArray *cubeGuessArray;
 @property (nonatomic, assign) BOOL selected;
 
 @property (nonatomic, assign) int index;
 @property (nonatomic, assign) BOOL guessMode;
-
-- (void)setCubeValue:(int)cubeValue withValueColor:(UIColor *)valueColor;
 
 @end

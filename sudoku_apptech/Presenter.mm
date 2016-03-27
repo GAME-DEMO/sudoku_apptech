@@ -12,6 +12,7 @@
 #import "NumberCollectionViewCell.h"
 #import "SudokuCubeView.h"
 #import "SudokuFootView.h"
+#import "SudokuUINumber.h"
 
 const NSInteger INVALID_COLOR_CELL_INDEX = -1;
 
@@ -253,15 +254,16 @@ const NSInteger INVALID_COLOR_CELL_INDEX = -1;
         numberCell.selected = !numberCell.selected;
         if (!self.currentSelectedCubeView.guessMode) {
             if (numberCell.selected) {
-                self.currentSelectedCubeView.cubeValue = numberCell.number;
+                self.currentSelectedCubeView.cubeValue = [SudokuUINumber numberWithNumber:numberCell.number];
             } else {
-                self.currentSelectedCubeView.cubeValue = 0;
+                self.currentSelectedCubeView.cubeValue = nil;
             }
         } else {
             if (numberCell.selected) {
                 
             }
         }
+        [self.footView.numberCollectionView reloadData];
     }
 }
 
